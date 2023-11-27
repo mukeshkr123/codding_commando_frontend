@@ -6,7 +6,7 @@ const Shaping = () => {
     <div className="flex flex-col md:flex-row bg-[#10001C] text-white">
       {/* Box 1 */}
       <div className="md:w-1/2 p-4 flex flex-col space-y-2 px-8 xl:px-20 xl:py-20 xl:space-y-8 xl:p-0">
-        <h1 className="text-5xl xl:text-7xl font-bold mb-2 ">
+        <h1 className="text-5xl lg:text-7xl font-bold mb-2 xl:  ">
           Shaping The <br /> Coder’s Mind
         </h1>
         <p className=" mb-4  xl:text-lg">
@@ -16,10 +16,10 @@ const Shaping = () => {
           having more then 10 years experience.
         </p>
         <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4">
-          <button className="bg-[#F5478E] w-44 rounded-[45px] py-2 xl:py-3">
+          <button className="bg-[#F5478E] w-44 font-semibold rounded-[45px] py-2 xl:py-3">
             Talk To us
           </button>
-          <button className="w-60 bg-transparent border border-white py-2  xl:py-3 rounded-[45px] ">
+          <button className="w-60 bg-transparent border font-semibold border-white py-2  xl:py-3 rounded-[45px] ">
             Get Job-Ready Skillls
           </button>
         </div>

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const TalkToUs = () => {
   return (
-    <div className="w-full min-h-[300px] bg-[#10001C] text-white relative overflow-hidden">
+    <div className="w-full min-h-[300px] bg-[#10001C] text-white relative overflow-hidden xl:px-20">
       <div className="flex">
         {/* Left Box */}
         <div className="flex h-full flex-col justify-center space-y-4 md:space-y-6 px-6 py-12 w-1/2 z-10 lg:mt-12">

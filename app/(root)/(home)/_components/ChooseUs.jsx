@@ -25,7 +25,7 @@ const chooseData = [
 
 const ChooseUs = () => {
   return (
-    <div className="bg-[#10001C] text-white">
+    <div className="bg-[#10001C] text-white xl:px-20">
       <div className="flex flex-col justify-center items-center py-10 px-2 lg:py-12 ">
         <h1 className="text-white text-shadow-syne text-4xl font-semibold leading-8 lg:text-7xl lg:py-4">
           Why Choose Us
