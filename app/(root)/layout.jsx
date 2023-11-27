@@ -1,4 +1,5 @@
 import Footer from "@/components/shared/footer/Footer";
+import TalkToUs from "@/components/shared/footer/TalkToUs";
 import Navbar from "@/components/shared/navbar/navbar";
 import React from "react";
 
@@ -11,6 +12,7 @@ export default function Rootlayout({ children }) {
       {children}
 
       {/* Footer  */}
+      <TalkToUs />
       <Footer />
     </>
   );

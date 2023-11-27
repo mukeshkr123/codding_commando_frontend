@@ -68,7 +68,7 @@ const Courses = [
 
 const Footer = () => {
   return (
-    <div className="w-full mt-2 bg-[#10001C] text-white p-4 lg:py-12">
+    <div className="w-full  bg-[#10001C] text-white p-4 lg:py-12">
       <div className="lg:flex lg:justify-between">
         <div className="py-4 px-8 md:py-0">
           <Image
