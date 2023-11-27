@@ -25,12 +25,12 @@ const chooseData = [
 
 const ChooseUs = () => {
   return (
-    <div className="bg-[#10001C] text-white xl:px-20">
+    <div className="bg-[#10001C] text-white xl:px-20 px-8">
       <div className="flex flex-col justify-center items-center py-10 px-2 lg:py-12 ">
-        <h1 className="text-white text-shadow-syne text-4xl font-semibold leading-8 lg:text-7xl lg:py-4">
+        <h1 className="text-white text-shadow-syne text-4xl font-semibold leading-8 lg:text-7xl lg:py-6 py-4">
           Why Choose Us
         </h1>
-        <div className="flex  flex-col space-y-4 mt-8 sm:flex-row sm:space-y-0 sm:space-x-6 lg:space-x-8 ">
+        <div className="flex  flex-col space-y-6 mt-8 sm:flex-row sm:space-y-0 sm:space-x-6 lg:space-x-8 ">
           {chooseData &&
             chooseData.map((data) => (
               <div

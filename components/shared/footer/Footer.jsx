@@ -131,7 +131,7 @@ const Footer = () => {
               </h1>
               <p className="text-gray-600 font-syne text-base font-normal leading-5 pl-2 p-1">
                 Lorem ipsum dolor sit amet <br />
-                Loremipsumdolorsit@gmail.com <br />
+                Loresit@gmail.com <br />
                 +919945544554
               </p>
             </div>

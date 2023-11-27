@@ -2,19 +2,19 @@ import Image from "next/image";
 
 const MeetMentor = () => {
   return (
-    <section className="flex flex-col items-center pb-12">
-      <h1 className="mb-8 py-6 text-4xl font-semibold lg:text-8xl">
+    <section className="flex flex-col items-center pb-14 xl:pb-36 py-4">
+      <h1 className="pb-0 xl:pb-8 xl:py-6 text-5xl font-semibold lg:text-8xl">
         Meet Your Mentor
       </h1>
 
-      <div className="flex flex-col items-center justify-center space-x-8 text-center text-[#000] md:flex-row md:items-center md:justify-center">
+      <div className="flex flex-col items-center justify-center xl:space-x-10 md:space-x-8 text-center text-[#000] md:flex-row md:items-center md:justify-center">
         {/* Mentor 1 */}
         <div className="flex flex-col items-center">
           <Image
             src="/assets/images/mentors/mentor-1.svg"
             alt="Mentor 1"
-            width={160}
-            height={160}
+            width={150}
+            height={150}
             className="mx-auto h-[353px] lg:w-[250px]"
           />
           <h1 className="py-4 text-2xl font-semibold md:text-4xl">
@@ -32,8 +32,8 @@ const MeetMentor = () => {
           <Image
             src="/assets/images/mentors/mentor-2.svg"
             alt="Mentor 2"
-            width={160}
-            height={160}
+            width={150}
+            height={150}
             className="mx-auto h-[353px] lg:w-[250px]"
           />
           <h1 className="py-4 text-2xl font-semibold md:text-4xl">

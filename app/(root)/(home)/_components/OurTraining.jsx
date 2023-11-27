@@ -25,7 +25,7 @@ const trainingData = [
 ];
 const OurTraining = () => {
   return (
-    <div className="w-full px-2 py-4">
+    <div className="w-full px-2 py-4 pb-20">
       <div className="flex flex-col space-y-4 justify-center items-center">
         <h1 className="text-4xl font-semibold p-4 lg:text-7xl">
           Our Training Process
@@ -48,7 +48,7 @@ const OurTraining = () => {
           </div>
 
           {/* Box 2 (Image) */}
-          <div className=" hidden sm:block w-full sm:w-[30%] lg:w-[30%] px-12">
+          <div className=" hidden lg:block w-full sm:w-[30%] lg:w-[30%] px-12">
             <Image
               src="/assets/images/success-svg.svg"
               alt="Success"
