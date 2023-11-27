@@ -48,7 +48,7 @@ const OurTraining = () => {
           </div>
 
           {/* Box 2 (Image) */}
-          <div className="w-full sm:w-[30%] lg:w-[30%] px-12">
+          <div className=" hidden sm:block w-full sm:w-[30%] lg:w-[30%] px-12">
             <Image
               src="/assets/images/success-svg.svg"
               alt="Success"
