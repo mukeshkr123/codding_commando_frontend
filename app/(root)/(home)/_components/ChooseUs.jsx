@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import OurTraining from "./OurTraining";
 
 const chooseData = [
   {
@@ -50,6 +51,8 @@ const ChooseUs = () => {
             ))}
         </div>
       </div>
+      {/* Our training */}
+      <OurTraining />
     </div>
   );
 };
