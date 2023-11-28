@@ -68,7 +68,7 @@ const Courses = [
 
 const Footer = () => {
   return (
-    <div className="w-full  bg-[#10001C] text-white p-4 lg:py-12">
+    <div className="w-full  bg-[#10001C] xl:pr-16 text-white lg:py-12 pb-8 ">
       <div className="lg:flex lg:justify-between">
         <div className="py-4 px-8 md:py-0">
           <Image
@@ -79,7 +79,7 @@ const Footer = () => {
             className="py-6 lg:py-2"
           />
         </div>
-        <div className="flex w-full m-auto px-8 space-x-20 ">
+        <div className="flex w-full m-auto px-8 space-x-20 md:px-12 ">
           {/* Useful Links and Follow Us */}
           <div className="flex flex-col lg:flex-row lg:justify-between w-[40%]">
             <div className="mb-4">
@@ -130,8 +130,8 @@ const Footer = () => {
                 Contact Us
               </h1>
               <p className="text-gray-600 font-syne text-base font-normal leading-5 pl-2 p-1">
-                Lorem ipsum dolor sit amet <br />
-                Loresit@gmail.com <br />
+                Lorem ipsum <br />
+                Lore@gmail.com <br />
                 +919945544554
               </p>
             </div>

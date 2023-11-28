@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const MeetMentor = () => {
   return (
-    <section className="flex flex-col items-center pb-14 xl:pb-36 py-4">
-      <h1 className="pb-0 xl:pb-8 xl:py-6 text-5xl font-semibold lg:text-8xl">
+    <section className="flex flex-col items-center justify-center pb-14 xl:pb-36 py-4 px-8 text-center">
+      <h1 className="pb-0 w-full flex justify-center xl:pb-8 xl:py-6 text-4xl xl:text-5xl font-semibold lg:text-8xl ">
         Meet Your Mentor
       </h1>
 
