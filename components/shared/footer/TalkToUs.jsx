@@ -27,7 +27,7 @@ const TalkToUs = () => {
         </div>
 
         {/* Right Box (Image) */}
-        <div className="w-full md:w-1/2 overflow-hidden">
+        <div className="w-full md:block md:w-1/2 hidden overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#10001C] via-[#10001C] to-transparent" />
           <Image
             src="/assets/images/talk-us.svg"

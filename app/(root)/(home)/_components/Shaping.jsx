@@ -26,13 +26,13 @@ const Shaping = () => {
       </div>
 
       {/* Box 2 */}
-      <div className="md:w-1/2 p-4">
+      <div className="md:w-1/2 p-4 ">
         <Image
           src="/assets/images/brain-svg.svg"
           alt="Sample"
           width={500}
           height={300}
-          className="w-full h-auto rounded"
+          className="w-full h-auto rounded "
         />
       </div>
     </div>
