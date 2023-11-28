@@ -36,8 +36,8 @@ export default function Navbar() {
         </div>
 
         {/* navitems  */}
-        <div className="hidden  sm:flex">
-          <div className="flex  sm:space-x-4 md:space-x-8 lg:space-x-10 2xl:space-x-12 ">
+        <div className="hidden  md:flex">
+          <div className="flex   md:space-x-1 lg:space-x-10 2xl:space-x-12 ">
             {navLinks.map((navItem) => (
               <NavLink
                 key={navItem.href}
