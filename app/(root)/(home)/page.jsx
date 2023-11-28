@@ -25,7 +25,7 @@ export default function HomePage() {
       <ChooseUs />
 
       {/* Testimonials  */}
-      <Testimonial />
+      {/* <Testimonial /> */}
     </div>
   );
 }

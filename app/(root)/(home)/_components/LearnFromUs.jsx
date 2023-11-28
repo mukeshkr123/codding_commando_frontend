@@ -2,12 +2,7 @@ import Image from "next/image";
 
 const LearnFromUs = () => {
   return (
-    <section className="xl:px-20 px-8">
-      {/* Knowledge Slider */}
-      <div className="mb-8 flex justify-center items-center">
-        <div className="px-18">knowledge slider</div>
-      </div>
-
+    <section className="xl:px-20 px-8 py-8">
       {/* Learn from us content */}
       <div className="flex flex-col md:flex-row justify-center items-center">
         {/* Content */}

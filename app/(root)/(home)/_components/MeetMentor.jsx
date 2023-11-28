@@ -3,7 +3,7 @@ import Image from "next/image";
 const MeetMentor = () => {
   return (
     <section className="flex flex-col items-center justify-center pb-14 xl:pb-36 py-4 px-8 text-center">
-      <h1 className="pb-0 w-full flex justify-center xl:pb-8 xl:py-6 text-4xl xl:text-5xl font-semibold lg:text-8xl ">
+      <h1 className="pb-0 w-full flex justify-center xl:pb-8 xl:py-6 text-4xl  font-semibold lg:text-8xl  ">
         Meet Your Mentor
       </h1>
 
@@ -14,7 +14,7 @@ const MeetMentor = () => {
             src="/assets/images/mentors/mentor-1.svg"
             alt="Mentor 1"
             width={150}
-            height={150}
+            height={100}
             className="mx-auto h-[353px] lg:w-[250px]"
           />
           <h1 className="py-4 text-2xl font-semibold md:text-4xl">
@@ -33,7 +33,7 @@ const MeetMentor = () => {
             src="/assets/images/mentors/mentor-2.svg"
             alt="Mentor 2"
             width={150}
-            height={150}
+            height={100}
             className="mx-auto h-[353px] lg:w-[250px]"
           />
           <h1 className="py-4 text-2xl font-semibold md:text-4xl">

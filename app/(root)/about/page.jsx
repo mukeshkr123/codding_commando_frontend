@@ -1,5 +1,11 @@
 import React from "react";
+import Making from "./_component/Making";
 
 export default function AboutPage() {
-  return <div>AboutPage</div>;
+  return (
+    <div>
+      {/* Making  */}
+      <Making />
+    </div>
+  );
 }
