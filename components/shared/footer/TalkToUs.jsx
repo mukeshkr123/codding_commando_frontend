@@ -17,11 +17,20 @@ const TalkToUs = () => {
           </p>
 
           <div className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
-            <button className="bg-[#F5478E] w-44 font-semibold rounded-[45px] py-2 xl:py-3">
-              Talk To us
+            <button
+              className="bg-[#F5478E] w-44 font-semibold md:font-bold md:text-xl rounded-[45px] py-2 xl:py-3 xl:px-2 transition-transform transform hover:scale-105 focus:outline-none focus:ring focus:border-blue-300"
+              style={{ boxShadow: "1.5px 1.5px white" }}
+            >
+              <p>Talk To Us</p>
             </button>
-            <button className="w-60 bg-transparent border font-semibold border-white py-2  xl:py-3 rounded-[45px] ">
-              Get Job-Ready Skillls
+
+            <button
+              className="w-60 bg-transparent border font-semibold border-white py-2 px-4 xl:py-3 rounded-[45px] transition-transform transform hover:scale-105 focus:outline-none focus:ring focus:border-blue-300"
+              style={{
+                boxShadow: "2.5px 3.5px 6px 0.5px rgba(234, 56, 152, 1)",
+              }}
+            >
+              <p>Know About Us</p>
             </button>
           </div>
         </div>
