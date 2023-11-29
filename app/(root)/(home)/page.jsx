@@ -1,10 +1,8 @@
-import React from "react";
 import ChooseUs from "./_components/ChooseUs";
-import Testimonial from "./_components/Testimonial";
-import Shaping from "./_components/Shaping";
-import LearnFromUs from "./_components/LearnFromUs";
 import ExploreProgram from "./_components/ExploreProgram";
+import LearnFromUs from "./_components/LearnFromUs";
 import MeetMentor from "./_components/MeetMentor";
+import Shaping from "./_components/Shaping";
 
 export default function HomePage() {
   return (
