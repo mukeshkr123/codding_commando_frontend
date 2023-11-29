@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "./navLink";
 import Image from "next/image";
 import MobileNav from "./MobileNav";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const navLinks = [
   {
@@ -49,12 +51,20 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* Login */}
+        <Link href="/login">
+          <Button
+            className="hidden md:flex px-4 bg-[#F5478E]  hover:bg-[#d43977]  border border-black transition duration-300"
+            style={{ boxShadow: "3px 2px 0 0 white" }}
+          >
+            <span className="text-lg font-semibold">Login</span>
+          </Button>
+        </Link>
+
         {/* Mobile Nav */}
         <div className=" md:hidden ">
-
-        <MobileNav navLinks={navLinks}/>
+          <MobileNav navLinks={navLinks} />
         </div>
-
       </div>
     </nav>
   );
