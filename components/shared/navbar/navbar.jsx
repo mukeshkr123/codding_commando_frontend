@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "./navLink";
 import Image from "next/image";
+import MobileNav from "./MobileNav";
 
 const navLinks = [
   {
@@ -47,6 +48,13 @@ export default function Navbar() {
             ))}
           </div>
         </div>
+
+        {/* Mobile Nav */}
+        <div className=" md:hidden ">
+
+        <MobileNav navLinks={navLinks}/>
+        </div>
+
       </div>
     </nav>
   );

@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import ChooseUs from "./_components/ChooseUs";
 import ExploreProgram from "./_components/ExploreProgram";
 import LearnFromUs from "./_components/LearnFromUs";
