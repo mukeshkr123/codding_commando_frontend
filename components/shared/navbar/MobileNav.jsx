@@ -8,27 +8,9 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetClose,
   SheetDescription,
 } from "@/components/ui/sheet";
-
-const navLinks = [
-  {
-    title: "Home",
-    href: "/",
-  },
-  {
-    title: "About Us",
-    href: "/about",
-  },
-  {
-    title: "Our Courses",
-    href: "/courses",
-  },
-  {
-    title: "Contact Us",
-    href: "/contact",
-  },
-];
 
 const MobileNav = ({ navLinks }) => {
   return (
@@ -50,23 +32,35 @@ const MobileNav = ({ navLinks }) => {
           </SheetTitle>
           <SheetDescription className="flex flex-col space-y-6 text-white">
             {navLinks.map((navItem, index) => (
-              <Link href={navItem.href} key={index}>
-                <p className="text-lg font-semibold">{navItem.title}</p>
-              </Link>
+              <SheetClose asChild key={index}>
+                <Link href={navItem.href}>
+                  <p className="text-lg font-semibold hover:text-[#F5478E] transition duration-300">
+                    {navItem.title}
+                  </p>
+                </Link>
+              </SheetClose>
             ))}
 
             <div className="flex flex-col space-y-4 w-full">
-              <Link href="/sign-in">
-                <Button className="py-4 w-[60%]">
-                  <span className="text-white text-lg font-semibold">Log In</span>
-                </Button>
-              </Link>
+              <SheetClose asChild>
+                <Link href="/login">
+                  <Button className="py-4 w-[60%] bg-[#F5478E] rounded-[45px] hover:bg-[#be3169] transition duration-300">
+                    <span className="text-white text-xl font-semibold">
+                      Log In
+                    </span>
+                  </Button>
+                </Link>
+              </SheetClose>
 
-              <Link href="/sign-up">
-                <Button className="py-4 w-[60%]">
-                  <span className="text-white text-lg font-semibold">Sign Up</span>
-                </Button>
-              </Link>
+              <SheetClose asChild>
+                <Link href="/login">
+                  <Button className="py-4 w-[60%] bg-[#F5478E] hover:bg-[#be3169] transition duration-300 rounded-[45px]">
+                    <span className="text-white text-xl font-semibold ">
+                      Sign Up
+                    </span>
+                  </Button>
+                </Link>
+              </SheetClose>
             </div>
           </SheetDescription>
         </SheetHeader>
