@@ -2,7 +2,7 @@ import MentorCard from "./MentorCard";
 
 const MeetMentor = () => {
   return (
-    <section className="flex flex-col items-center justify-center pb-14 xl:pb-20 py-4 px-8 pt-16 text-center">
+    <section className="flex flex-col items-center justify-center pb-14 xl:pb-20 py-4 px-8 pt-16 text-center bg-[#FBF5FC] ">
       <h1 className="pb-0 w-full flex justify-center xl:py-6 text-6xl leading-[4rem] font-semibold lg:text-8xl">
         Meet Your Mentor
       </h1>

@@ -1,8 +1,14 @@
 import Image from "next/image";
+const vectorUrl = "assets\vectorlearn-bg-svg.svg";
 
 const LearnFromUs = () => {
   return (
-    <section className="xl:px-20 px-8 py-8">
+    <section
+      className="xl:px-20 px-8  py-8 bg-[#FBF5FC] flex-shrink-0 bg-contain bg-no-repeat bg-opacity-[100%]"
+      style={{
+        backgroundImage: 'url("assets/vector/learn-bg-svg.svg")',
+      }}
+    >
       {/* Learn from us content */}
       <div className="flex flex-col md:flex-row justify-center items-center">
         {/* Content */}

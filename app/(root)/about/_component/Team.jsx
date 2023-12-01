@@ -54,7 +54,7 @@ const TeamData = [
 
 const Team = () => {
   return (
-    <div className="w-full py-8 px-4 sm:px-0">
+    <div className="w-full py-8 px-4 sm:px-0 bg-[#FBF5FC] ">
       <div className="w-full flex flex-col justify-center items-center">
         <div className="w-full  flex justify-center item-center py-8 md:py-8 lg:py-10 xl:py-12 ">
           <h1 className=" text-6xl sm:text-7xl xl:text-8xl capitalize font-semibold md:text6xl">

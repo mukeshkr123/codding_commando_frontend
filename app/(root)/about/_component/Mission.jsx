@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Mission = ({ title, description, imageUrl, className }) => {
   return (
-    <div className="flex flex-col gap-4 w-full md:flex-row justify-center items-center bg-gray-100 px-8 xl:-16 py-12 xl:px-32">
+    <div className="flex flex-col gap-4 w-full md:flex-row justify-center items-center px-8 xl:-16 py-12 xl:px-32 bg-[#FBF5FC] ">
       {/* Box 1 */}
       <div
         className={` md:w-1/2 lg:pr-8 flex flex-col gap-4 xl:gap-8 py-4 ${className} `}

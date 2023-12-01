@@ -3,7 +3,11 @@ import React from "react";
 
 const Making = () => {
   return (
-    <div className="w-full bg-[#10001C] h-[690px] text-white">
+    <div className="w-full relative bg-[#10001C] h-[690px] text-white">
+      <div
+        className=" absolute h-[80%] w-1/2 md:h-[67%] md:w-[40%] right-0 top-[200px] bg-no-repeat lg:bg-repeat md:top-0 bg-contain "
+        style={{ backgroundImage: 'url("/assets/images/grid.png")' }}
+      ></div>
       <div className="h-full w-full ">
         <div
           className="h-[60%]  w-full flex justify-center items-center flex-col px-12  space-y-4 md:space-y-6 xl:space-y-8 text-center xl:pt-18

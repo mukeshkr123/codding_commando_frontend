@@ -3,7 +3,7 @@ import React from "react";
 
 const Shaping = () => {
   return (
-    <div className="flex  flex-col md:flex-row xl:max-h-[90vh]  bg-[#10001C] text-white xl:py-8 xl:pb-16">
+    <div className="flex  flex-col md:flex-row xl:max-h-[90vh]  bg-[#10001C] text-white xl:py-12 xl:pb-16">
       {/* Box 1 */}
       <div className="md:w-1/2 p-4 flex flex-col space-y-2 px-8 xl:px-20 xl:py-20 xl:space-y-8 xl:p-0">
         <h1 className="text-5xl lg:text-7xl xl:text-7.5xl font-bold mb-2  xl:leading-[92px] ">
@@ -33,13 +33,16 @@ const Shaping = () => {
       </div>
 
       {/* Box 2 */}
-      <div className="md:w-1/2 ">
+      <div
+        className="md:w-1/2 bg-cover"
+        style={{ backgroundImage: 'url("/assets/images/grid.png")' }}
+      >
         <Image
           src="/assets/images/brain-svg.svg"
           alt="Sample"
           width={200}
           height={200}
-          className="w-[90%] h-[90%] sm:h-[75%] xl:h-full rounded "
+          className="w-[90%] h-[90%] sm:h-[75%] xl:h-full xl:w-full rounded"
         />
       </div>
     </div>
