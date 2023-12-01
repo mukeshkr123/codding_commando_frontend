@@ -27,9 +27,17 @@ const OurTraining = () => {
   return (
     <div className="w-full px-2 py-4 pb-20">
       <div className="flex flex-col space-y-4 justify-center items-center">
-        <h1 className="text-4xl font-semibold p-4 lg:text-7xl">
+        {/* <h1 className="text-4xl font-semibold p-4 lg:text-7xl">
           Our Training Process
-        </h1>
+        </h1> */}
+
+        <Image
+          src="/assets/font-shadow/training-svg.svg"
+          alt="Our Training Process"
+          width={200}
+          height={200}
+          className="w-[70%]"
+        />
 
         <div className="flex flex-col-reverse space-y-8 lg:flex-row lg:space-y-0 lg:space-x-8 lg:px-4 lg:pt-10">
           {/* Box 1 */}

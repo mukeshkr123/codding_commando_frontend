@@ -5,10 +5,24 @@ const Shaping = () => {
   return (
     <div className="flex  flex-col md:flex-row xl:max-h-[90vh]  bg-[#10001C] text-white xl:py-12 xl:pb-16">
       {/* Box 1 */}
-      <div className="md:w-1/2 p-4 flex flex-col space-y-2 px-8 xl:px-20 xl:py-20 xl:space-y-8 xl:p-0">
-        <h1 className="text-5xl lg:text-7xl xl:text-7.5xl font-bold mb-2  xl:leading-[92px] ">
+      <div className="md:w-1/2 p-4 flex flex-col space-y-6 px-8 xl:px-20 xl:py-20 xl:space-y-8 xl:p-0">
+        {/* <h1
+          className="text-5xl lg:text-7xl xl:text-7.5xl font-bold mb-2  xl:leading-[92px]  "
+          style={{
+
+          }}
+        >
           Shaping The <br /> Coder’s Mind
-        </h1>
+        </h1> */}
+
+        <Image
+          src="/assets/shapping-svg.svg"
+          alt="Shapping"
+          height={200}
+          width={200}
+          className="w-full "
+        />
+
         <p className=" mb-4 md:text-lg  xl:text-xl">
           Coding Commando is a community which garnishes your skills and will
           make you job ready. Through its best cracked courses Coding Commando
