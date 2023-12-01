@@ -22,13 +22,20 @@ export default function AboutPage() {
         imageUrl="/assets/images/mission-svg.svg"
       />
 
-      {/* Our Mission  */}
-      <Mission
-        title="Our  Vision"
-        description="Promoting tech environment and helping out the candidates in cracking interviews. We want to expand the tech culture and establish cultural exchange with industry experts. Provide the best services in flexible mode and train coding enthusiasts to crack interviews like a pro."
-        imageUrl="/assets/images/mission-svg.svg"
-        className="md:order-1 "
-      />
+      {/* Our Vission  */}
+      <div
+        className="w-full h-full bg-no-repeat"
+        style={{
+          backgroundImage: 'url("assets/vector/mentor-bg-svg.svg")',
+        }}
+      >
+        <Mission
+          title="Our  Vision"
+          description="Promoting tech environment and helping out the candidates in cracking interviews. We want to expand the tech culture and establish cultural exchange with industry experts. Provide the best services in flexible mode and train coding enthusiasts to crack interviews like a pro."
+          imageUrl="/assets/images/mission-svg.svg"
+          className="md:order-1 "
+        />
+      </div>
 
       {/* Meet My Mentor  */}
       <MeetMentor />

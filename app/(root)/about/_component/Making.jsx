@@ -10,7 +10,7 @@ const Making = () => {
       ></div>
       <div className="h-full w-full ">
         <div
-          className="h-[60%]  w-full flex justify-center items-center flex-col px-12  space-y-4 md:space-y-6 xl:space-y-8 text-center xl:pt-18
+          className="h-[50%]  w-full flex justify-center items-center flex-col px-12  space-y-4 md:space-y-6 xl:space-y-8 text-center xl:pt-18
         "
         >
           <h1 className="text-5xl md:text-6xl lg:leading-[90px] xl:leading-[100px] xl:text-8xl font-semibold">
@@ -23,15 +23,16 @@ const Making = () => {
           </p>
         </div>
 
-        <div className="h-[40%]  ">
+        <div className="relative h-[50%]">
           <Image
             src="/assets/images/background/making-png.png"
             alt="Making"
             width={400}
             height={400}
             objectFit="cover"
-            className="w-full h-full"
+            className="w-full h-full rounded-t"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#10001C] via-[#10001C] to-transparent opacity-65"></div>
         </div>
       </div>
     </div>

@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const ExploreProgram = () => {
   return (
-    <section className="flex flex-col items-center xl:py-12 xl:px-20 bg-[#FBF5FC] ">
-      <h1 className="xl:py-6 text-4xl md:text-5xl lg:text-6xl font-bold text-black text-center">
+    <section className="flex flex-col items-center  xl:py-1 xl:px-20 bg-[#FBF5FC] ">
+      <h1 className="xl:py-6 text-4xl md:text-5xl lg:text-7xl font-bold text-black text-center">
         Explore Our Programs
       </h1>
       <Link href="/courses">

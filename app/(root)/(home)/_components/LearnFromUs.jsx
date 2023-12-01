@@ -33,8 +33,9 @@ const LearnFromUs = () => {
           <Image
             src="/assets/images/learn-svg.svg"
             alt="program "
-            height={420}
-            width={430}
+            height={400}
+            width={400}
+            className="h-[50%]"
           />
         </div>
       </div>
