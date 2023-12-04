@@ -30,12 +30,14 @@ export default function Navbar() {
       <div className="flex items-center justify-between px-2">
         {/* logo  */}
         <div>
-          <Image
-            src="/assets/icons/logo.svg"
-            alt="Codding Commando"
-            height={150}
-            width={180}
-          />
+          <Link href="/">
+            <Image
+              src="/assets/icons/logo.svg"
+              alt="Codding Commando"
+              height={150}
+              width={180}
+            />
+          </Link>
         </div>
 
         {/* navitems  */}

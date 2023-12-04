@@ -7,6 +7,7 @@ import {
   FaTelegram,
   FaWhatsapp,
 } from "react-icons/fa";
+import Link from "next/link";
 
 const FollowLinks = [
   {
@@ -70,16 +71,17 @@ const Footer = () => {
     <div className="w-full  bg-[#10001C] pb-8 text-white lg:py-12 xl:pr-16 ">
       <div className="lg:flex lg:justify-between">
         <div className="px-8 py-4 md:py-0">
-          <Image
-            src="/assets/icons/logo.svg"
-            alt="Logo"
-            height={200}
-            width={200}
-            className="py-6 lg:py-2"
-          />
+          <Link href="/">
+            <Image
+              src="/assets/icons/logo.svg"
+              alt="Logo"
+              height={200}
+              width={200}
+              className="py-6 lg:py-2"
+            />
+          </Link>
         </div>
         <div className="m-auto flex w-full space-x-20 px-8 md:px-12 ">
-          {/* Useful Links and Follow Us */}
           <div className="flex w-[40%] flex-col lg:flex-row lg:justify-between">
             <div className="mb-4">
               <h1 className="pb-2 text-xl font-semibold text-[#EBEBEB]">

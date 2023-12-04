@@ -79,9 +79,9 @@ const CourseSlider = () => {
         <Image
           src="/assets/icons/left-arrow.svg"
           alt="right arrow"
-          height={20}
-          width={20}
-          className="absolute left-3  top-1/2 -translate-y-1/2 cursor-pointer"
+          height={30}
+          width={30}
+          className="absolute left-3 top-1/2  -translate-y-1/2 cursor-pointer xl:left-6"
           onClick={goToNextCourse}
         />
         <div className="w-full">
@@ -99,10 +99,10 @@ const CourseSlider = () => {
         <Image
           src="/assets/icons/right-arrow.svg"
           alt="right arrow"
-          height={20}
-          width={20}
+          height={30}
+          width={30}
           onClick={goToPrevCourse}
-          className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+          className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer xl:right-6"
         />
       </div>
     </div>
