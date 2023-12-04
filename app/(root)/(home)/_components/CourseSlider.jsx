@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const courses = [
   {
@@ -72,14 +71,18 @@ const CourseSlider = () => {
 
   return (
     <div
-      className=" w-full overflow-hidden px-3 "
+      className=" w-full overflow-hidden px-8 py-2 xl:px-0 "
       onMouseEnter={stopAutoSlide}
       onMouseLeave={startAutoSlide}
     >
       <div className="relative flex items-center">
-        <FaArrowLeft
-          className="absolute left-2 top-1/2 -translate-y-1/2 cursor-pointer text-2xl text-gray-500"
-          onClick={goToPrevCourse}
+        <Image
+          src="/assets/icons/left-arrow.svg"
+          alt="right arrow"
+          height={20}
+          width={20}
+          className="absolute left-3  top-1/2 -translate-y-1/2 cursor-pointer"
+          onClick={goToNextCourse}
         />
         <div className="w-full">
           <Link href="/courses">
@@ -91,14 +94,15 @@ const CourseSlider = () => {
               className="w-full"
             />
           </Link>
-
-          <h3 className="mt-2 text-lg font-semibold">
-            {courses[currentCourse].title}
-          </h3>
         </div>
-        <FaArrowRight
-          className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer text-2xl text-gray-500"
-          onClick={goToNextCourse}
+
+        <Image
+          src="/assets/icons/right-arrow.svg"
+          alt="right arrow"
+          height={20}
+          width={20}
+          onClick={goToPrevCourse}
+          className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
         />
       </div>
     </div>

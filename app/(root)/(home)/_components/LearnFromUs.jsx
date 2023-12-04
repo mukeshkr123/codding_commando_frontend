@@ -29,11 +29,11 @@ const LearnFromUs = () => {
         </div>
         <div className="mt-2 flex justify-center md:w-1/2">
           <Image
-            src="/assets/images/learn-svg.svg"
+            src="/assets/images/learn-img.svg"
             alt="program "
             height={300}
             width={350}
-            className="h-[50%]"
+            className="h-[50%] w-[70%]"
           />
         </div>
       </div>

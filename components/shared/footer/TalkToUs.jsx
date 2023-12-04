@@ -41,7 +41,6 @@ const TalkToUs = () => {
           </div>
         </div>
 
-        {/* Right Box (Image) */}
         <div className="hidden w-full overflow-hidden md:block md:w-1/2">
           <div className="absolute inset-0 bg-gradient-to-r from-[#10001C] via-[#10001C] to-transparent" />
           <Image
@@ -49,7 +48,7 @@ const TalkToUs = () => {
             alt="Talk To Us Illustration"
             layout="responsive"
             width={400}
-            height={400}
+            height={300}
             objectFit="cover"
             className="h-full w-full"
           />

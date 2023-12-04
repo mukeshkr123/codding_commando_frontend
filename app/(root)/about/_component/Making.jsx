@@ -18,9 +18,9 @@ const Making = () => {
             alt="Making Sense with 0 & 1"
             height={200}
             width={200}
-            className="w-full pb-6 pt-10 md:w-[60%] lg:w-[50%]"
+            className="w-full pb-4 pt-10 md:w-[60%] lg:w-[50%]"
           />
-          <p className="text-base md:text-lg lg:w-[60%] xl:w-[50%] xl:text-xl">
+          <p className="pb-2 text-base md:text-lg lg:w-[60%] xl:w-[50%] xl:text-xl">
             Your pathway to job-ready skills! Our cracked courses transform
             coding complexity into accessible expertise, preparing you for
             in-demand jobs. Join us to bridge your ambitions with opportunities.

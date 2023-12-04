@@ -21,7 +21,7 @@ const Shaping = () => {
         </p>
         <div className="md4:space-x-6 flex flex-col space-y-4 py-3 md:flex-row md:space-y-0 md:py-0 xl:space-x-7">
           <button
-            className="w-44 rounded-[45px] bg-[#F5478E] py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring md:text-xl md:font-bold xl:px-2 xl:py-3"
+            className="w-44  rounded-[45px] bg-[#F5478E] py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring md:text-xl md:font-bold xl:px-2 xl:py-3"
             style={{ boxShadow: "1.5px 1.5px white" }}
           >
             <p>Talk To Us</p>
@@ -45,7 +45,7 @@ const Shaping = () => {
           alt="Sample"
           width={200}
           height={200}
-          className="h-[90%] w-[90%] rounded sm:h-[75%] xl:h-full xl:w-full"
+          className="h-[90%] w-[92%] rounded sm:h-[75%] xl:h-full xl:w-full"
         />
       </div>
     </div>

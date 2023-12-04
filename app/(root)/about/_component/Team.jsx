@@ -15,18 +15,6 @@ const TeamData = [
     imageUrl: "/assets/images/teams/profile-2.svg",
   },
   {
-    _id: 1,
-    name: "Prateek Prasoon",
-    description: "Founder",
-    imageUrl: "/assets/images/teams/profile-1.svg",
-  },
-  {
-    _id: 2,
-    name: "Rohit Mishra",
-    description: "Co-Founder, Mentor",
-    imageUrl: "/assets/images/teams/profile-2.svg",
-  },
-  {
     _id: 3,
     name: "Aakarshan",
     description: "BDA",
@@ -54,15 +42,20 @@ const TeamData = [
 
 const Team = () => {
   return (
-    <div className="w-full bg-[#FBF5FC] px-4 py-8 sm:px-0 ">
-      <div className="flex w-full flex-col items-center justify-center">
+    <div className="w-full bg-light-white  py-8 sm:px-0 ">
+      <div
+        className="flex w-full flex-col items-center justify-center bg-contain bg-no-repeat px-4"
+        style={{
+          backgroundImage: 'url("assets/vector/team-vector.svg")',
+        }}
+      >
         <div className="flex  w-full items-center justify-center py-8 md:py-8 lg:py-10 xl:py-12 ">
           <Image
             src="/assets/font-shadow/team.svg"
             alt="Our Team"
             width={200}
             height={200}
-            className="w-[70%] sm:w-[60%] lg:w-[50%] xl:w-[40%]"
+            className="w-[65%] sm:w-[60%] lg:w-[50%] xl:w-[35%]"
           />
         </div>
 
