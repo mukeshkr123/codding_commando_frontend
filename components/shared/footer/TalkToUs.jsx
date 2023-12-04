@@ -2,15 +2,10 @@ import Image from "next/image";
 
 const TalkToUs = () => {
   return (
-    <div className="w-full min-h-[300px] bg-[#10001C] text-white relative overflow-hidden xl:px-20">
+    <div className="relative min-h-[300px] w-full overflow-hidden bg-dark-purple text-white xl:px-20">
       <div className="flex flex-col-reverse md:flex-row">
-        {/* Left Box */}
-        <div className="flex h-full flex-col justify-center space-y-4 md:space-y-6 px-6 py-12 w-full md:w-1/2 z-10 lg:mt-12 text-center md:text-left">
-          {/* <h1 className="text-white text-shadow-syne font-syne text-4xl md:text-6xl font-semibold leading-8">
-            Talk To Us
-          </h1> */}
-
-          <div className="flex w-full justify-center md:inline-block py-4">
+        <div className="z-10 flex h-full w-full flex-col justify-center space-y-4 px-6 py-12 text-center md:w-1/2 md:space-y-6 md:text-left lg:mt-12">
+          <div className="flex w-full justify-center py-4 md:inline-block">
             <Image
               src="/assets/font-shadow/talkus-svg.svg"
               alt="Talk To Us"
@@ -20,23 +15,23 @@ const TalkToUs = () => {
             />
           </div>
 
-          <p className="text-white text-base md:text-lg font-normal leading-normal md:pl-0">
+          <p className="text-base font-normal leading-normal text-white md:pl-0 md:text-lg">
             You can connect directly with the help desk regarding clarity on
             courses, mode of course, and doubt-solving. Through its best-cracked
             courses, Coding Commando is giving you the best training under the
             guidance of industry experts.
           </p>
 
-          <div className="flex flex-col md:flex-row items-center py-4 md:items-start space-y-4 md:space-y-0 md:space-x-6">
+          <div className="flex flex-col items-center space-y-4 py-4 md:flex-row md:items-start md:space-x-6 md:space-y-0">
             <button
-              className="bg-[#F5478E] w-44 font-semibold md:font-bold md:text-xl rounded-[45px] py-2 xl:py-3 xl:px-2 transition-transform transform hover:scale-105 focus:outline-none focus:ring focus:border-blue-300"
+              className="w-44 rounded-[45px] bg-[#F5478E] py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring md:text-xl md:font-bold xl:px-2 xl:py-3"
               style={{ boxShadow: "1.5px 1.5px white" }}
             >
               <p>Talk To Us</p>
             </button>
 
             <button
-              className="w-60 bg-transparent border font-semibold border-white py-2 px-4 xl:py-3 rounded-[45px] transition-transform transform hover:scale-105 focus:outline-none focus:ring focus:border-blue-300"
+              className="w-60 rounded-[45px] border border-white bg-transparent px-4 py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring xl:py-3"
               style={{
                 boxShadow: "2.5px 3.5px 6px 0.5px rgba(234, 56, 152, 1)",
               }}
@@ -47,7 +42,7 @@ const TalkToUs = () => {
         </div>
 
         {/* Right Box (Image) */}
-        <div className="w-full md:block md:w-1/2 hidden overflow-hidden">
+        <div className="hidden w-full overflow-hidden md:block md:w-1/2">
           <div className="absolute inset-0 bg-gradient-to-r from-[#10001C] via-[#10001C] to-transparent" />
           <Image
             src="/assets/images/talk-us.svg"
@@ -56,7 +51,7 @@ const TalkToUs = () => {
             width={400}
             height={400}
             objectFit="cover"
-            className="w-full h-full"
+            className="h-full w-full"
           />
         </div>
       </div>

@@ -7,7 +7,7 @@ import Vision from "./_component/Vision";
 
 export default function AboutPage() {
   return (
-    <div>
+    <div className="h-full w-full">
       {/* Making  */}
       <Making />
 
@@ -25,7 +25,7 @@ export default function AboutPage() {
 
       {/* Our Vission  */}
       <div
-        className="w-full h-full bg-no-repeat"
+        className="h-full w-full bg-no-repeat"
         style={{
           backgroundImage: 'url("assets/vector/mentor-bg-svg.svg")',
         }}

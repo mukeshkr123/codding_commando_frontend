@@ -3,16 +3,13 @@ import Link from "next/link";
 
 const ExploreProgram = () => {
   return (
-    <section className="flex flex-col items-center  xl:px-20 xl:py-20 bg-[#FBF5FC] w-full ">
-      {/* <h1 className="xl:py-6 text-4xl md:text-5xl lg:text-7xl font-bold text-black text-center">
-        Explore Our Programs
-      </h1> */}
+    <section className="flex w-full flex-col  items-center bg-light-white xl:p-20">
       <Image
         src="/assets/font-shadow/explore-program-svg.svg"
         alt="Explore Our Programs"
         height={200}
         width={200}
-        className="w-[75%] hidden sm:flex"
+        className="hidden w-[75%] sm:flex"
       />
       <Image
         src="/assets/font-shadow/explore-prgram-sm.svg"
@@ -27,7 +24,7 @@ const ExploreProgram = () => {
           alt="Course 1"
           width={1200}
           height={600}
-          className="py-10 xl:py-12  px-8 xl:px-0"
+          className="px-8 py-10  xl:px-0 xl:py-12"
         />
       </Link>
     </section>

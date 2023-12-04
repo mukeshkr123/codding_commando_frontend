@@ -1,7 +1,6 @@
 import React from "react";
 import FooterLinks from "./FooterLinks";
 import Image from "next/image";
-import Link from "next/link";
 import {
   FaFacebook,
   FaInstagram,
@@ -68,9 +67,9 @@ const Courses = [
 
 const Footer = () => {
   return (
-    <div className="w-full  bg-[#10001C] xl:pr-16 text-white lg:py-12 pb-8 ">
+    <div className="w-full  bg-[#10001C] pb-8 text-white lg:py-12 xl:pr-16 ">
       <div className="lg:flex lg:justify-between">
-        <div className="py-4 px-8 md:py-0">
+        <div className="px-8 py-4 md:py-0">
           <Image
             src="/assets/icons/logo.svg"
             alt="Logo"
@@ -79,11 +78,11 @@ const Footer = () => {
             className="py-6 lg:py-2"
           />
         </div>
-        <div className="flex w-full m-auto px-8 space-x-20 md:px-12 ">
+        <div className="m-auto flex w-full space-x-20 px-8 md:px-12 ">
           {/* Useful Links and Follow Us */}
-          <div className="flex flex-col lg:flex-row lg:justify-between w-[40%]">
+          <div className="flex w-[40%] flex-col lg:flex-row lg:justify-between">
             <div className="mb-4">
-              <h1 className="text-xl font-semibold text-[#EBEBEB] pb-2">
+              <h1 className="pb-2 text-xl font-semibold text-[#EBEBEB]">
                 Useful Links
               </h1>
               {UseFullLinks &&
@@ -96,7 +95,7 @@ const Footer = () => {
                 ))}
             </div>
             <div>
-              <h1 className="text-xl font-semibold text-[#EBEBEB] pb-2">
+              <h1 className="pb-2 text-xl font-semibold text-[#EBEBEB]">
                 Follow Us
               </h1>
               <div className="flex">
@@ -111,9 +110,9 @@ const Footer = () => {
           </div>
 
           {/* Courses and Contact Us */}
-          <div className="flex flex-col lg:flex-row lg:justify-between w-[60%]">
+          <div className="flex w-[60%] flex-col lg:flex-row lg:justify-between">
             <div className="mb-4">
-              <h1 className="text-xl font-semibold text-[#EBEBEB] pb-2">
+              <h1 className="pb-2 text-xl font-semibold text-[#EBEBEB]">
                 Courses
               </h1>
               {Courses &&
@@ -126,10 +125,10 @@ const Footer = () => {
                 ))}
             </div>
             <div className="pt-6 lg:pt-0">
-              <h1 className="text-xl font-semibold text-[#EBEBEB] pb-2">
+              <h1 className="pb-2 text-xl font-semibold text-[#EBEBEB]">
                 Contact Us
               </h1>
-              <p className="text-gray-600 font-syne text-base font-normal leading-5 pl-2 p-1">
+              <p className="font-syne p-1 pl-2 text-base font-normal leading-5 text-gray-600">
                 Lorem ipsum <br />
                 Lore@gmail.com <br />
                 +919945544554

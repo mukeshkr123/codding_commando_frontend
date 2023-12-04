@@ -5,7 +5,7 @@ const trainingData = [
   {
     title: "Teaching/Training",
     description:
-      "We have the best mentors from industry, certified trainers who will teach you and train you during this course. This course will garnish your knowledge as well as skills and will prepare you for real time projects.  ",
+      "We have the best mentors from industry, certified trainers who will teach you and train you during this course. This course will garnish your knowledge as well as skills and will prepare you for real time projects",
   },
   {
     title: "Real Time Projects",
@@ -15,7 +15,7 @@ const trainingData = [
   {
     title: "Resume Building ",
     description:
-      "At coding commando, we prepare you for the industry interview and guide you regarding resume building in the best way so that it can connect with the senses of the organization and the interviewer. We focus on overall development and hence we make you job ready too.  ",
+      "At coding commando, we prepare you for the industry interview and guide you regarding resume building in the best way so that it can connect with the senses of the organization and the interviewer. We focus on overall development and hence we make you job ready too.",
   },
   {
     title: "Mock Interview",
@@ -26,37 +26,31 @@ const trainingData = [
 const OurTraining = () => {
   return (
     <div className="w-full px-2 py-4 pb-20">
-      <div className="flex flex-col space-y-4 justify-center items-center">
-        {/* <h1 className="text-4xl font-semibold p-4 lg:text-7xl">
-          Our Training Process
-        </h1> */}
-
+      <div className="flex flex-col items-center justify-center space-y-4">
         <Image
           src="/assets/font-shadow/training-svg.svg"
           alt="Our Training Process"
           width={200}
           height={200}
-          className="sm:w-[70%] w-[85%] xl:py-8"
+          className="w-[85%] sm:w-[70%] xl:py-8"
         />
 
-        <div className="flex flex-col-reverse space-y-8 lg:flex-row lg:space-y-0 lg:space-x-8 lg:px-4 lg:pt-10">
-          {/* Box 1 */}
-          <div className="flex flex-col space-y-6 sm:w-full lg:w-[70%] lg:pr-10 lg:space-y-10">
+        <div className="flex flex-col-reverse space-y-8 lg:flex-row lg:space-x-8 lg:space-y-0 lg:px-4 lg:pt-10">
+          <div className="flex flex-col space-y-6 sm:w-full lg:w-[70%] lg:space-y-10 lg:pr-10">
             {trainingData &&
               trainingData.map((training) => (
-                <div key={training.id} className="flex flex-col space-y-4">
-                  <h1 className="text-pink-500 font-syne font-semibold text-2xl leading-7 py-2 lg:text-4xl">
+                <div key={training.title} className="flex flex-col space-y-4">
+                  <h1 className=" py-2 text-2xl font-semibold leading-7 text-pink-500 lg:text-4xl">
                     {training.title}
                   </h1>
-                  <p className="text-base lg:text-lg font-normal">
+                  <p className="text-base font-normal lg:text-lg">
                     {training.description}
                   </p>
                 </div>
               ))}
           </div>
 
-          {/* Box 2 (Image) */}
-          <div className=" hidden lg:block w-full sm:w-[30%] lg:w-[30%] px-12">
+          <div className="hidden w-full px-12 sm:w-[30%] lg:flex lg:w-[30%]">
             <Image
               src="/assets/images/success-svg.svg"
               alt="Success"

@@ -1,4 +1,4 @@
-import { Inter, Syne } from "next/font/google";
+import { Syne } from "next/font/google";
 import "./globals.css";
 
 const syne = Syne({

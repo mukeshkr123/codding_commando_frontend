@@ -54,13 +54,9 @@ const TeamData = [
 
 const Team = () => {
   return (
-    <div className="w-full py-8 px-4 sm:px-0 bg-[#FBF5FC] ">
-      <div className="w-full flex flex-col justify-center items-center">
-        <div className="w-full  flex justify-center item-center py-8 md:py-8 lg:py-10 xl:py-12 ">
-          {/* <h1 className=" text-6xl sm:text-7xl xl:text-8xl capitalize font-semibold md:text6xl">
-            Our Team
-          </h1> */}
-
+    <div className="w-full bg-[#FBF5FC] px-4 py-8 sm:px-0 ">
+      <div className="flex w-full flex-col items-center justify-center">
+        <div className="flex  w-full items-center justify-center py-8 md:py-8 lg:py-10 xl:py-12 ">
           <Image
             src="/assets/font-shadow/team.svg"
             alt="Our Team"
@@ -70,12 +66,12 @@ const Team = () => {
           />
         </div>
 
-        <div className="grid py-6 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-16 md:gap-8 xl:gap-24  ">
+        <div className="grid grid-cols-2 gap-4 py-6 sm:gap-16 md:grid-cols-3 md:gap-8 xl:grid-cols-4 xl:gap-24  ">
           {TeamData &&
             TeamData.map((team) => (
               <div
                 key={team._id}
-                className="flex flex-col items-center space-y-6 py-4 md:py-0 justify-center w-full"
+                className="flex w-full flex-col items-center justify-center space-y-6 py-4 md:py-0"
               >
                 <Image
                   src={team.imageUrl}
