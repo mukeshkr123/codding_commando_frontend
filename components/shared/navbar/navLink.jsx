@@ -5,7 +5,7 @@ import React from "react";
 export const NavLink = ({ href, title }) => {
   return (
     <Link href={href} passHref>
-      <div className="relative text-base lg:text-lg group flex items-center">
+      <div className="group relative flex items-center text-base lg:text-lg">
         <span className="mx-4 transition-all duration-300 ease-in-out group-hover:mx-6 group-hover:px-1">
           {title}
         </span>
@@ -15,14 +15,14 @@ export const NavLink = ({ href, title }) => {
             alt="Left Hover SVG"
             width={40}
             height={40}
-            className="w-9 h-9 absolute left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="absolute left-0 h-9 w-9 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           />
           <Image
             src="/assets/icons/right-hover.svg"
             alt="Right Hover SVG"
             width={40}
             height={40}
-            className="w-9 h-9 absolute right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="absolute right-0 h-9 w-9 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           />
         </span>
       </div>

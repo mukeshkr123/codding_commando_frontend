@@ -128,7 +128,7 @@ const Footer = () => {
               <h1 className="pb-2 text-xl font-semibold text-[#EBEBEB]">
                 Contact Us
               </h1>
-              <p className="font-syne p-1 pl-2 text-base font-normal leading-5 text-gray-600">
+              <p className=" p-1 pl-2 text-base font-normal leading-5 text-gray-600">
                 Lorem ipsum <br />
                 Lore@gmail.com <br />
                 +919945544554

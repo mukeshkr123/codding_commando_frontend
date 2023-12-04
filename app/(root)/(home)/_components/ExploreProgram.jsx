@@ -1,32 +1,27 @@
 import Image from "next/image";
-import Link from "next/link";
+import CourseSlider from "./CourseSlider";
 
 const ExploreProgram = () => {
   return (
-    <section className="flex w-full flex-col  items-center bg-light-white xl:p-20">
-      <Image
-        src="/assets/font-shadow/explore-program-svg.svg"
-        alt="Explore Our Programs"
-        height={200}
-        width={200}
-        className="hidden w-[75%] sm:flex"
-      />
-      <Image
-        src="/assets/font-shadow/explore-prgram-sm.svg"
-        alt="Explore Our Programs"
-        height={200}
-        width={200}
-        className="w-[65%] sm:hidden"
-      />
-      <Link href="/courses">
+    <section className=" w-full bg-light-white xl:p-20">
+      <div className="flex w-full flex-col items-center justify-center  space-y-8 md:space-y-10 xl:space-y-12">
         <Image
-          src="/assets/images/course-1.png"
-          alt="Course 1"
-          width={1200}
-          height={600}
-          className="px-8 py-10  xl:px-0 xl:py-12"
+          src="/assets/font-shadow/explore-program-svg.svg"
+          alt="Explore Our Programs"
+          height={200}
+          width={200}
+          className="hidden w-[75%] sm:flex"
         />
-      </Link>
+        <Image
+          src="/assets/font-shadow/explore-prgram-sm.svg"
+          alt="Explore Our Programs"
+          height={200}
+          width={200}
+          className="w-[65%] sm:hidden"
+        />
+
+        <CourseSlider />
+      </div>
     </section>
   );
 };

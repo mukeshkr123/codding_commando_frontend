@@ -26,8 +26,8 @@ const navLinks = [
 
 export default function Navbar() {
   return (
-    <nav className="w-full bg-[#10001C] min-h-[10vh]  text-white px-10 py-8 md:px-16 lg:px-18 xl:px-20">
-      <div className="flex justify-between px-2 items-center">
+    <nav className="lg::px-16 min-h-[10vh] w-full  bg-dark-purple px-10 py-8 text-white md:px-16 xl:px-20">
+      <div className="flex items-center justify-between px-2">
         {/* logo  */}
         <div>
           <Image
@@ -54,7 +54,7 @@ export default function Navbar() {
         {/* Login */}
         <Link href="/login">
           <Button
-            className="hidden md:flex px-4 bg-[#F5478E]  hover:bg-[#d43977]  border border-black transition duration-300"
+            className="hidden border border-black bg-[#F5478E]  px-4  transition duration-300 hover:bg-[#d43977] md:flex"
             style={{ boxShadow: "3px 2px 0 0 white" }}
           >
             <span className="text-lg font-semibold">Login</span>
