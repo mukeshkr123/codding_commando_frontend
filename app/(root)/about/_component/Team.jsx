@@ -57,9 +57,17 @@ const Team = () => {
     <div className="w-full py-8 px-4 sm:px-0 bg-[#FBF5FC] ">
       <div className="w-full flex flex-col justify-center items-center">
         <div className="w-full  flex justify-center item-center py-8 md:py-8 lg:py-10 xl:py-12 ">
-          <h1 className=" text-6xl sm:text-7xl xl:text-8xl capitalize font-semibold md:text6xl">
+          {/* <h1 className=" text-6xl sm:text-7xl xl:text-8xl capitalize font-semibold md:text6xl">
             Our Team
-          </h1>
+          </h1> */}
+
+          <Image
+            src="/assets/font-shadow/team.svg"
+            alt="Our Team"
+            width={200}
+            height={200}
+            className="w-[70%] sm:w-[60%] lg:w-[50%] xl:w-[40%]"
+          />
         </div>
 
         <div className="grid py-6 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-16 md:gap-8 xl:gap-24  ">

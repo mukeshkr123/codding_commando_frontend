@@ -3,6 +3,7 @@ import Making from "./_component/Making";
 import Team from "./_component/Team";
 import Mission from "./_component/Mission";
 import MeetMentor from "../(home)/_components/MeetMentor";
+import Vision from "./_component/Vision";
 
 export default function AboutPage() {
   return (
@@ -29,7 +30,7 @@ export default function AboutPage() {
           backgroundImage: 'url("assets/vector/mentor-bg-svg.svg")',
         }}
       >
-        <Mission
+        <Vision
           title="Our  Vision"
           description="Promoting tech environment and helping out the candidates in cracking interviews. We want to expand the tech culture and establish cultural exchange with industry experts. Provide the best services in flexible mode and train coding enthusiasts to crack interviews like a pro."
           imageUrl="/assets/images/mission-svg.svg"

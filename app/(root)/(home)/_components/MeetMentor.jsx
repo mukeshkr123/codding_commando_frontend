@@ -21,7 +21,7 @@ const MeetMentor = () => {
         className="w-[90%] xl:w-[60%]"
       />
 
-      <div className="flex flex-col items-center justify-center xl:space-x-10 md:space-x-8 text-center text-[#000] md:flex-row md:items-center md:justify-center">
+      <div className="flex flex-col items-center justify-center xl:space-x-10 md:space-x-8 text-center text-[#000] md:flex-row md:items-center md:justify-center xl:mt-10">
         {/* Mentor 1 */}
         <MentorCard
           src="/assets/images/mentors/mentor-1.svg"

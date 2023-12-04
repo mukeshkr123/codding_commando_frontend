@@ -36,7 +36,7 @@ const OurTraining = () => {
           alt="Our Training Process"
           width={200}
           height={200}
-          className="w-[70%]"
+          className="sm:w-[70%] w-[85%] xl:py-8"
         />
 
         <div className="flex flex-col-reverse space-y-8 lg:flex-row lg:space-y-0 lg:space-x-8 lg:px-4 lg:pt-10">

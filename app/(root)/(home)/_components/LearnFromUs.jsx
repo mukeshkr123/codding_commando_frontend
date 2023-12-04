@@ -1,5 +1,4 @@
 import Image from "next/image";
-const vectorUrl = "assets\vectorlearn-bg-svg.svg";
 
 const LearnFromUs = () => {
   return (
@@ -14,9 +13,17 @@ const LearnFromUs = () => {
         {/* Content */}
         <div className="md:w-1/2 md:pr-8">
           <div className="flex flex-col space-y-6 lg:space-y-12 text-center md:text-left">
-            <h1 className="text-left text-6xl font-semibold text-black md:text-8xl">
+            {/* <h1 className="text-left text-6xl font-semibold text-black md:text-8xl">
               Learn <br /> From Us
-            </h1>
+            </h1> */}
+
+            <Image
+              src="/assets/font-shadow/learn-from-svg.svg"
+              alt="Learn From Us"
+              height={200}
+              width={200}
+              className="w-[60%]"
+            />
 
             <p className="text-left text-base font-normal leading-6 text-gray-700 md:text-lg md:leading-7 lg:text-xl lg:leading-8  ">
               We want to democratize coding education by reaching every corner
@@ -29,12 +36,12 @@ const LearnFromUs = () => {
         </div>
 
         {/* Image */}
-        <div className="mt-8 md:w-1/2 flex justify-center">
+        <div className="mt-2 md:w-1/2 flex justify-center">
           <Image
             src="/assets/images/learn-svg.svg"
             alt="program "
-            height={400}
-            width={400}
+            height={300}
+            width={350}
             className="h-[50%]"
           />
         </div>
