@@ -19,6 +19,7 @@ module.exports = {
       backgroundColor: {
         "dark-purple": "#10001C",
         "light-white": "#FBF5FC",
+        bg_pink: "#F5478E",
       },
       colors: {
         border: "hsl(var(--border))",
