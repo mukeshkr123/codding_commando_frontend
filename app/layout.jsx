@@ -1,5 +1,6 @@
 import { Syne } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -14,7 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={syne.className}>{children}</body>
+      <body className={syne.className}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
