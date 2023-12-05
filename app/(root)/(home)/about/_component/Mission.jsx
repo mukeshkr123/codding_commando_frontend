@@ -14,7 +14,7 @@ const Mission = ({ title, description, imageUrl, className }) => {
         />
         <p className="text-lg font-normal text-gray-800">{description}</p>
       </div>
-      <div className="mt-4 justify-end pr-12 md:w-1/2  lg:mt-0 lg:flex">
+      <div className="mt-4  md:w-1/2 lg:mt-0  lg:flex lg:justify-end">
         <Image src={imageUrl} alt={title} width={400} height={300} />
       </div>
     </div>

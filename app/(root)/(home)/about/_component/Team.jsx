@@ -73,13 +73,6 @@ const Team = () => {
                   height={170}
                 />
 
-                <Image
-                  src="/assets/images/img-shadow.svg"
-                  alt="image shadow"
-                  height={200}
-                  width={200}
-                />
-
                 <div className="text-center">
                   <h1 className="text-2xl font-bold ">{team.name}</h1>
                   <p className="text-lg">{team.description}</p>
