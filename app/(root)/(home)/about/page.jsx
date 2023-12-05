@@ -2,8 +2,8 @@ import React from "react";
 import Making from "./_component/Making";
 import Team from "./_component/Team";
 import Mission from "./_component/Mission";
-import MeetMentor from "../(home)/_components/MeetMentor";
 import Vision from "./_component/Vision";
+import MeetMentor from "../_components/MeetMentor";
 
 export default function AboutPage() {
   return (
