@@ -42,8 +42,8 @@ const UseFullLinks = [
     href: "/pricing",
   },
   {
-    title: "Learning Portal",
-    href: "/learning-portal",
+    title: "Demo",
+    href: "/demo",
   },
 ];
 

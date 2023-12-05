@@ -15,7 +15,7 @@ const formSchema = z.object({
   message: z.string(),
 });
 
-const ContactPage = () => {
+const DemoPage = () => {
   const {
     register,
     handleSubmit,
@@ -33,11 +33,11 @@ const ContactPage = () => {
 
   return (
     <div
-      className="relative max-h-[88vh] w-full bg-dark-purple bg-center bg-no-repeat px-4 pb-16 pt-8"
+      className="relative max-h-[88vh] w-full bg-dark-purple  bg-center bg-no-repeat px-4 pb-16 pt-8"
       style={{
-        backgroundImage: "url(/assets/images/background/making-png.png)",
+        backgroundImage: "url(/assets/images/background/demo-png.png)",
         backgroundPosition: "bottom",
-        backgroundSize: "100% 35%",
+        backgroundSize: "100% 60%",
       }}
     >
       <div
@@ -48,11 +48,11 @@ const ContactPage = () => {
       />
       <div className="flex h-full w-full flex-col items-center justify-center space-y-2 pb-14 xl:pb-28">
         <Image
-          src="/assets/font-shadow/get-touch.svg"
+          src="/assets/font-shadow/demo-svg.svg"
           alt="Get Us Touch"
           height={100}
           width={200}
-          className="w-[65%] py-6 sm:w-[60%] md:w-[50%]  xl:w-[45%] xl:py-14"
+          className="w-[90%] py-6 sm:w-[60%] md:w-[50%]  xl:w-[45%] xl:py-14"
         />
 
         <div
@@ -68,7 +68,7 @@ const ContactPage = () => {
             onSubmit={handleSubmit(onSubmit)}
             register={register}
             errors={errors}
-            title="Send Us A Message"
+            title="Reserver Your Seat"
           />
         </div>
       </div>
@@ -76,4 +76,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default DemoPage;

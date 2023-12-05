@@ -6,8 +6,6 @@ import { useState } from "react";
 const MentorCard = ({ src, alt, name, description, additionalDetails }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  console.log(additionalDetails);
-
   return (
     <div className="relative max-w-[350px]">
       <div
