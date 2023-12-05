@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const Wahooo = ({ title, description, setSuccess }) => {
+const Wahooo = ({ title, description, setSuccess, additionaldesc }) => {
   return (
     <div className="flex h-full w-full items-center justify-center pb-36 pt-16  text-white transition-all">
       <div
@@ -28,7 +28,10 @@ const Wahooo = ({ title, description, setSuccess }) => {
           onClick={() => setSuccess(false)}
         />
         <div className="flex flex-col gap-4 px-16 py-6">
-          <h2 className="text-3xl lg:text-4xl">{title}</h2>
+          <h2 className="text-3xl font-semibold lg:text-4xl">{title}</h2>
+          {additionaldesc && (
+            <h4 className="text-2xl font-medium">{additionaldesc}</h4>
+          )}
           <p className="text-base">{description}</p>
         </div>
       </div>
