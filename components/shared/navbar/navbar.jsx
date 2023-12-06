@@ -36,6 +36,7 @@ export default function Navbar() {
               alt="Codding Commando"
               height={150}
               width={180}
+              className="w-[70%] "
             />
           </Link>
         </div>

@@ -16,7 +16,7 @@ const MobileNav = ({ navLinks }) => {
   return (
     <Sheet>
       <SheetTrigger>
-        <FiMenu size={30} />
+        <FiMenu size={28} />
       </SheetTrigger>
       <SheetContent className="bg-dark-purple text-white  transition-all duration-300 ease-in-out">
         <SheetHeader>
