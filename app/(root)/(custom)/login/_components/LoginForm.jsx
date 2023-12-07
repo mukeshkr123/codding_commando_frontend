@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,7 +31,7 @@ const LoginForm = () => {
 
   return (
     <div
-      className="w-[400px] rounded-3xl p-12"
+      className="w-[80%] overflow-hidden rounded-3xl p-12 sm:w-[400px] lg:w-[450px]"
       style={{
         border: "1px solid #000",
         background:
@@ -77,7 +79,7 @@ const LoginForm = () => {
               </p>
             </Link>
             <button
-              className="rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
+              className="rounded-3xl bg-bg_pink px-10 py-2  font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
               type="submit"
               style={{ boxShadow: "1.5px 1.5px white" }}
             >
@@ -85,7 +87,7 @@ const LoginForm = () => {
             </button>
 
             <Link href="/signup">
-              <p className="text-base font-normal text-red-500">
+              <p className="text-base font-medium text-red-500">
                 New Here? SignUp
               </p>
             </Link>
