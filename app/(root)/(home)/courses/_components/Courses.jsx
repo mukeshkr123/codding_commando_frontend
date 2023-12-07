@@ -43,12 +43,25 @@ const coursesData = [
     profilePicture: "assets/images/courses/course1-profile.svg",
     alt: "Profile Image",
   },
+  {
+    _id: 5,
+    title: "Complete Salesforce Training",
+    description: "Admin,LWC and Development",
+    duration: "3 Months",
+    profilePicture: "assets/images/courses/course1-profile.svg",
+    alt: "Profile Image",
+  },
 ];
 
 const Courses = () => {
   return (
-    <div className="flex w-full flex-col items-center justify-center py-10 xl:mt-4">
-      <div className="my-12 flex w-full items-center justify-center">
+    <div
+      className="relative flex w-full flex-col items-center justify-center bg-cover bg-no-repeat py-10 xl:mt-4"
+      style={{
+        backgroundImage: 'url("assets/vector/mentor-bg-svg.svg")',
+      }}
+    >
+      <div className="my-12 flex w-full items-center justify-center xl:my-20">
         <Image
           src="/assets/font-shadow/explore-course.svg"
           alt="Explore"
@@ -70,7 +83,7 @@ const Courses = () => {
             />
           ))}
       </div>
-      <div className=" mb-10 mt-16 flex w-full items-center justify-center px-2 text-center">
+      <div className=" mb-10 mt-16 flex w-full items-center justify-center px-2 text-center xl:mt-20">
         <h1 className=" text-2xl font-semibold capitalize  text-black md:text-3xl lg:text-4xl xl:text-5xl">
           coding at just keystock distance from your fingers
         </h1>

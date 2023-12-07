@@ -15,7 +15,12 @@ const CourseCard = ({
   }
 
   return (
-    <div className="relative m-1 max-h-[20rem] max-w-[20rem] overflow-hidden rounded-3xl border-2 border-[#000000] bg-[#10001c] text-white sm:max-h-[36rem] sm:max-w-[26rem]">
+    <div
+      className="relative m-1 max-h-[20rem] max-w-[20rem] overflow-hidden rounded-[25px]  border-2 border-[#000000] bg-[#10001c] bg-cover bg-bottom bg-no-repeat text-white sm:max-h-[36rem] sm:max-w-[26rem]"
+      style={{
+        backgroundImage: 'url("/assets/images/background/course-bg.svg")',
+      }}
+    >
       <div className="flex flex-col gap-2 p-6">
         <h2 className="text-2xl font-bold sm:text-3xl">{title}</h2>
         <p className="text-base sm:text-lg ">{description}</p>
