@@ -12,12 +12,13 @@ const SignUpPage = () => {
             backgroundImage: 'url("/assets/images/background/signup-bg.png")',
           }}
         />
-        <div className="absolute flex h-full w-full flex-col items-center justify-center gap-4 lg:gap-6">
+        <div className="absolute  flex h-full w-full flex-col items-center justify-center gap-4 lg:gap-6">
           <Image
             src="/assets/font-shadow/signup-svg.svg"
             alt="Login"
             height={100}
             width={180}
+            className=""
           />
           <SignUpForm />
         </div>

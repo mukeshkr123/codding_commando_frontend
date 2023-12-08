@@ -7,6 +7,7 @@ import * as z from "zod";
 import { MdLockOutline } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import LoginInput from "./LoginInput/LoginInput";
+import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Enter a Valid Email!" }),
@@ -14,6 +15,7 @@ const loginSchema = z.object({
 });
 
 const LoginForm = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -25,8 +27,8 @@ const LoginForm = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    // Add your API call here
     reset();
+    router.push("/profile");
   };
 
   return (

@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SignUpInput from "./SignInput";
+import { useRouter } from "next/navigation";
 
 const signUpSchema = yup.object({
   FirstName: yup.string().min(2, "First Name is required!"),
@@ -31,6 +32,7 @@ const fieldNames = [
 ];
 
 const SignUpForm = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -49,11 +51,12 @@ const SignUpForm = () => {
     console.log(data);
     // Add your API call here
     reset();
+    router.push("/login");
   };
 
   return (
     <div
-      className="w-[80%] overflow-hidden rounded-3xl p-8 sm:w-[400px] lg:w-[450px] lg:p-12"
+      className="mb-10 w-[80%] overflow-hidden rounded-3xl p-8 sm:w-[400px] lg:w-[450px] lg:p-12"
       style={{
         border: "1px solid #000",
         background:
@@ -88,15 +91,15 @@ const SignUpForm = () => {
           ))}
           <div className="flex flex-col items-center justify-center gap-4">
             <button
-              className="rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
+              className="mt-2 rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
               type="submit"
               style={{ boxShadow: "1.5px 1.5px white" }}
             >
               SignUp
             </button>
-            <Link href="/signup">
+            <Link href="/login">
               <p className="text-base font-medium text-red-500">
-                New Here? SignUp
+                Already have an account? Log In
               </p>
             </Link>
           </div>

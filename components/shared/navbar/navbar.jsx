@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { NavLink } from "./navLink";
 import Image from "next/image";
