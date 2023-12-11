@@ -14,7 +14,6 @@ const CourseCard = ({
     return null;
   }
   console.log(profilePicture);
-
   return (
     <div
       className="relative m-1 max-h-[20rem] max-w-[20rem] overflow-hidden rounded-[25px]  border-2 border-[#000000] bg-[#10001c] bg-cover bg-bottom bg-no-repeat text-white sm:max-h-[36rem] sm:max-w-[26rem]"
@@ -38,7 +37,7 @@ const CourseCard = ({
           <p className=" text-base font-bold text-[#F5478E] sm:text-lg">
             {duration}
           </p>
-          <Link href={`/course/${courseId}`}>
+          <Link href={`/courses/${courseId}`}>
             <button
               className="rounded-[45px] bg-[#F5478E] px-6 text-lg font-bold text-black sm:px-9 sm:py-1.5"
               style={{ boxShadow: "1.5px 1.5px white" }}
