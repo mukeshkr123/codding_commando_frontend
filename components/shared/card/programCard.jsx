@@ -7,7 +7,14 @@ const ProgramCard = ({ title, topics }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className=" w-full max-w-6xl rounded-[36px] border border-[#9662D9]">
+    <div
+      className=" w-full max-w-6xl rounded-[36px] border border-[#9662D9]"
+      style={{
+        background:
+          "linear-gradient(267deg, rgba(255, 255, 255, 0.75) -2.1%, rgba(255, 255, 255, 0.00) 121.83%)",
+        backdropFilter: "blur(16.549999237060547px)",
+      }}
+    >
       <div className="flex w-full justify-between px-4 py-3">
         <div className="flex gap-3">
           <Image
@@ -16,7 +23,7 @@ const ProgramCard = ({ title, topics }) => {
             height={25}
             width={25}
           />
-          <h2 className="text-xl font-semibold">{title}</h2>
+          <h2 className="text-lg font-semibold md:text-xl">{title}</h2>
         </div>
 
         <Image
