@@ -1,6 +1,6 @@
 import React from "react";
 import UnLocking from "./_components/UnLocking";
-import Courses from "@/components/shared/Courses";
+import Courses from "../../../../components/shared/card/courseCard";
 
 export default function CoursePage() {
   return (

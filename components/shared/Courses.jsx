@@ -1,4 +1,4 @@
-import CourseCard from "@/components/shared/card/courseCard";
+import CourseCard from "../shared/card/courseCard";
 import Image from "next/image";
 import React from "react";
 

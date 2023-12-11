@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import Form from "@/components/shared/form/Form";
-import Wahooo from "@/components/Wahooo";
+import Form from "../../../../components/shared/form/Form";
+import Wahooo from "../../../../components/Wahooo";
 
 const formSchema = z.object({
   firstname: z.string().min(2, { message: "First Name is required" }),

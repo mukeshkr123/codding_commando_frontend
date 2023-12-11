@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import CuriculumCard from "../_components/CuriculumCard";
 
 const courseData = {
   _id: 1,
@@ -9,6 +9,48 @@ const courseData = {
   trainingMode: "Live Classes & Recorded Sessions",
   description:
     "After completing the Complete Salesforce Training Admin, LWC and Development, you will be able to optimize Salesforce configurations, troubleshoot difficulties, design custom solutions, and administer Salesforce with skill. With these abilities, you'll be able to work with teams with assurance and get ready to get certified in Salesforce, making you a priceless asset to any company.",
+
+  curriculum: [
+    {
+      _id: 1,
+      imageUrl: "/assets/icons/strat-1.svg",
+      title: " Mentor-Guided Instruction",
+      description: " Learn under the guidance of seasoned mentors",
+    },
+    {
+      _id: 2,
+      imageUrl: "/assets/icons/strat-2.svg",
+      title: "Real-World Application",
+      description:
+        "Gain practical experience through industry-specific projects",
+    },
+    {
+      _id: 3,
+      imageUrl: "/assets/icons/strat-3.svg",
+      title: "Interactive Challenges",
+      description: "Engage in group activities for innovative problem-solving",
+    },
+    {
+      _id: 4,
+      imageUrl: "/assets/icons/strat-4.svg",
+      title: "Tailored Learning Path",
+      description:
+        "Customize your education with hands-on tasks, quizzes, and practical projects",
+    },
+    {
+      _id: 5,
+      imageUrl: "/assets/icons/strat-5.svg",
+      title: " Collaborative Learning Community",
+      description: "Expand your professional network while learning from peers",
+    },
+    {
+      _id: 6,
+      imageUrl: "/assets/icons/strat-6.svg",
+      title: "Job-Ready Curriculum",
+      description:
+        "Acquire skills that align with industry demands for immediate employability",
+    },
+  ],
 };
 
 const CoursePage = () => {
@@ -49,24 +91,25 @@ const CoursePage = () => {
           </Link>
         </div>
       </div>
-      <div className="flex w-full flex-col items-center justify-center gap-4 bg-light-white px-4 py-12 text-center">
-        <h1 className="text-3xl font-bold  capitalize sm:text-4xl">
+      <div className="flex w-full flex-col items-center justify-center gap-4 bg-light-white px-4 py-12 text-center md:gap-6 md:py-16  lg:gap-12">
+        <h1 className="text-3xl  font-bold capitalize sm:text-4xl  md:text-5xl lg:text-6xl ">
           Curriculum Strategy
         </h1>
-        <div className="mt-8">
-          <div className="flex w-full gap-4">
-            <Image
-              src="/assets/icons/strat-1.svg"
-              alt="icon"
-              height={60}
-              width={60}
+        <div className="grid gap-2 md:grid-cols-2 md:gap-6 lg:gap-8 xl:gap-8">
+          {courseData.curriculum.map((curriculum) => (
+            <CuriculumCard
+              imageUrl={curriculum.imageUrl}
+              title={curriculum.title}
+              description={curriculum.description}
+              key={curriculum._id}
             />
-            <div className="flex max-w-[22rem] flex-col  text-start">
-              <h2 className="text-lg font-bold">Mentor-Guided Instruction</h2>
-              <p>Learn under the guidance of seasoned mentors</p>
-            </div>
-          </div>
+          ))}
         </div>
+      </div>
+      <div className="flex w-full items-center justify-center">
+        <h1 className="text-3xl  font-bold capitalize sm:text-4xl  md:text-5xl lg:text-6xl ">
+          Program Curriculum
+        </h1>
       </div>
     </div>
   );

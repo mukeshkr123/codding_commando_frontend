@@ -4,7 +4,7 @@ import React from "react";
 import { NavLink } from "./navLink";
 import Image from "next/image";
 import MobileNav from "./MobileNav";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../ui/button";
 import Link from "next/link";
 
 const navLinks = [

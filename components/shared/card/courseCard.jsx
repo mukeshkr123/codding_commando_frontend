@@ -9,11 +9,6 @@ const CourseCard = ({
   courseId,
   profilePicture,
 }) => {
-  if (!title || !description || !duration || !courseId || !profilePicture) {
-    console.error("Missing required props for CourseCard");
-    return null;
-  }
-  console.log(profilePicture);
   return (
     <div
       className="relative m-1 max-h-[20rem] max-w-[20rem] overflow-hidden rounded-[25px]  border-2 border-[#000000] bg-[#10001c] bg-cover bg-bottom bg-no-repeat text-white sm:max-h-[36rem] sm:max-w-[26rem]"

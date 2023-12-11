@@ -1,7 +1,7 @@
 import { FiMenu } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../ui/button";
 import {
   Sheet,
   SheetTrigger,
@@ -10,7 +10,7 @@ import {
   SheetTitle,
   SheetClose,
   SheetDescription,
-} from "@/components/ui/sheet";
+} from "../../ui/sheet";
 
 const MobileNav = ({ navLinks }) => {
   return (
