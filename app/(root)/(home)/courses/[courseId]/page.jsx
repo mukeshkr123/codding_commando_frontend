@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import CuriculumCard from "../_components/CuriculumCard";
+import ProgramCard from "../../../../../components/shared/card/programCard";
 
 const courseData = {
   _id: 1,
@@ -10,7 +11,7 @@ const courseData = {
   description:
     "After completing the Complete Salesforce Training Admin, LWC and Development, you will be able to optimize Salesforce configurations, troubleshoot difficulties, design custom solutions, and administer Salesforce with skill. With these abilities, you'll be able to work with teams with assurance and get ready to get certified in Salesforce, making you a priceless asset to any company.",
 
-  curriculum: [
+  strategy: [
     {
       _id: 1,
       imageUrl: "/assets/icons/strat-1.svg",
@@ -49,6 +50,134 @@ const courseData = {
       title: "Job-Ready Curriculum",
       description:
         "Acquire skills that align with industry demands for immediate employability",
+    },
+  ],
+  curriculum: [
+    {
+      _id: 1,
+      title: "Data Modelling",
+      topics: [
+        {
+          title: "SalesForce CRM",
+        },
+        {
+          title: "CRM",
+        },
+        {
+          title: "SalesForce Architecture",
+        },
+        {
+          title: "Benefits of Salesforce",
+        },
+      ],
+    },
+    {
+      _id: 2,
+      title: "UI Customization",
+      topics: [
+        {
+          title: "SalesForce CRM",
+        },
+        {
+          title: "CRM",
+        },
+        {
+          title: "SalesForce Architecture",
+        },
+        {
+          title: "Benefits of Salesforce",
+        },
+      ],
+    },
+    {
+      _id: 3,
+      title: "Data Management",
+      topics: [
+        {
+          title: "SalesForce CRM",
+        },
+        {
+          title: "CRM",
+        },
+        {
+          title: "SalesForce Architecture",
+        },
+        {
+          title: "Benefits of Salesforce",
+        },
+      ],
+    },
+    {
+      _id: 4,
+      title: "Data Management",
+      topics: [
+        {
+          title: "SalesForce CRM",
+        },
+        {
+          title: "CRM",
+        },
+        {
+          title: "SalesForce Architecture",
+        },
+        {
+          title: "Benefits of Salesforce",
+        },
+      ],
+    },
+    {
+      _id: 5,
+      title: "Data Management",
+      topics: [
+        {
+          title: "SalesForce CRM",
+        },
+        {
+          title: "CRM",
+        },
+        {
+          title: "SalesForce Architecture",
+        },
+        {
+          title: "Benefits of Salesforce",
+        },
+      ],
+    },
+    {
+      _id: 6,
+      title: "Data Modelling",
+      topics: [
+        {
+          title: "SalesForce CRM",
+        },
+        {
+          title: "CRM",
+        },
+        {
+          title: "SalesForce Architecture",
+        },
+        {
+          title: "Benefits of Salesforce",
+        },
+      ],
+    },
+    {
+      _id: 7,
+      title: "Data Modelling",
+      topics: [
+        {
+          title: "SalesForce CRM",
+        },
+        {
+          title: "CRM",
+        },
+        {
+          title: "SalesForce Architecture",
+        },
+        {
+          title: "Benefits of Salesforce",
+        },
+      ],
     },
   ],
 };
@@ -96,7 +225,7 @@ const CoursePage = () => {
           Curriculum Strategy
         </h1>
         <div className="grid gap-2 md:grid-cols-2 md:gap-6 lg:gap-8 xl:gap-8">
-          {courseData.curriculum.map((curriculum) => (
+          {courseData.strategy.map((curriculum) => (
             <CuriculumCard
               imageUrl={curriculum.imageUrl}
               title={curriculum.title}
@@ -106,10 +235,19 @@ const CoursePage = () => {
           ))}
         </div>
       </div>
-      <div className="flex w-full items-center justify-center">
-        <h1 className="text-3xl  font-bold capitalize sm:text-4xl  md:text-5xl lg:text-6xl ">
+      <div className="flex w-full flex-col items-center justify-center gap-4 bg-light-white px-4">
+        <h1 className="mt-8  text-3xl font-bold capitalize  sm:text-4xl md:text-5xl lg:text-6xl ">
           Program Curriculum
         </h1>
+        <div className="my-8 flex w-full flex-col items-center justify-center gap-4 px-2 lg:mt-10 lg:gap-6">
+          {courseData.curriculum.map((curriculumData) => (
+            <ProgramCard
+              key={curriculumData._id}
+              title={curriculumData.title}
+              topics={curriculumData.topics}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

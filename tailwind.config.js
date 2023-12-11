@@ -64,6 +64,13 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      borderGradient: {
+        // Define the properties for your border gradient
+        // Example:
+        "gradient-to-b":
+          "linear-gradient(266.75deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%)",
+        // Add other variations as needed
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
