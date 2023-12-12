@@ -22,7 +22,7 @@ const mentorData = [
     description:
       "Co-Founder: Coding Commando, Salesforce Gaya group leader, Techsavy, Tech enthusiast, Salesforce trainer",
     additionalDetails: [
-      { id: 1, title: "Co-Founder at Coding Commando" },
+      { id: 1, title: "Training Module Head" },
       { id: 2, title: "Salesforce trainer" },
       { id: 3, title: "Salesforce Gaya Group Leader" },
       { id: 4, title: "Having industry experience of 5 years" },

@@ -194,7 +194,7 @@ const courseData = {
 const CoursePage = () => {
   return (
     <div className="flex  w-full flex-col  overflow-hidden ">
-      <div className="flex w-full flex-col items-center justify-center bg-dark-purple px-4  py-12 text-center text-white">
+      <div className="relative flex w-full flex-col items-center justify-center bg-dark-purple px-4  py-12 text-center text-white">
         <div className="absolute bottom-[-100px] right-20 hidden md:flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"

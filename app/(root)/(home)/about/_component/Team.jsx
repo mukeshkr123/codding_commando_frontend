@@ -11,7 +11,7 @@ const TeamData = [
   {
     _id: 2,
     name: "Rohit Mishra",
-    description: "Co-Founder, Mentor",
+    description: "Training Module Head, Mentor",
     imageUrl: "/assets/images/teams/profile-2.svg",
   },
   {

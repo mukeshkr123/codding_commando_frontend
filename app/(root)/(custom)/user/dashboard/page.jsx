@@ -1,6 +1,6 @@
-// import Courses from "./_components/Courses";
 import Image from "next/image";
 import React from "react";
+import Courses from "../dashboard/_components/Courses";
 
 const MyLearningPage = () => {
   return (
@@ -25,7 +25,7 @@ const MyLearningPage = () => {
           </h1>
         </div>
       </section>
-      {/* <Courses /> */}
+      <Courses />
     </div>
   );
 };
