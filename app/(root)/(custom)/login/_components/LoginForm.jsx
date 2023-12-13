@@ -8,6 +8,8 @@ import { MdLockOutline } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import LoginInput from "./LoginInput/LoginInput";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUserAction } from "../../../../../GlobalRedux/slices/userSlice";
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Enter a Valid Email!" }),
@@ -15,6 +17,7 @@ const loginSchema = z.object({
 });
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const {
     register,
@@ -26,11 +29,28 @@ const LoginForm = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    dispatch(loginUserAction(data));
     reset();
-    router.push("/profile");
   };
 
+  const redirectToDashboard = (role) => {
+    switch (role) {
+      case "student":
+        router.push("/user/dashboard");
+        break;
+      case "admin":
+        router.push("/admin/dashboard");
+        break;
+      default:
+        break;
+    }
+  };
+
+  // loggedUserData from store
+  const { userAuth } = useSelector((state) => state?.user);
+  if (userAuth?.role) {
+    redirectToDashboard(userAuth.role);
+  }
   return (
     <div
       className="w-[80%] overflow-hidden rounded-3xl p-12 sm:w-[400px] lg:w-[450px]"

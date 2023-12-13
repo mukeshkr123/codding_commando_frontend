@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 
 const EnrolledCourseCard = ({ course }) => {
-  console.log(course.bannerImage);
   return (
     <div className="m-1 max-w-sm  overflow-hidden rounded-[25px] border-2 border-black  bg-dark-purple text-white">
       <div className="  mt-2 flex w-full flex-col justify-center p-4 ">

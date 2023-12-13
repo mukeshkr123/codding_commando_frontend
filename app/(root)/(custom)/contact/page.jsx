@@ -28,8 +28,6 @@ const ContactPage = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
-    // Add your API call here
     reset();
     setSuccess(true);
   };
