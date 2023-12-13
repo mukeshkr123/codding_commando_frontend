@@ -1,6 +1,7 @@
 import { Syne } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "sonner";
+import Providers from "../GlobalRedux/provider";
+import ToastProvider from "../components/providers/toast-providers";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -16,8 +17,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={syne.className}>
-        {children}
-        <Toaster />
+        <Providers>
+          <ToastProvider />
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );

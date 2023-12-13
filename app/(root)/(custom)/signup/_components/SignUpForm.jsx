@@ -6,7 +6,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SignUpInput from "./SignInput";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { registerAction } from "../../../../../GlobalRedux/slices/userSlice";
 
 const signUpSchema = yup.object({
   FirstName: yup.string().min(2, "First Name is required!"),
@@ -32,7 +34,8 @@ const fieldNames = [
 ];
 
 const SignUpForm = () => {
-  const router = useRouter();
+  const dispatch = useDispatch();
+  // const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -47,11 +50,18 @@ const SignUpForm = () => {
     setValue("Phone", "+91");
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // Add your API call here
-    reset();
-    router.push("/login");
+  const onSubmit = ({ FirstName, LastName, Email, Phone, Password }) => {
+    const data = {
+      firstName: FirstName,
+      lastName: LastName,
+      email: Email,
+      phone: Phone,
+      password: Password,
+    };
+    dispatch(registerAction(data));
+    setTimeout(() => {
+      reset();
+    }, 4000);
   };
 
   return (
