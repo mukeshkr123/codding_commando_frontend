@@ -102,7 +102,7 @@ const usersSlice = createSlice({
         state.serverErr = undefined;
       })
       .addCase(loginUserAction.rejected, (state, action) => {
-        state.appErr = action?.payload?.message;
+        state.appErr = action?.payload?.message || "Login failed";
         state.serverErr = action?.error?.message;
         state.loading = false;
       });
@@ -121,7 +121,7 @@ const usersSlice = createSlice({
         state.serverErr = undefined;
       })
       .addCase(activateAccountAction.rejected, (state, action) => {
-        state.appErr = action?.payload?.message;
+        state.appErr = action?.payload?.message || "Verification failed";
         state.serverErr = action?.error?.message;
         state.loading = false;
       });

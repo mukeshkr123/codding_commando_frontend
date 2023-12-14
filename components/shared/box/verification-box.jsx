@@ -2,21 +2,22 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "../../ui/button";
-import { useDispatch } from "react-redux";
-import { activateAccountAction } from "../../../GlobalRedux/slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  activateAccountAction,
+  registerAction,
+} from "../../../GlobalRedux/slices/userSlice";
+import toast from "react-hot-toast";
 
-const VerificationBox = ({ email, activationToken }) => {
+const VerificationBox = ({ email }) => {
   const dispatch = useDispatch();
   const [verificationCode, setVerificationCode] = useState(["", "", "", ""]);
   const [isError, setError] = useState(false);
   const [isResendClicked, setResendClicked] = useState(false);
   const [timer, setTimer] = useState(60);
   const inputRefs = [useRef(), useRef(), useRef(), useRef()];
-  const timerRef = useRef(null);
 
-  useEffect(() => {
-    console.log(activationToken);
-  }, [activationToken]);
+  const { registered } = useSelector((state) => state?.user);
 
   const handleChange = (index, value) => {
     setError(false);
@@ -30,42 +31,49 @@ const VerificationBox = ({ email, activationToken }) => {
       }
     }
   };
+
   const handleVerify = () => {
     const code = verificationCode.join("");
     if (code.length !== 4 || !/^\d+$/.test(code)) {
-      // If the code is not exactly 4 digits or contains non-digit characters
       setError(true);
-      console.log("Invalid OTP");
       return;
     }
-
-    // Add your actual verification logic here
-    console.log("Verification code:", code);
-
     const data = {
       activationCode: code,
-      activationToken,
+      activationToken: registered?.token,
     };
 
     dispatch(activateAccountAction(data));
-
-    // Reset error state
     setError(false);
   };
 
   const handleResend = () => {
-    // Add logic to make an API call to resend the code
-    // Simulating API call
     setResendClicked(true);
-    setTimer(60);
-    timerRef.current = setInterval(() => {
-      setTimer((prevTimer) => prevTimer - 1);
-      if (timer === 0) {
-        clearInterval(timerRef.current);
-        setResendClicked(false);
-      }
-    }, 1000);
+    dispatch(registerAction(registered?.user));
+    toast.success("OTP Resend");
   };
+
+  useEffect(() => {
+    let interval;
+
+    if (isResendClicked) {
+      setTimer(60);
+
+      interval = setInterval(() => {
+        setTimer((prevTimer) => {
+          if (prevTimer === 0) {
+            clearInterval(interval);
+            setResendClicked(false);
+          }
+          return prevTimer > 0 ? prevTimer - 1 : prevTimer;
+        });
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isResendClicked]);
 
   return (
     <div className="absolute flex h-full w-full flex-col items-center">
@@ -80,8 +88,9 @@ const VerificationBox = ({ email, activationToken }) => {
       >
         <h2 className="text-3xl font-semibold">Verify Your Account</h2>
         <p>
-          We emailed you the 4-digit code to {email}. Enter the code below to
-          confirm your email address.
+          We emailed you the 4-digit code to{" "}
+          {registered?.user?.email || "example@gmail.com"}. Enter the code below
+          to confirm your email address.
         </p>
         <div className="mt-2 flex items-center justify-center gap-2 text-center">
           {[0, 1, 2, 3].map((index) => (
@@ -110,7 +119,6 @@ const VerificationBox = ({ email, activationToken }) => {
         </div>
         <div>
           <p>If you didn&apos;t receive a code!!</p>
-
           {isResendClicked ? (
             <p className="">{`Resend in ${timer}s`}</p>
           ) : (

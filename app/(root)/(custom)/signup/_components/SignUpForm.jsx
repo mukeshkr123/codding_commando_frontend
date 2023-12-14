@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SignUpInput from "./SignInput";
-// import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { registerAction } from "../../../../../GlobalRedux/slices/userSlice";
 import VerificationBox from "../../../../../components/shared/box/verification-box";
@@ -37,7 +36,6 @@ const fieldNames = [
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  // const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -61,21 +59,17 @@ const SignUpForm = () => {
       password: Password,
     };
     dispatch(registerAction(data));
-    setTimeout(() => {
-      reset();
-    }, 4000);
   };
 
   // get the store
   const { registered } = useSelector((state) => state?.user);
 
+  useEffect(() => {
+    reset();
+  }, [registered, reset]);
+
   if (registered) {
-    return (
-      <VerificationBox
-        email={"mukeshmehta2051@gmail.com"}
-        activationToken={registered?.token || ""}
-      />
-    );
+    return <VerificationBox />;
   } else {
     return (
       <div className="absolute  flex h-full w-full flex-col items-center justify-center gap-4 lg:gap-6">
