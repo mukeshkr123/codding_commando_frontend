@@ -7,8 +7,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SignUpInput from "./SignInput";
 // import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerAction } from "../../../../../GlobalRedux/slices/userSlice";
+import VerificationBox from "../../../../../components/shared/box/verification-box";
+import Image from "next/image";
 
 const signUpSchema = yup.object({
   FirstName: yup.string().min(2, "First Name is required!"),
@@ -64,59 +66,82 @@ const SignUpForm = () => {
     }, 4000);
   };
 
-  return (
-    <div
-      className="mb-10 w-[80%] overflow-hidden rounded-3xl p-8 sm:w-[400px] lg:w-[450px] lg:p-12"
-      style={{
-        border: "1px solid #000",
-        background:
-          "linear-gradient(267deg, rgba(255, 255, 255, 0.13) -2.1%, rgba(255, 255, 255, 0.00) 121.83%)",
-        backdropFilter: "blur(8.550000190734863px)",
-      }}
-    >
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-        <div className="flex flex-col">
-          {fieldNames.map((field) => (
-            <div key={field} className="flex flex-col">
-              <SignUpInput
-                label={
-                  field === "ConfirmPassword"
-                    ? "Confirm Password"
-                    : field.replace(/([A-Z])/g, " $1").trim()
-                }
-                placeholder={field.replace(/([A-Z])/g, " $1").trim()}
-                register={register(field)}
-                type={
-                  field === "Password" || field === "ConfirmPassword"
-                    ? "password"
-                    : "text"
-                }
-                onFocus={field === "Phone" ? handlePhoneFocus : undefined}
-                error={errors[field]}
-              />
-              {errors[field] && (
-                <p className="text-sm text-red-500">{errors[field].message}</p>
-              )}
+  // get the store
+  const { registered } = useSelector((state) => state?.user);
+
+  if (registered) {
+    return (
+      <VerificationBox
+        email={"mukeshmehta2051@gmail.com"}
+        activationToken={registered?.token || ""}
+      />
+    );
+  } else {
+    return (
+      <div className="absolute  flex h-full w-full flex-col items-center justify-center gap-4 lg:gap-6">
+        <Image
+          src="/assets/font-shadow/signup-svg.svg"
+          alt="Login"
+          height={100}
+          width={180}
+          className=""
+        />
+        <div
+          className=" mb-10 w-[80%] overflow-hidden rounded-3xl p-8 sm:w-[400px] lg:w-[450px] lg:p-12"
+          style={{
+            border: "1px solid #000",
+            background:
+              "linear-gradient(267deg, rgba(255, 255, 255, 0.13) -2.1%, rgba(255, 255, 255, 0.00) 121.83%)",
+            backdropFilter: "blur(8.550000190734863px)",
+          }}
+        >
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+            <div className="flex flex-col">
+              {fieldNames.map((field) => (
+                <div key={field} className="flex flex-col">
+                  <SignUpInput
+                    label={
+                      field === "ConfirmPassword"
+                        ? "Confirm Password"
+                        : field.replace(/([A-Z])/g, " $1").trim()
+                    }
+                    placeholder={field.replace(/([A-Z])/g, " $1").trim()}
+                    register={register(field)}
+                    type={
+                      field === "Password" || field === "ConfirmPassword"
+                        ? "password"
+                        : "text"
+                    }
+                    onFocus={field === "Phone" ? handlePhoneFocus : undefined}
+                    error={errors[field]}
+                  />
+                  {errors[field] && (
+                    <p className="text-sm text-red-500">
+                      {errors[field].message}
+                    </p>
+                  )}
+                </div>
+              ))}
+              <div className="flex flex-col items-center justify-center gap-4">
+                <button
+                  className="mt-2 rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
+                  type="submit"
+                  style={{ boxShadow: "1.5px 1.5px white" }}
+                >
+                  SignUp
+                </button>
+                <Link href="/login">
+                  <p className="text-base font-medium text-red-500">
+                    Already have an account? Log In
+                  </p>
+                </Link>
+              </div>
             </div>
-          ))}
-          <div className="flex flex-col items-center justify-center gap-4">
-            <button
-              className="mt-2 rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
-              type="submit"
-              style={{ boxShadow: "1.5px 1.5px white" }}
-            >
-              SignUp
-            </button>
-            <Link href="/login">
-              <p className="text-base font-medium text-red-500">
-                Already have an account? Log In
-              </p>
-            </Link>
-          </div>
+          </form>
         </div>
-      </form>
-    </div>
-  );
+      </div>
+    );
+  }
 };
 
 export default SignUpForm;

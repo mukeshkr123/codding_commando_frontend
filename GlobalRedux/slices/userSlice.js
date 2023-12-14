@@ -42,6 +42,24 @@ export const loginUserAction = createAsyncThunk(
   }
 );
 
+// activation actions
+export const activateAccountAction = createAsyncThunk(
+  "users/activate",
+  async (activationData) => {
+    try {
+      const { data } = await apiClient.post("/users/activate", activationData);
+      toast.success(data.message);
+      return data;
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Internal Server Error";
+      toast.error(errorMessage);
+    }
+  }
+);
+
 // get user from localStorage and place into store,
 const userLoggedIn =
   typeof localStorage !== "undefined"
@@ -63,7 +81,7 @@ const usersSlice = createSlice({
       })
       .addCase(registerAction.fulfilled, (state, action) => {
         state.loading = false;
-        state.activationToken = action.payload?.token;
+        state.registered = action.payload;
       })
       .addCase(registerAction.rejected, (state, action) => {
         state.loading = false;
@@ -84,6 +102,25 @@ const usersSlice = createSlice({
         state.serverErr = undefined;
       })
       .addCase(loginUserAction.rejected, (state, action) => {
+        state.appErr = action?.payload?.message;
+        state.serverErr = action?.error?.message;
+        state.loading = false;
+      });
+
+    // activate account
+    builder
+      .addCase(activateAccountAction.pending, (state) => {
+        state.loading = true;
+        state.appErr = undefined;
+        state.serverErr = undefined;
+      })
+      .addCase(activateAccountAction.fulfilled, (state, action) => {
+        state.activated = action?.payload;
+        state.loading = false;
+        state.appErr = undefined;
+        state.serverErr = undefined;
+      })
+      .addCase(activateAccountAction.rejected, (state, action) => {
         state.appErr = action?.payload?.message;
         state.serverErr = action?.error?.message;
         state.loading = false;

@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import SignUpForm from "./_components/SignUpForm";
 
 const SignUpPage = () => {
@@ -12,16 +11,7 @@ const SignUpPage = () => {
             backgroundImage: 'url("/assets/images/background/signup-bg.png")',
           }}
         />
-        <div className="absolute  flex h-full w-full flex-col items-center justify-center gap-4 lg:gap-6">
-          <Image
-            src="/assets/font-shadow/signup-svg.svg"
-            alt="Login"
-            height={100}
-            width={180}
-            className=""
-          />
-          <SignUpForm />
-        </div>
+        <SignUpForm />
         <div
           className="order-1 h-1/2 w-full bg-contain bg-center bg-no-repeat lg:order-2 lg:h-full lg:w-1/3 lg:bg-bottom"
           style={{
