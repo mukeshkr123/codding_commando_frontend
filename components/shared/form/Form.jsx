@@ -15,14 +15,14 @@ const Form = ({ onSubmit, register, errors, title }) => (
         <FormInput
           label="First Name"
           placeholder="First Name"
-          register={register("firstname")}
-          error={errors.firstname}
+          register={register("firstName")}
+          error={errors.firstName}
         />
         <FormInput
           label="Last Name"
           placeholder="Last Name"
-          register={register("lastname")}
-          error={errors.lastname}
+          register={register("lastName")}
+          error={errors.lastName}
         />
         <FormInput
           label="Email"
