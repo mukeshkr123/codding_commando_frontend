@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import Courses from "../dashboard/_components/Courses";
+import Courses from "../[userId]/_components/Courses";
 
 const MyLearningPage = () => {
   return (

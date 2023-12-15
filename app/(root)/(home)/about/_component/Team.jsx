@@ -16,24 +16,30 @@ const TeamData = [
   },
   {
     _id: 3,
+    name: "Nitish",
+    description: "Mentor",
+    imageUrl: "/assets/images/teams/profile-7.svg",
+  },
+  {
+    _id: 4,
     name: "Aakarshan",
     description: "BDA",
     imageUrl: "/assets/images/teams/profile-3.svg",
   },
   {
-    _id: 4,
+    _id: 5,
     name: "Shalinee Kumari",
     description: "Public Relation Officer",
     imageUrl: "/assets/images/teams/profile-4.svg",
   },
   {
-    _id: 5,
+    _id: 6,
     name: "Akash Umang",
     description: "Ui/Ux Designer",
     imageUrl: "/assets/images/teams/profile-5.svg",
   },
   {
-    _id: 6,
+    _id: 7,
     name: "Rajnish Kumar",
     description: "Admission Counsellor",
     imageUrl: "/assets/images/teams/profile-6.svg",

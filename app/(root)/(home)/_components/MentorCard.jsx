@@ -15,7 +15,7 @@ const MentorCard = ({ src, alt, name, description, additionalDetails }) => {
       >
         <Image
           src={src}
-          alt={alt}
+          alt="Profile Picture"
           width={150}
           height={100}
           className="mx-auto h-[250px] md:h-[353px] lg:w-[250px]"

@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 // register Action
 export const registerAction = createAsyncThunk(
   "users/register",
-  async (registerData) => {
+  async (registerData, { rejectWithValue }) => {
     try {
       const { data } = await apiClient.post("/users/register", registerData);
       toast.success(data.message);
@@ -18,7 +18,7 @@ export const registerAction = createAsyncThunk(
         error.message ||
         "Internal server error";
       toast.error(errorMessage);
-      throw new Error(errorMessage);
+      return rejectWithValue(error?.response?.data);
     }
   }
 );
@@ -26,7 +26,7 @@ export const registerAction = createAsyncThunk(
 // login Action
 export const loginUserAction = createAsyncThunk(
   "users/login",
-  async (loginData) => {
+  async (loginData, { rejectWithValue }) => {
     try {
       const { data } = await apiClient.post("/users/login", loginData);
       localStorage.setItem("userInfo", JSON.stringify(data.user));
@@ -38,6 +38,7 @@ export const loginUserAction = createAsyncThunk(
         error.message ||
         "Internal Server Error";
       toast.error(errorMessage);
+      return rejectWithValue(error?.response?.data);
     }
   }
 );
@@ -56,6 +57,19 @@ export const activateAccountAction = createAsyncThunk(
         error.message ||
         "Internal Server Error";
       toast.error(errorMessage);
+    }
+  }
+);
+
+// logout Action
+export const logoutAction = createAsyncThunk(
+  "users/logout",
+  async (payload, { rejectWithValue }) => {
+    try {
+      localStorage.removeItem("userInfo");
+    } catch (error) {
+      toast.error("Something went wrong");
+      return rejectWithValue(error?.response?.data);
     }
   }
 );
@@ -122,6 +136,24 @@ const usersSlice = createSlice({
       })
       .addCase(activateAccountAction.rejected, (state, action) => {
         state.appErr = action?.payload?.message || "Verification failed";
+        state.serverErr = action?.error?.message;
+        state.loading = false;
+      });
+    // logOut
+    builder
+      .addCase(logoutAction.pending, (state) => {
+        state.loading = true;
+        state.appErr = undefined;
+        state.serverErr = undefined;
+      })
+      .addCase(logoutAction.fulfilled, (state, action) => {
+        state.userAuth = undefined;
+        state.loading = false;
+        state.appErr = undefined;
+        state.serverErr = undefined;
+      })
+      .addCase(logoutAction.rejected, (state, action) => {
+        state.appErr = action?.payload?.message || "Login failed";
         state.serverErr = action?.error?.message;
         state.loading = false;
       });
