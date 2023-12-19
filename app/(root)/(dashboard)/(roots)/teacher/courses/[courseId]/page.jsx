@@ -1,20 +1,21 @@
 "use client";
 
+import React, { useEffect, useState, useMemo } from "react";
+import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { Banner } from "@/components/banner";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { LayoutDashboard } from "lucide-react";
-import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
+import TitleForm from "./_components/title-form";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
   const [loading, setLoading] = useState(true);
   const { userAuth } = useSelector((state) => state?.user);
-  console.log(params);
 
-  useEffect(() => {
-    const fetchCourseData = async () => {
+  const fetchCourseData = useMemo(
+    () => async () => {
       try {
         const config = {
           headers: {
@@ -27,44 +28,44 @@ const CourseIdPage = ({ params }) => {
         );
         setCourseData(data?.course);
       } catch (error) {
-        console.log(error);
-        const errorMessage =
-          error.response?.data?.message ||
-          error.message ||
-          "Internal Server Error";
-        toast.error(errorMessage);
+        console.error("Error fetching course data:", error);
+        toast.error("Something went wrong");
       } finally {
         setLoading(false);
       }
-    };
+    },
+    [params.courseId, userAuth?.accessToken]
+  );
 
+  useEffect(() => {
     fetchCourseData();
-  }, []);
+  }, [fetchCourseData]);
 
-  console.log(courseData);
-
-  const requiredFields = [courseData.title, courseData.description];
+  const requiredFields = [courseData?.title, courseData?.description].filter(
+    Boolean
+  );
 
   const totalFields = requiredFields.length;
-  const completedFields = requiredFields.filter(Boolean).length;
+  const completedFields = requiredFields.length;
 
-  const completetionText = `(${completedFields}/${totalFields})`;
-
-  const isComplete = requiredFields.every(Boolean);
+  const completionText = `(${completedFields}/${totalFields})`;
 
   if (loading) {
-    return <p>Loding....</p>;
+    return <p>Loading...</p>; // Consider using a spinner or skeleton loader
   }
 
   return (
     <>
-      {/* Banner  */}
+      {!courseData?.isPublished && (
+        <Banner label="This course is unpublished. It will not be visible to the students." />
+      )}
+
       <div className="p-6">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-2">
             <h1 className="text-2xl font-medium">Course Setup</h1>
             <span className="text-sm text-slate-700">
-              Complete all fields {completetionText}
+              Complete all fields {completionText}
             </span>
           </div>
           Actions
@@ -75,6 +76,9 @@ const CourseIdPage = ({ params }) => {
               <IconBadge icon={LayoutDashboard} />
               <h2 className="text-2xl">Customize your course</h2>
             </div>
+            {courseData && (
+              <TitleForm initialData={courseData} courseId={courseData._id} />
+            )}
           </div>
         </div>
       </div>
