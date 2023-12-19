@@ -8,6 +8,8 @@ import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { LayoutDashboard } from "lucide-react";
 import TitleForm from "./_components/title-form";
+import { DescriptionForm } from "./_components/description-form";
+import { Actions } from "./_components/actions";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
@@ -41,9 +43,7 @@ const CourseIdPage = ({ params }) => {
     fetchCourseData();
   }, [fetchCourseData]);
 
-  const requiredFields = [courseData?.title, courseData?.description].filter(
-    Boolean
-  );
+  const requiredFields = [courseData?.title, courseData?.description];
 
   const totalFields = requiredFields.length;
   const completedFields = requiredFields.length;
@@ -51,8 +51,10 @@ const CourseIdPage = ({ params }) => {
   const completionText = `(${completedFields}/${totalFields})`;
 
   if (loading) {
-    return <p>Loading...</p>; // Consider using a spinner or skeleton loader
+    return <p>Loading...</p>;
   }
+
+  const isComplete = requiredFields.every(Boolean);
 
   return (
     <>
@@ -68,7 +70,11 @@ const CourseIdPage = ({ params }) => {
               Complete all fields {completionText}
             </span>
           </div>
-          Actions
+          <Actions
+            disabled={!isComplete}
+            courseId={params.courseId}
+            isPublished={courseData?.isPublished}
+          />
         </div>
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
@@ -76,9 +82,12 @@ const CourseIdPage = ({ params }) => {
               <IconBadge icon={LayoutDashboard} />
               <h2 className="text-2xl">Customize your course</h2>
             </div>
-            {courseData && (
-              <TitleForm initialData={courseData} courseId={courseData._id} />
-            )}
+
+            <TitleForm initialData={courseData} courseId={courseData._id} />
+            <DescriptionForm
+              initialData={courseData}
+              courseId={courseData._id}
+            />
           </div>
         </div>
       </div>
