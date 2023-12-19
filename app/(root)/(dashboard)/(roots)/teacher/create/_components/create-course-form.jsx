@@ -45,6 +45,7 @@ const CreateCourseForm = () => {
           Authorization: `Bearer ${userAuth?.accessToken}`,
         },
       };
+
       const { data } = await apiClient.post("/courses/create", values, config);
       router.push(`/teacher/courses/${data?.course._id}`);
       toast.success(data?.message);

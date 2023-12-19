@@ -34,7 +34,7 @@ const NavMenu = ({ user }) => {
       <DropdownMenuContent className="px-2">
         <DropdownMenuSeparator />
         <DropdownMenuItem className="cursor-pointer text-base  font-medium">
-          <Link href={`/users/${user._id}`}>My Courses</Link>
+          <Link href={`/dashboard`}>My Courses</Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer text-base  font-medium">
           My Profile
