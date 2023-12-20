@@ -1,17 +1,42 @@
-import { Button } from "@/components/ui/button";
-import { PlusCircle } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+"use client";
+
+import apiClient from "lib/api-client";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import columns from "./_components/columns";
+import DataTable from "./_components/data-tables";
+import toast from "react-hot-toast";
 
 const CoursesPage = () => {
+  const [data, setData] = useState([]);
+  const { userAuth } = useSelector((state) => state?.user);
+
+  const fetchData = async () => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
+      const response = await apiClient.get("/courses", config);
+      setData(response.data?.courses);
+
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+      toast.error("something went wrong");
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  console.log(data);
+
   return (
-    <div className="m-4 flex w-full">
-      <Link href="/teacher/create">
-        <Button>
-          <PlusCircle className="mr-2 h-4 w-4" />
-          New Course
-        </Button>
-      </Link>
+    <div className="p-6">
+      <DataTable columns={columns} data={data} />
     </div>
   );
 };
