@@ -10,7 +10,8 @@ import { CircleDollarSign, LayoutDashboard } from "lucide-react";
 import TitleForm from "./_components/title-form";
 import { DescriptionForm } from "./_components/description-form";
 import { Actions } from "./_components/actions";
-import PriceForm from "./_components/price-form";
+import FullPriceForm from "./_components/full-price-form";
+import InstallMentPriceForm from "./_components/installment-price-form";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
@@ -95,7 +96,14 @@ const CourseIdPage = ({ params }) => {
               <IconBadge icon={CircleDollarSign} />
               <h2 className="text-xl">Sell your course</h2>
             </div>
-            <PriceForm initialData={courseData} courseId={courseData?._id} />
+            <FullPriceForm
+              initialData={courseData}
+              courseId={courseData?._id}
+            />
+            <InstallMentPriceForm
+              initialData={courseData}
+              courseId={courseData?._id}
+            />
           </div>
         </div>
       </div>

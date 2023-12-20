@@ -1,13 +1,14 @@
 "use client";
 
-import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import * as z from "zod";
 
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -15,19 +16,18 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import { cn } from "lib/utils";
 import { Input } from "@/components/ui/input";
-import { formatPrice } from "lib/format";
 import apiClient from "lib/api-client";
+import { formatPrice } from "lib/format";
+import { cn } from "lib/utils";
 import { useSelector } from "react-redux";
 
 const formSchema = z.object({
   price: z.coerce.number(),
 });
 
-const PriceForm = ({ initialData, courseId }) => {
-  console.log(initialData?.payments?.fullPrice);
+const InstallMentPriceForm = ({ initialData, courseId }) => {
+  console.log(initialData?.payments?.installmentPrice);
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -38,7 +38,7 @@ const PriceForm = ({ initialData, courseId }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      price: initialData?.payments?.fullPrice || undefined,
+      price: initialData?.payments?.installmentPrice || undefined,
     },
   });
 
@@ -54,7 +54,7 @@ const PriceForm = ({ initialData, courseId }) => {
 
       const data = {
         payments: {
-          fullPrice: value?.price,
+          installmentPrice: value?.price,
         },
       };
 
@@ -83,7 +83,7 @@ const PriceForm = ({ initialData, courseId }) => {
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Full price
+        Installment price
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
@@ -102,8 +102,8 @@ const PriceForm = ({ initialData, courseId }) => {
             !initialData.price && "text-slate-500 italic"
           )}
         >
-          {initialData?.payments.fullPrice
-            ? formatPrice(initialData?.payments.fullPrice)
+          {initialData?.payments.installmentPrice
+            ? formatPrice(initialData?.payments.installmentPrice)
             : "No price"}
         </p>
       )}
@@ -143,4 +143,4 @@ const PriceForm = ({ initialData, courseId }) => {
   );
 };
 
-export default PriceForm;
+export default InstallMentPriceForm;
