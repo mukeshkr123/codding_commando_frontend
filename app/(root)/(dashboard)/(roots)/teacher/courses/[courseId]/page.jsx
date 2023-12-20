@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { Banner } from "@/components/banner";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
-import { CircleDollarSign, LayoutDashboard } from "lucide-react";
+import { CircleDollarSign, LayoutDashboard, LibraryBig } from "lucide-react";
 import TitleForm from "./_components/title-form";
 import { DescriptionForm } from "./_components/description-form";
 import { Actions } from "./_components/actions";
@@ -15,6 +15,7 @@ import InstallMentPriceForm from "./_components/installment-price-form";
 import AboutForm from "./_components/about-form";
 import ModeForm from "./_components/mode-form";
 import DurationForm from "./_components/duration-form";
+import CourseImage from "./_components/course-image-form";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
@@ -93,23 +94,34 @@ const CourseIdPage = ({ params }) => {
               initialData={courseData}
               courseId={courseData?._id}
             />
+            <CourseImage initialData={courseData} courseId={courseData?._id} />
             <AboutForm initialData={courseData} courseId={courseData?._id} />
             <ModeForm initialData={courseData} courseId={courseData?._id} />
             <DurationForm initialData={courseData} courseId={courseData?._id} />
           </div>
-          <div>
-            <div className=" flex items-center gap-x-2">
-              <IconBadge icon={CircleDollarSign} />
-              <h2 className="text-xl">Sell your course</h2>
+          <div className="space-y-6">
+            <div>
+              <div className=" flex items-center gap-x-2">
+                <IconBadge icon={CircleDollarSign} />
+                <h2 className="text-xl">Sell your course</h2>
+              </div>
+              <FullPriceForm
+                initialData={courseData}
+                courseId={courseData?._id}
+              />
+              <InstallMentPriceForm
+                initialData={courseData}
+                courseId={courseData?._id}
+              />
             </div>
-            <FullPriceForm
-              initialData={courseData}
-              courseId={courseData?._id}
-            />
-            <InstallMentPriceForm
-              initialData={courseData}
-              courseId={courseData?._id}
-            />
+            <div>
+              <div className=" flex items-center gap-x-2">
+                <div className="flex items-center gap-x-2">
+                  <IconBadge icon={LibraryBig} />
+                  <h2 className="text-2xl">Customize curriculum strategy</h2>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
