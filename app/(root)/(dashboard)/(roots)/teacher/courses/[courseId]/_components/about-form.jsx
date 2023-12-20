@@ -1,14 +1,13 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Pencil } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Pencil } from "lucide-react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -16,18 +15,19 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import apiClient from "lib/api-client";
-import { formatPrice } from "lib/format";
+import { Button } from "@/components/ui/button";
 import { cn } from "lib/utils";
+import { Textarea } from "@/components/ui/textarea";
+import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
 
 const formSchema = z.object({
-  price: z.coerce.number(),
+  about: z.string().min(1, {
+    message: "About is required",
+  }),
 });
 
-const FullPriceForm = ({ initialData, courseId }) => {
-  console.log(initialData?.payments?.fullPrice);
+const AboutForm = ({ initialData, courseId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -38,13 +38,13 @@ const FullPriceForm = ({ initialData, courseId }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      price: initialData?.payments?.fullPrice || undefined,
+      about: initialData?.about || "",
     },
   });
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = async (value) => {
+  const onSubmit = async (values) => {
     try {
       const config = {
         headers: {
@@ -52,14 +52,8 @@ const FullPriceForm = ({ initialData, courseId }) => {
         },
       };
 
-      const data = {
-        payments: {
-          fullPrice: value?.price,
-        },
-      };
-
       toast.promise(
-        apiClient.patch(`/courses/update/${courseId}`, data, config),
+        apiClient.patch(`/courses/update/${courseId}`, values, config),
         {
           loading: "Updating course...",
           success: "Course updated",
@@ -83,14 +77,14 @@ const FullPriceForm = ({ initialData, courseId }) => {
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Full price
+        About course
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit price
+              Edit About
             </>
           )}
         </Button>
@@ -99,12 +93,10 @@ const FullPriceForm = ({ initialData, courseId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.price && "text-slate-500 italic"
+            !initialData.about && "text-slate-500 italic"
           )}
         >
-          {initialData?.payments?.fullPrice
-            ? formatPrice(initialData?.payments?.fullPrice)
-            : "No price"}
+          {initialData.about || "Nothing about course"}
         </p>
       )}
       {isEditing && (
@@ -115,15 +107,13 @@ const FullPriceForm = ({ initialData, courseId }) => {
           >
             <FormField
               control={form.control}
-              name="price"
+              name="about"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      type="number"
-                      step="0.01"
+                    <Textarea
                       disabled={isSubmitting}
-                      placeholder="Set a price for your course"
+                      placeholder="e.g. 'This course is about...'"
                       {...field}
                     />
                   </FormControl>
@@ -143,4 +133,4 @@ const FullPriceForm = ({ initialData, courseId }) => {
   );
 };
 
-export default FullPriceForm;
+export default AboutForm;

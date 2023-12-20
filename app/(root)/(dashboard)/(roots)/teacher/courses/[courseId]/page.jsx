@@ -12,6 +12,7 @@ import { DescriptionForm } from "./_components/description-form";
 import { Actions } from "./_components/actions";
 import FullPriceForm from "./_components/full-price-form";
 import InstallMentPriceForm from "./_components/installment-price-form";
+import AboutForm from "./_components/about-form";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
@@ -90,6 +91,7 @@ const CourseIdPage = ({ params }) => {
               initialData={courseData}
               courseId={courseData?._id}
             />
+            <AboutForm initialData={courseData} courseId={courseData?._id} />
           </div>
           <div>
             <div className=" flex items-center gap-x-2">

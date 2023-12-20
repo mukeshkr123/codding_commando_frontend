@@ -102,8 +102,8 @@ const InstallMentPriceForm = ({ initialData, courseId }) => {
             !initialData.price && "text-slate-500 italic"
           )}
         >
-          {initialData?.payments.installmentPrice
-            ? formatPrice(initialData?.payments.installmentPrice)
+          {initialData?.payments?.installmentPrice
+            ? formatPrice(initialData?.payments?.installmentPrice)
             : "No price"}
         </p>
       )}
