@@ -5,10 +5,13 @@ import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import UserProfile from "./user-profile";
+import { useSelector } from "react-redux";
 
 const NavbarRoutes = () => {
   const userId = true;
   const pathname = usePathname();
+  const { userAuth } = useSelector((state) => state?.user);
 
   const isTeacher = (teacher) => {
     return teacher;
@@ -37,7 +40,9 @@ const NavbarRoutes = () => {
           </Link>
         ) : null}
 
-        <div className="px-10">Profile</div>
+        <div className="mx-2">
+          <UserProfile imageUrl={userAuth?.avatar} name={userAuth?.firstName} />
+        </div>
       </div>
     </>
   );

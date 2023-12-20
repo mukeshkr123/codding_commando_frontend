@@ -17,7 +17,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const NavMenu = ({ user }) => {
-  console.log(user);
   const dispatch = useDispatch();
   const router = useRouter();
 

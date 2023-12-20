@@ -27,7 +27,6 @@ const formSchema = z.object({
 });
 
 const InstallMentPriceForm = ({ initialData, courseId }) => {
-  console.log(initialData?.payments?.installmentPrice);
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -69,7 +68,6 @@ const InstallMentPriceForm = ({ initialData, courseId }) => {
 
       toggleEdit();
     } catch (error) {
-      console.error("Error updating course:", error);
       toast.error("Something went wrong");
     }
   };

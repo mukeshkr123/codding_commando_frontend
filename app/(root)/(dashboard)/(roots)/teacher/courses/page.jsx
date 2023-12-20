@@ -21,7 +21,6 @@ const CoursesPage = () => {
       const response = await apiClient.get("/courses", config);
       setData(response.data?.courses);
     } catch (error) {
-      console.log(error);
       toast.error("something went wrong");
     }
   };
@@ -29,8 +28,6 @@ const CoursesPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  console.log(data);
 
   return (
     <div className="p-6">

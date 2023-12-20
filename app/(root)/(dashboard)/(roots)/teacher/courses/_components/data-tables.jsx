@@ -24,9 +24,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 function DataTable({ columns, data }) {
-  console.log(data);
-  console.log(columns);
-
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);
 

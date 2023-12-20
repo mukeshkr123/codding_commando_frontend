@@ -36,7 +36,6 @@ const CourseIdPage = ({ params }) => {
         );
         setCourseData(data?.course);
       } catch (error) {
-        console.error("Error fetching course data:", error);
         toast.error("Something went wrong");
       } finally {
         setLoading(false);

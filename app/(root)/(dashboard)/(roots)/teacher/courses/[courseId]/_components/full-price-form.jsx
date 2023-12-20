@@ -27,7 +27,6 @@ const formSchema = z.object({
 });
 
 const FullPriceForm = ({ initialData, courseId }) => {
-  console.log(initialData?.payments?.fullPrice);
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
