@@ -20,8 +20,6 @@ const CoursesPage = () => {
       };
       const response = await apiClient.get("/courses", config);
       setData(response.data?.courses);
-
-      console.log(response.data);
     } catch (error) {
       console.log(error);
       toast.error("something went wrong");

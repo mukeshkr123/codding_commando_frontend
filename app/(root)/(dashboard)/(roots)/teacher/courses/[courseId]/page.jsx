@@ -6,10 +6,11 @@ import toast from "react-hot-toast";
 import { Banner } from "@/components/banner";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
-import { LayoutDashboard } from "lucide-react";
+import { CircleDollarSign, LayoutDashboard } from "lucide-react";
 import TitleForm from "./_components/title-form";
 import { DescriptionForm } from "./_components/description-form";
 import { Actions } from "./_components/actions";
+import PriceForm from "./_components/price-form";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
@@ -83,11 +84,18 @@ const CourseIdPage = ({ params }) => {
               <h2 className="text-2xl">Customize your course</h2>
             </div>
 
-            <TitleForm initialData={courseData} courseId={courseData._id} />
+            <TitleForm initialData={courseData} courseId={courseData?._id} />
             <DescriptionForm
               initialData={courseData}
-              courseId={courseData._id}
+              courseId={courseData?._id}
             />
+          </div>
+          <div>
+            <div className=" flex items-center gap-x-2">
+              <IconBadge icon={CircleDollarSign} />
+              <h2 className="text-xl">Sell your course</h2>
+            </div>
+            <PriceForm initialData={courseData} courseId={courseData?._id} />
           </div>
         </div>
       </div>
