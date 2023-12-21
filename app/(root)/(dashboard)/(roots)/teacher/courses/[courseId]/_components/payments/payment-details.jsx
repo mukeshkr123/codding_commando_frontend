@@ -3,10 +3,11 @@ import { CircleDollarSign } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import FullPriceForm from "./full-price-form";
 import InstallMentPriceForm from "./installment-price-form";
-import { PaymentDescriptionForm } from "./payment-description-form";
+import { PaymentDescriptionForm } from "../payment-description-form";
 import toast from "react-hot-toast";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
+import PaymentCourseImage from "./couse-payment-imageForm";
 
 const PaymentDetails = ({ initialData, courseId }) => {
   const [paymentData, setPaymentData] = useState([]);
@@ -44,6 +45,7 @@ const PaymentDetails = ({ initialData, courseId }) => {
       <FullPriceForm initialData={paymentData} courseId={courseId} />
       <InstallMentPriceForm initialData={paymentData} courseId={courseId} />
       <PaymentDescriptionForm initialData={paymentData} courseId={courseId} />
+      <PaymentCourseImage initialData={paymentData} courseId={courseId} />
     </div>
   );
 };

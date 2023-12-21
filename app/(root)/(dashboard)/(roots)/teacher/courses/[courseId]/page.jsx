@@ -13,7 +13,7 @@ import CourseImage from "./_components/course-image-form";
 import { DescriptionForm } from "./_components/description-form";
 import DurationForm from "./_components/duration-form";
 import ModeForm from "./_components/mode-form";
-import PaymentDetails from "./_components/payment-details";
+import PaymentDetails from "./_components/payments/payment-details";
 import TitleForm from "./_components/title-form";
 
 const CourseIdPage = ({ params }) => {
