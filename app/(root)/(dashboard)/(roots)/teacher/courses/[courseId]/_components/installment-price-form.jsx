@@ -23,10 +23,11 @@ import { cn } from "lib/utils";
 import { useSelector } from "react-redux";
 
 const formSchema = z.object({
-  price: z.coerce.number(),
+  installmentPrice: z.coerce.number(),
 });
 
 const InstallMentPriceForm = ({ initialData, courseId }) => {
+  console.log(initialData.installmentPrice);
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -37,7 +38,7 @@ const InstallMentPriceForm = ({ initialData, courseId }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      price: initialData?.payments?.installmentPrice || undefined,
+      installmentPrice: initialData?.installmentPrice || undefined,
     },
   });
 
@@ -51,14 +52,8 @@ const InstallMentPriceForm = ({ initialData, courseId }) => {
         },
       };
 
-      const data = {
-        payments: {
-          installmentPrice: value?.price,
-        },
-      };
-
       toast.promise(
-        apiClient.patch(`/courses/update/${courseId}`, data, config),
+        apiClient.patch(`/courses/update/${courseId}`, value, config),
         {
           loading: "Updating course...",
           success: "Course updated",
@@ -97,11 +92,11 @@ const InstallMentPriceForm = ({ initialData, courseId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.price && "text-slate-500 italic"
+            !initialData.installmentPrice && "text-slate-500 italic"
           )}
         >
-          {initialData?.payments?.installmentPrice
-            ? formatPrice(initialData?.payments?.installmentPrice)
+          {initialData?.installmentPrice
+            ? formatPrice(initialData?.installmentPrice)
             : "No price"}
         </p>
       )}
@@ -113,7 +108,7 @@ const InstallMentPriceForm = ({ initialData, courseId }) => {
           >
             <FormField
               control={form.control}
-              name="price"
+              name="installmentPrice"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -121,7 +116,7 @@ const InstallMentPriceForm = ({ initialData, courseId }) => {
                       type="number"
                       step="0.01"
                       disabled={isSubmitting}
-                      placeholder="Set a price for your course"
+                      placeholder="Set a installmentPrice for your course"
                       {...field}
                     />
                   </FormControl>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const UserProfile = ({ imageUrl, name }) => {
+  console.log(imageUrl);
   const [isMounted, setMounted] = useState(false);
 
   useEffect(() => {

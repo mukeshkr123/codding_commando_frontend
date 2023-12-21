@@ -27,7 +27,8 @@ const formSchema = z.object({
   }),
 });
 
-export const DescriptionForm = ({ initialData, courseId }) => {
+export const PaymentDescriptionForm = ({ initialData, courseId }) => {
+  console.log(initialData);
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -53,7 +54,7 @@ export const DescriptionForm = ({ initialData, courseId }) => {
       };
 
       toast.promise(
-        apiClient.patch(`/courses/update/${courseId}`, values, config),
+        apiClient.patch(`/courses/${courseId}/payment-details`, values, config),
         {
           loading: "Updating course...",
           success: "Course updated",
@@ -76,7 +77,7 @@ export const DescriptionForm = ({ initialData, courseId }) => {
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Course description
+        Course payment description
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
@@ -92,10 +93,10 @@ export const DescriptionForm = ({ initialData, courseId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.description && "text-slate-500 italic"
+            !initialData?.description && "text-slate-500 italic"
           )}
         >
-          {initialData.description || "No description"}
+          {initialData?.description || "No description"}
         </p>
       )}
       {isEditing && (

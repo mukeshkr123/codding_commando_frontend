@@ -23,10 +23,12 @@ import { cn } from "lib/utils";
 import { useSelector } from "react-redux";
 
 const formSchema = z.object({
-  price: z.coerce.number(),
+  fullPrice: z.coerce.number(),
 });
 
 const FullPriceForm = ({ initialData, courseId }) => {
+  console.log(initialData?.fullPrice);
+
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -37,7 +39,7 @@ const FullPriceForm = ({ initialData, courseId }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      price: initialData?.payments?.fullPrice || undefined,
+      fullPrice: initialData?.fullPrice || undefined,
     },
   });
 
@@ -51,14 +53,8 @@ const FullPriceForm = ({ initialData, courseId }) => {
         },
       };
 
-      const data = {
-        payments: {
-          fullPrice: value?.price,
-        },
-      };
-
       toast.promise(
-        apiClient.patch(`/courses/update/${courseId}`, data, config),
+        apiClient.patch(`/courses/${courseId}/payment-details`, value, config),
         {
           loading: "Updating course...",
           success: "Course updated",
@@ -68,7 +64,6 @@ const FullPriceForm = ({ initialData, courseId }) => {
 
       toggleEdit();
     } catch (error) {
-      console.error("Error updating course:", error);
       toast.error("Something went wrong");
     }
   };
@@ -98,11 +93,11 @@ const FullPriceForm = ({ initialData, courseId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.price && "text-slate-500 italic"
+            !initialData?.fullPrice && "text-slate-500 italic"
           )}
         >
-          {initialData?.payments?.fullPrice
-            ? formatPrice(initialData?.payments?.fullPrice)
+          {initialData?.fullPrice
+            ? formatPrice(initialData?.fullPrice)
             : "No price"}
         </p>
       )}
@@ -114,7 +109,7 @@ const FullPriceForm = ({ initialData, courseId }) => {
           >
             <FormField
               control={form.control}
-              name="price"
+              name="fullPrice"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -122,7 +117,7 @@ const FullPriceForm = ({ initialData, courseId }) => {
                       type="number"
                       step="0.01"
                       disabled={isSubmitting}
-                      placeholder="Set a price for your course"
+                      placeholder="Set  fullPrice for your course"
                       {...field}
                     />
                   </FormControl>

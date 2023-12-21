@@ -63,7 +63,6 @@ const DurationForm = ({ initialData, courseId }) => {
 
       toggleEdit();
     } catch (error) {
-      console.error("Error updating course:", error);
       toast.error("Something went wrong");
     }
   };
