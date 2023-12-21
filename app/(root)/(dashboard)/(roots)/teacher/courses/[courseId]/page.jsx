@@ -3,18 +3,19 @@
 import { Banner } from "@/components/banner";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
-import { LayoutDashboard, LibraryBig } from "lucide-react";
+import { LayoutDashboard, ListChecks } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import AboutForm from "./_components/about-form";
+import AboutForm from "./_components/basicdata/about-form";
 import { Actions } from "./_components/actions";
-import CourseImage from "./_components/course-image-form";
-import { DescriptionForm } from "./_components/description-form";
-import DurationForm from "./_components/duration-form";
-import ModeForm from "./_components/mode-form";
+import CourseImage from "./_components/basicdata/course-image-form";
+import { DescriptionForm } from "./_components/basicdata/description-form";
+import DurationForm from "./_components/basicdata/duration-form";
+import ModeForm from "./_components/basicdata/mode-form";
 import PaymentDetails from "./_components/payments/payment-details";
-import TitleForm from "./_components/title-form";
+import TitleForm from "./_components/basicdata/title-form";
+import CurriculumForm from "./_components/curriculum/CurriculumForm";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
@@ -102,13 +103,23 @@ const CourseIdPage = ({ params }) => {
               initialData={courseData}
               courseId={courseData?._id}
             />
-            <div>
+            {/* <div>
               <div className=" flex items-center gap-x-2">
                 <div className="flex items-center gap-x-2">
                   <IconBadge icon={LibraryBig} />
                   <h2 className="text-2xl">Customize curriculum strategy</h2>
                 </div>
               </div>
+            </div> */}
+            <div>
+              <div className="flex items-center gap-x-2">
+                <IconBadge icon={ListChecks} />
+                <h2 className="text-xl">Program Curriculums</h2>
+              </div>
+              <CurriculumForm
+                initialData={courseData}
+                courseId={courseData?._id}
+              />
             </div>
           </div>
         </div>
