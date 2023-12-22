@@ -27,7 +27,6 @@ const formSchema = z.object({
 });
 
 const InstallMentPriceForm = ({ initialData, courseId }) => {
-  console.log(initialData.installmentPrice);
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 

@@ -3,7 +3,7 @@
 import { Banner } from "@/components/banner";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
-import { LayoutDashboard, ListChecks } from "lucide-react";
+import { LayoutDashboard, ListChecks, ListStart, Loader2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
@@ -16,6 +16,7 @@ import ModeForm from "./_components/basicdata/mode-form";
 import PaymentDetails from "./_components/payments/payment-details";
 import TitleForm from "./_components/basicdata/title-form";
 import ProgramsForm from "./_components/programs/ProgramsForm";
+import StrategyForm from "./_components/strategy/StrategyForm";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
@@ -56,7 +57,11 @@ const CourseIdPage = ({ params }) => {
   const completionText = `(${completedFields}/${totalFields})`;
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="absolute right-0 top-0 flex h-full w-full items-center justify-center rounded-md">
+        <Loader2 className="h-16 w-16 animate-spin text-sky-700" />
+      </div>
+    );
   }
 
   const isComplete = requiredFields.every(Boolean);
@@ -117,6 +122,16 @@ const CourseIdPage = ({ params }) => {
                 <h2 className="text-xl">Program Curriculums</h2>
               </div>
               <ProgramsForm
+                initialData={courseData}
+                courseId={courseData?._id}
+              />
+            </div>
+            <div>
+              <div className="flex items-center gap-x-2">
+                <IconBadge icon={ListStart} />
+                <h2 className="text-xl"> Curriculum strategy</h2>
+              </div>
+              <StrategyForm
                 initialData={courseData}
                 courseId={courseData?._id}
               />

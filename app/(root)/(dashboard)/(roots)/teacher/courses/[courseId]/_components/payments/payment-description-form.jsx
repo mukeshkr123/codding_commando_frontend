@@ -28,7 +28,6 @@ const formSchema = z.object({
 });
 
 export const PaymentDescriptionForm = ({ initialData, courseId }) => {
-  console.log(initialData);
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 

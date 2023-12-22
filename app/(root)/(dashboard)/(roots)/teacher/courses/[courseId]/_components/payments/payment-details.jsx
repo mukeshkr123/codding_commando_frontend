@@ -13,8 +13,6 @@ const PaymentDetails = ({ initialData, courseId }) => {
   const [paymentData, setPaymentData] = useState([]);
   const { userAuth } = useSelector((state) => state?.user);
 
-  console.log(paymentData);
-
   const fetchPaymentData = async () => {
     try {
       const config = {

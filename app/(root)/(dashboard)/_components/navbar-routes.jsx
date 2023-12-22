@@ -13,8 +13,6 @@ const NavbarRoutes = () => {
   const pathname = usePathname();
   const { userAuth } = useSelector((state) => state?.user);
 
-  console.log(userAuth?.avatar);
-
   const isTeacher = (teacher) => {
     return teacher;
   };
