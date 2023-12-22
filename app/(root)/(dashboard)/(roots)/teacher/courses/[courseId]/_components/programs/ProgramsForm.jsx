@@ -1,14 +1,14 @@
-"use client";
-
-import * as z from "zod";
-import axios from "axios";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
 import { Loader2, PlusCircle } from "lucide-react";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-// import { Chapter, Course } from "@prisma/client";
+
+import apiClient from "lib/api-client";
+import { useSelector } from "react-redux";
+import ProgramsList from "./ProgramsList";
 
 import {
   Form,
@@ -18,27 +18,24 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { cn } from "lib/utils";
 import { Input } from "@/components/ui/input";
-import apiClient from "lib/api-client";
-import { useSelector } from "react-redux";
-
-// import { ChaptersList } from "./chapters-list";
+import { cn } from "lib/utils";
+import * as z from "zod";
 
 const formSchema = z.object({
   title: z.string().min(1),
 });
 
-const ChaptersForm = ({ initialData, courseId }) => {
+const ProgramsForm = ({ initialData, courseId }) => {
   const [isCreating, setIsCreating] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
+  const router = useRouter();
+
   const toggleCreating = () => {
     setIsCreating((current) => !current);
   };
-
-  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -57,27 +54,15 @@ const ChaptersForm = ({ initialData, courseId }) => {
         },
       };
 
-      console.log(values);
-
-      const data = {
-        program_curriculum: {
-          title: values.title,
-        },
-      };
-
-      console.log(data);
-
-      toast.promise(
-        apiClient.patch(`/courses/update/${courseId}`, data, config),
-        {
-          loading: "Updating course...",
-          success: "Course updated",
-          error: "Something went wrong",
-        }
+      await apiClient.post(
+        `/courses/${courseId}/create-program`,
+        values,
+        config
       );
-
+      toast.success("Program created");
       toggleCreating();
-    } catch (error) {
+      router.refresh();
+    } catch {
       toast.error("Something went wrong");
     }
   };
@@ -99,7 +84,7 @@ const ChaptersForm = ({ initialData, courseId }) => {
   };
 
   const onEdit = (id) => {
-    router.push(`/teacher/courses/${courseId}/chapters/${id}`);
+    router.push(`/teacher/courses/${courseId}/programs/${id}`);
   };
 
   return (
@@ -110,7 +95,7 @@ const ChaptersForm = ({ initialData, courseId }) => {
         </div>
       )}
       <div className="flex items-center justify-between font-medium">
-        Course Programs
+        Course programs
         <Button onClick={toggleCreating} variant="ghost">
           {isCreating ? (
             <>Cancel</>
@@ -150,7 +135,21 @@ const ChaptersForm = ({ initialData, courseId }) => {
           </form>
         </Form>
       )}
-
+      {!isCreating && (
+        <div
+          className={cn(
+            "text-sm mt-2",
+            !initialData.program_curriculum.length && "text-slate-500 italic"
+          )}
+        >
+          {!initialData.program_curriculum.length && "No Programs"}
+          <ProgramsList
+            onEdit={onEdit}
+            onReorder={onReorder}
+            items={initialData.program_curriculum || []}
+          />
+        </div>
+      )}
       {!isCreating && (
         <p className="mt-4 text-xs text-muted-foreground">
           Drag and drop to reorder the chapters
@@ -160,4 +159,4 @@ const ChaptersForm = ({ initialData, courseId }) => {
   );
 };
 
-export default ChaptersForm;
+export default ProgramsForm;

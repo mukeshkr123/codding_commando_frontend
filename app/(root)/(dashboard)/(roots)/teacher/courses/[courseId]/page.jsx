@@ -15,7 +15,7 @@ import DurationForm from "./_components/basicdata/duration-form";
 import ModeForm from "./_components/basicdata/mode-form";
 import PaymentDetails from "./_components/payments/payment-details";
 import TitleForm from "./_components/basicdata/title-form";
-import CurriculumForm from "./_components/curriculum/CurriculumForm";
+import ProgramsForm from "./_components/programs/ProgramsForm";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
@@ -116,7 +116,7 @@ const CourseIdPage = ({ params }) => {
                 <IconBadge icon={ListChecks} />
                 <h2 className="text-xl">Program Curriculums</h2>
               </div>
-              <CurriculumForm
+              <ProgramsForm
                 initialData={courseData}
                 courseId={courseData?._id}
               />
