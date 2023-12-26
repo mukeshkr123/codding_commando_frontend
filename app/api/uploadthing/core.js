@@ -30,4 +30,9 @@ export const ourFileRouter = {
   })
     .middleware(() => handleAuth())
     .onUploadComplete(() => {}),
+  mentorImage: f({
+    image: { maxFileSize: "4MB", maxFileCount: 1 },
+  })
+    .middleware(() => handleAuth())
+    .onUploadComplete(() => {}),
 };
