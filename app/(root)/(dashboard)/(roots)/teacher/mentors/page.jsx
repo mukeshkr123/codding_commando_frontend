@@ -1,13 +1,39 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import React from "react";
+"use client";
+
+import apiClient from "lib/api-client";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import DataTable from "./_components/data-tables";
+import columns from "./_components/columns";
 
 const MentorPage = () => {
+  const [data, setData] = useState([]);
+  const { userAuth } = useSelector((state) => state?.user);
+
+  const fetchData = async () => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
+      const response = await apiClient.get("/mentors", config);
+
+      setData(response.data?.mentors);
+    } catch (error) {
+      toast.error("something went wrong");
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  console.log(data);
   return (
-    <div>
-      <Link href="/teacher/mentors/create">
-        <Button>New Mentors</Button>
-      </Link>
+    <div className="p-6">
+      <DataTable columns={columns} data={data} />
     </div>
   );
 };
