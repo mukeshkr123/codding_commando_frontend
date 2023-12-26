@@ -1,12 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import UserProfile from "./user-profile";
 import { useSelector } from "react-redux";
+import { Button } from "../../../../components/ui/button";
 
 const NavbarRoutes = () => {
   const userId = true;
