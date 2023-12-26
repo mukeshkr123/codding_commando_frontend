@@ -20,7 +20,7 @@ import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
 import { cn } from "lib/utils";
 
-const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
+const StrategyDescriptionForm = ({ initialData, courseId, strategyId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
   const router = useRouter();
@@ -52,7 +52,7 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
 
       toast.promise(
         apiClient.patch(
-          `/courses/${courseId}/program/${programId}/update`,
+          `/courses/${courseId}/strategy/${strategyId}/update`,
           values,
           config
         ),
@@ -134,4 +134,4 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
   );
 };
 
-export default ProgramDescriptionForm;
+export default StrategyDescriptionForm;

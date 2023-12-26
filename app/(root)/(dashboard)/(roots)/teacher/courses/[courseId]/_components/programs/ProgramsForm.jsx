@@ -151,7 +151,7 @@ const ProgramsForm = ({ initialData, courseId }) => {
         </div>
       )}
       {!isCreating && (
-        <p className="mt-4 text-xs text-muted-foreground">
+        <p className="text-muted-foreground mt-4 text-xs">
           Drag and drop to reorder the chapters
         </p>
       )}
