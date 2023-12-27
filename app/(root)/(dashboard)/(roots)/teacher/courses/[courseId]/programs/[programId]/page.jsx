@@ -61,11 +61,12 @@ const ProgramId = ({ params }) => {
 
   return (
     <>
-      <Banner
-        variant="warning"
-        label="This program is unpublished. It will not be visible in the course"
-      />
-
+      {!programData?.isPublished && (
+        <Banner
+          variant="warning"
+          label="This program is unpublished. It will not be visible in the course"
+        />
+      )}
       <div className="p-6">
         <div className="flex items-center justify-between">
           <div className="w-full">

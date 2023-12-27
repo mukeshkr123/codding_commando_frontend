@@ -44,16 +44,31 @@ const StrategyIdPage = ({ params }) => {
     fetchProgram();
   }, []);
 
+  const requiredFields = [
+    strategy?.title,
+    strategy?.description,
+    strategy?.imageUrl,
+  ];
+
+  const totalFields = requiredFields.length;
+  const completedFields = requiredFields.filter(Boolean).length;
+
+  const completionText = `(${completedFields}/${totalFields})`;
+
+  const isComplete = requiredFields.every(Boolean);
+
   if (loading) {
     return <p>Loading....</p>;
   }
 
   return (
     <>
-      <Banner
-        variant="warning"
-        label="This program is unpublished. It will not be visible in the course"
-      />
+      {!strategy?.isPublished && (
+        <Banner
+          variant="warning"
+          label="This program is unpublished. It will not be visible in the course"
+        />
+      )}
 
       <div className="p-6">
         <div className="flex items-center justify-between">
@@ -69,13 +84,14 @@ const StrategyIdPage = ({ params }) => {
               <div className="flex flex-col gap-y-2">
                 <h1 className="text-2xl font-medium">Strategy Creation</h1>
                 <span className="text-sm text-slate-700">
-                  Complete all fields
+                  Complete all fields {completionText}
                 </span>
               </div>
               <StrategyActions
                 courseId={params.courseId}
-                chapterId={params.chapterId}
+                strategyId={params.strategyId}
                 isPublished={strategy?.isPublished}
+                disabled={!isComplete}
               />
             </div>
           </div>
@@ -100,7 +116,7 @@ const StrategyIdPage = ({ params }) => {
                 />
               </div>
             </div>
-            <div>
+            <div className="mt-12">
               <StrategyDescriptionForm
                 initialData={strategy}
                 courseId={params.courseId}
