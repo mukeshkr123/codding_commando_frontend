@@ -7,25 +7,30 @@ import { Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const ProgramActions = ({ disabled, courseId, programId, isPublished }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const { userAuth } = useSelector((state) => state?.user);
 
   const onClick = async () => {
     try {
       setIsLoading(true);
 
-      if (isPublished) {
-        await apiClient.patch(`/courses/${courseId}/programs/${programId}`);
-        toast.success("Chapter unpublished");
-      } else {
-        await apiClient.patch(
-          `/courses/${courseId}/programs/${programId}/publish`
-        );
-        toast.success("Chapter published");
-      }
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
 
+      const endpoint = isPublished
+        ? `/courses/${courseId}/program/${programId}/unpublish`
+        : `/courses/${courseId}/program/${programId}/publish`;
+
+      await apiClient.patch(endpoint, {}, config);
+
+      toast.success(`Program ${isPublished ? "un" : ""}published`);
       router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
@@ -38,9 +43,18 @@ const ProgramActions = ({ disabled, courseId, programId, isPublished }) => {
     try {
       setIsLoading(true);
 
-      await apiClient.delete(`/courses/${courseId}/programs/${programId}`);
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
 
-      toast.success("Chapter deleted");
+      await apiClient.delete(
+        `/courses/${courseId}/program/${programId}`,
+        config
+      );
+
+      toast.success("Program deleted");
       router.refresh();
       router.push(`/teacher/courses/${courseId}`);
     } catch (error) {
@@ -49,6 +63,7 @@ const ProgramActions = ({ disabled, courseId, programId, isPublished }) => {
       setIsLoading(false);
     }
   };
+
   return (
     <div className="flex items-center gap-x-2">
       <Button

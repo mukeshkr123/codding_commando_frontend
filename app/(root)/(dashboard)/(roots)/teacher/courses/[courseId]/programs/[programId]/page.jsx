@@ -1,5 +1,3 @@
-// ProgramId.js
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -45,9 +43,21 @@ const ProgramId = ({ params }) => {
     fetchProgram();
   }, []);
 
+  const requiredFields = [
+    programData?.title,
+    programData?.description?.some((item) => item),
+  ];
+
+  const totalFields = requiredFields.length;
+  const completedFields = requiredFields.filter(Boolean).length;
+
+  const completionText = `(${completedFields}/${totalFields})`;
+
   if (loading) {
     return <p>Loading....</p>;
   }
+
+  const isComplete = requiredFields.every(Boolean);
 
   return (
     <>
@@ -70,39 +80,38 @@ const ProgramId = ({ params }) => {
               <div className="flex flex-col gap-y-2">
                 <h1 className="text-2xl font-medium">Program Creation</h1>
                 <span className="text-sm text-slate-700">
-                  Complete all fields
+                  Complete all fields {completionText}
                 </span>
               </div>
               <ProgramActions
+                disabled={!isComplete}
                 courseId={params.courseId}
-                chapterId={params.chapterId}
+                programId={params.programId}
                 isPublished={programData.isPublished}
               />
             </div>
           </div>
         </div>
-        {
-          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="space-y-4">
-              <div>
-                <div className="flex items-center gap-x-2">
-                  <IconBadge icon={LayoutDashboard} />
-                  <h2 className="text-xl">Customize your chapter</h2>
-                </div>
-                <ProgramTitleForm
-                  initialData={programData}
-                  courseId={params.courseId}
-                  programId={params.programId}
-                />
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="space-y-4">
+            <div>
+              <div className="flex items-center gap-x-2">
+                <IconBadge icon={LayoutDashboard} />
+                <h2 className="text-xl">Customize your chapter</h2>
               </div>
-              <ProgramDescriptionForm
+              <ProgramTitleForm
                 initialData={programData}
                 courseId={params.courseId}
                 programId={params.programId}
               />
             </div>
+            <ProgramDescriptionForm
+              initialData={programData}
+              courseId={params.courseId}
+              programId={params.programId}
+            />
           </div>
-        }
+        </div>
       </div>
     </>
   );

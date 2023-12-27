@@ -50,10 +50,20 @@ const CourseIdPage = ({ params }) => {
     fetchCourseData();
   }, [fetchCourseData]);
 
-  const requiredFields = [courseData?.title, courseData?.description];
+  const requiredFields = [
+    courseData?.title,
+    courseData?.description,
+    courseData?.imageUrl,
+    courseData?.duration,
+    courseData?.mode,
+    courseData?.about,
+    courseData?.program_curriculum.some((program) => program.isPublished),
+    courseData?.strategy.some((item) => item.isPublished),
+    courseData?.mentors.some((mentor) => mentor),
+  ];
 
   const totalFields = requiredFields.length;
-  const completedFields = requiredFields.length;
+  const completedFields = requiredFields.filter(Boolean).length;
 
   const completionText = `(${completedFields}/${totalFields})`;
 
