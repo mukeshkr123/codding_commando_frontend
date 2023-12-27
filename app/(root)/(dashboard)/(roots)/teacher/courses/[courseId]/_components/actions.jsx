@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "axios";
+import apiClient from "lib/api-client";
 import { Trash } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -11,7 +11,7 @@ import ConfirmModal from "@/components/modals/confirm-modal";
 import { useConfettiStore } from "hooks/use-confetti-store";
 import { useSelector } from "react-redux";
 
-export const Actions = ({ disabled, courseId, isPublished }) => {
+export const Actions = ({ disabled, mentorId, isPublished }) => {
   const router = useRouter();
   const confetti = useConfettiStore();
   const [isLoading, setIsLoading] = useState(false);
@@ -27,14 +27,13 @@ export const Actions = ({ disabled, courseId, isPublished }) => {
       setIsLoading(true);
 
       if (isPublished) {
-        await axios.patch(`/courses/${courseId}/unpublish`, config);
-        toast.success("Course unpublished");
+        await apiClient.patch(`/mentors/${mentorId}/unpublish`, {}, config);
+        toast.success("Mentor unpublished");
       } else {
-        await axios.patch(`/courses/${courseId}/publish`, config);
-        toast.success("Course published");
+        await apiClient.patch(`/mentors/${mentorId}/publish`, {}, config);
+        toast.success("Mentor published");
         confetti.onOpen();
       }
-
       router.refresh();
     } catch {
       toast.error("Something went wrong");
@@ -47,11 +46,11 @@ export const Actions = ({ disabled, courseId, isPublished }) => {
     try {
       setIsLoading(true);
 
-      await axios.delete(`/courses/${courseId}`, config);
+      await apiClient.delete(`/mentors/${mentorId}`, config);
 
-      toast.success("Course deleted");
+      toast.success("Mentors deleted");
       router.refresh();
-      router.push(`/teacher/courses`);
+      router.push(`/teacher/mentors`);
     } catch {
       toast.error("Something went wrong");
     } finally {

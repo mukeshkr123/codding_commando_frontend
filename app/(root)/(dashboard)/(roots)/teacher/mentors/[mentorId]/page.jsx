@@ -17,6 +17,8 @@ const MentorIdPage = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const { userAuth } = useSelector((state) => state?.user);
 
+  console.log(mentorData);
+
   const fetchmentorData = useMemo(
     () => async () => {
       try {
@@ -43,12 +45,18 @@ const MentorIdPage = ({ params }) => {
     fetchmentorData();
   }, [fetchmentorData]);
 
-  const requiredFields = [mentorData?.title, mentorData?.description];
+  const requiredFields = [
+    mentorData?.name,
+    mentorData?.description,
+    mentorData?.imageUrl,
+  ];
 
   const totalFields = requiredFields.length;
-  const completedFields = requiredFields.length;
+  const completedFields = requiredFields.filter(Boolean).length;
 
   const completionText = `(${completedFields}/${totalFields})`;
+
+  const isComplete = requiredFields.every(Boolean);
 
   if (loading) {
     return (
@@ -57,8 +65,6 @@ const MentorIdPage = ({ params }) => {
       </div>
     );
   }
-
-  const isComplete = requiredFields.every(Boolean);
 
   return (
     <>
