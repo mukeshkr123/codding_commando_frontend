@@ -30,7 +30,6 @@ const MentorPage = () => {
     fetchData();
   }, []);
 
-  console.log(data);
   return (
     <div className="p-6">
       <DataTable columns={columns} data={data} />

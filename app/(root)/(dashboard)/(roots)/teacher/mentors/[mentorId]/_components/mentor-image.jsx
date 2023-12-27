@@ -19,7 +19,6 @@ const MentorImageForm = ({ initialData, mentorId }) => {
   const router = useRouter();
 
   const onSubmit = async (values) => {
-    console.log(values);
     try {
       const config = {
         headers: {

@@ -25,7 +25,6 @@ const formSchema = z.object({
 });
 
 const MentorNameForm = ({ initialData, mentorId }) => {
-  console.log(initialData);
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 

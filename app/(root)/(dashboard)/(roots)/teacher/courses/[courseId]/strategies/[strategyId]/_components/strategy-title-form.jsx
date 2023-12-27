@@ -25,8 +25,6 @@ const formSchema = z.object({
 });
 
 const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
-  console.log(initialData);
-
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 

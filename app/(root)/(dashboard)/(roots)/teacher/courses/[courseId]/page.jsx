@@ -17,6 +17,7 @@ import PaymentDetails from "./_components/payments/payment-details";
 import TitleForm from "./_components/basicdata/title-form";
 import ProgramsForm from "./_components/programs/ProgramsForm";
 import StrategyForm from "./_components/strategy/StrategyForm";
+import AssignMentorForm from "./_components/assign-mentor-form";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
@@ -102,20 +103,16 @@ const CourseIdPage = ({ params }) => {
             <AboutForm initialData={courseData} courseId={courseData?._id} />
             <ModeForm initialData={courseData} courseId={courseData?._id} />
             <DurationForm initialData={courseData} courseId={courseData?._id} />
+            <AssignMentorForm
+              initialData={courseData}
+              courseId={courseData?._id}
+            />
           </div>
           <div className="space-y-6">
             <PaymentDetails
               initialData={courseData}
               courseId={courseData?._id}
             />
-            {/* <div>
-              <div className=" flex items-center gap-x-2">
-                <div className="flex items-center gap-x-2">
-                  <IconBadge icon={LibraryBig} />
-                  <h2 className="text-2xl">Customize curriculum strategy</h2>
-                </div>
-              </div>
-            </div> */}
             <div>
               <div className="flex items-center gap-x-2">
                 <IconBadge icon={ListChecks} />
