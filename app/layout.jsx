@@ -2,6 +2,7 @@ import { Syne } from "next/font/google";
 import "./globals.css";
 import Providers from "../GlobalRedux/provider";
 import ToastProvider from "../components/providers/toast-providers";
+import Script from "next/script";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -15,13 +16,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={syne.className}>
-        <Providers>
-          <ToastProvider />
-          <main>{children}</main>
-        </Providers>
-      </body>
-    </html>
+    <>
+      <html lang="en">
+        <body className={syne.className}>
+          <Providers>
+            <ToastProvider />
+            <main>{children}</main>
+          </Providers>
+        </body>
+      </html>
+      <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+    </>
   );
 }
