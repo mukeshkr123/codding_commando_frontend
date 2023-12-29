@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import StudentDetailCard from "./_components/studetail-card";
 import apiClient from "lib/api-client";
+import StudentCourseCard from "./_components/student-course-card";
+import CoursePaymentDetail from "./_components/course-payement-detail";
 
 const StudentProfile = ({ params }) => {
   const [studentData, setStudentData] = useState();
@@ -35,7 +37,7 @@ const StudentProfile = ({ params }) => {
 
   useEffect(() => {
     fetchStudentData();
-  }, [params.studentId]);
+  }, [params?.studentId]);
 
   console.log(studentData?.email);
 
@@ -53,7 +55,11 @@ const StudentProfile = ({ params }) => {
           </Link>
         </div>
       </div>
-      <StudentDetailCard studentData={studentData} />
+      <div className="mt-8 grid grid-cols-1 gap-4 md:gap-0 md:gap-y-4 lg:grid-cols-2">
+        <StudentDetailCard studentData={studentData} />
+        <StudentCourseCard studentData={studentData} />
+        <CoursePaymentDetail studentData={studentData} />
+      </div>
     </div>
   );
 };

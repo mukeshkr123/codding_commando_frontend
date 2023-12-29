@@ -50,7 +50,7 @@ const OurTraining = () => {
               ))}
           </div>
 
-          <div className="hidden w-full px-12 sm:w-[30%] lg:flex lg:w-[30%]">
+          <div className="hidden w-full px-12 sm:w-[30%] lg:flex lg:w-[30%] lg:justify-end">
             <Image
               src="/assets/images/success-svg.svg"
               alt="Success"

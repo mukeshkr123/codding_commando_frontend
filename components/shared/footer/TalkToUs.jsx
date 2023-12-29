@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const TalkToUs = () => {
   return (
-    <div className="relative min-h-[300px] w-full overflow-hidden bg-dark-purple text-white xl:px-20">
+    <div className="relative min-h-[300px] w-full overflow-hidden bg-dark-purple text-white xl:pl-20">
       <div className="flex flex-col-reverse md:flex-row">
         <div className="z-10 flex h-full w-full flex-col justify-center space-y-4 px-6 py-12 text-center md:w-1/2 md:space-y-6 md:text-left lg:mt-12">
           <div className="flex w-full justify-center py-4 md:inline-block">
@@ -50,7 +50,7 @@ const TalkToUs = () => {
             width={400}
             height={300}
             objectFit="cover"
-            className="h-full w-full"
+            className="flex h-full w-full "
           />
         </div>
       </div>

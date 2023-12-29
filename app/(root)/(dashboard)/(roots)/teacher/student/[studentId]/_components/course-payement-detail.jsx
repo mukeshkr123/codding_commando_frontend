@@ -1,0 +1,20 @@
+import { Card } from "@/components/ui/card";
+import React from "react";
+
+const CoursePaymentDetail = ({ studentData }) => {
+  console.log(studentData);
+  return (
+    <Card className="max-w-sm p-4 lg:max-w-md xl:max-w-lg">
+      <h1 className="text-2xl font-semibold">Payment history</h1>
+      {studentData?.enrollments?.length > 0 ? (
+        <div>CourseListdetail</div>
+      ) : (
+        <div className="mt-4 flex w-full  justify-center">
+          <h1 className="text-lg text-slate-600">No Payment history yet</h1>
+        </div>
+      )}
+    </Card>
+  );
+};
+
+export default CoursePaymentDetail;

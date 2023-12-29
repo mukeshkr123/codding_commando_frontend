@@ -6,13 +6,13 @@ import React from "react";
 const StudentDetailCard = ({ studentData }) => {
   console.log(studentData);
   return (
-    <Card className="mt-8 max-w-md">
+    <Card className="max-w-sm lg:max-w-md lg:p-4 xl:max-w-lg">
       {studentData && (
-        <div className="flex justify-between p-4 md:justify-normal md:gap-10">
+        <div className="flex justify-between gap-4 p-4 md:justify-normal md:gap-10">
           <Avatar>
             <AvatarImage
               src={studentData?.avatar}
-              className="h-20 w-20 rounded-full"
+              className="h-16 w-16 rounded-full"
             />
 
             <AvatarFallback>
