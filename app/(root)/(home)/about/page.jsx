@@ -3,7 +3,7 @@ import Making from "./_component/Making";
 import Team from "./_component/Team";
 import Mission from "./_component/Mission";
 import Vision from "./_component/Vision";
-import MeetMentor from "../_components/MeetMentor";
+import MeetMentor from "@/components/shared/meet-mentor";
 
 export default function AboutPage() {
   return (

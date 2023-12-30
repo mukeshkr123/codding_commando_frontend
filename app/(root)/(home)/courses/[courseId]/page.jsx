@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import CuriculumCard from "../_components/CuriculumCard";
 import ProgramCard from "../../../../../components/shared/card/programCard";
-import MeetMentor from "../../_components/MeetMentor";
+import MeetMentor from "@/components/shared/meet-mentor";
 import PayMentDetail from "../../../../../components/shared/payment/PayMentDetail";
 
 const courseData = {

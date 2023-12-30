@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 const courses = [
+  // TOD0: Beautiful transition
   {
     id: 1,
     title: "Course 1",
@@ -34,6 +35,8 @@ const courses = [
 const CourseSlider = () => {
   const [currentCourse, setCurrentCourse] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
+
+  const { title, image, href } = courses[currentCourse];
 
   const startAutoSlide = () => {
     const id = setInterval(() => {
@@ -71,24 +74,24 @@ const CourseSlider = () => {
 
   return (
     <div
-      className=" w-full overflow-hidden px-8 py-2 xl:px-0 "
+      className="w-full overflow-hidden px-8 py-2 xl:px-0"
       onMouseEnter={stopAutoSlide}
       onMouseLeave={startAutoSlide}
     >
       <div className="relative flex items-center">
         <Image
           src="/assets/icons/left-arrow.svg"
-          alt="right arrow"
+          alt="left arrow"
           height={30}
           width={30}
-          className="absolute left-3 top-1/2  -translate-y-1/2 cursor-pointer xl:left-6"
+          className="absolute left-3 top-1/2 -translate-y-1/2 cursor-pointer xl:left-6"
           onClick={goToNextCourse}
         />
         <div className="w-full">
-          <Link href="/courses">
+          <Link href={href}>
             <Image
-              src={courses[currentCourse].image}
-              alt={courses[currentCourse].title}
+              src={image}
+              alt={title}
               height={500}
               width={1300}
               className="w-full"

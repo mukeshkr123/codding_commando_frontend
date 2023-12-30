@@ -1,5 +1,5 @@
 import Image from "next/image";
-import MentorCard from "./MentorCard";
+import MentorCard from "./card/mentor-card";
 
 const mentorData = [
   {
@@ -56,13 +56,7 @@ const MeetMentor = () => {
 
       <div className="flex flex-col items-center justify-center text-center text-[#000] md:flex-row md:items-center md:justify-center md:space-x-20 xl:mt-28 xl:space-x-36">
         {mentorData.map((mentor) => (
-          <MentorCard
-            key={mentor.id}
-            src={mentor.src}
-            name={mentor.name}
-            description={mentor.description}
-            additionalDetails={mentor.additionalDetails}
-          />
+          <MentorCard key={mentor.id} {...mentor} />
         ))}
       </div>
     </section>
