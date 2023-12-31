@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-const ProgramCard = ({ title, topics }) => {
+const ProgramStrategyCard = ({ title, topics }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -52,4 +52,4 @@ const ProgramCard = ({ title, topics }) => {
   );
 };
 
-export default ProgramCard;
+export default ProgramStrategyCard;

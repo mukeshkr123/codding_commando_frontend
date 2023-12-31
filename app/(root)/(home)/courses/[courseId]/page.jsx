@@ -1,9 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import CuriculumCard from "../_components/CuriculumCard";
-import ProgramCard from "../../../../../components/shared/card/programCard";
-import MeetMentor from "@/components/shared/meet-mentor";
-import PayMentDetail from "../../../../../components/shared/payment/PayMentDetail";
+
+import ProgramStrategyCard from "../../../../../components/shared/card/program-strategy-card";
+import apiClient from "lib/api-client";
+import CurriculumStrategyCard from "@/components/shared/card/curriculum-strategy-card";
+import { redirect } from "next/navigation";
+import { PaymentDetails } from "@/components/courses/payment-detail";
+import { MentorDetails } from "@/components/courses/mentor-details";
 
 const courseData = {
   _id: 1,
@@ -191,7 +194,27 @@ const courseData = {
   },
 };
 
-const CoursePage = () => {
+const CoursePage = async ({ params }) => {
+  async function getCourseById() {
+    try {
+      const { data } = await apiClient.get(`/course/${params.courseId}`);
+
+      return data?.course;
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Something went wrong";
+      console.log(errorMessage);
+    }
+  }
+
+  const result = await getCourseById();
+
+  if (!result) {
+    redirect(`/not-found`);
+  }
+
   return (
     <div className="flex  w-full flex-col  overflow-hidden ">
       <div className="relative flex w-full flex-col items-center justify-center bg-dark-purple px-4  py-12 text-center text-white">
@@ -224,24 +247,24 @@ const CoursePage = () => {
           </svg>
         </div>
         <h1 className=" mt-2 max-w-5xl text-3xl font-semibold leading-[1.3]  sm:text-4xl md:mt-6 md:text-5xl lg:leading-[1.3] xl:text-6xl">
-          {courseData.title}
+          {result?.title}
         </h1>
         <div className="mt-4 flex flex-col items-center gap-2 text-center lg:mt-8">
           <p className="text-base md:text-lg xl:text-xl">
             Total Duration:
             <span className="font-semibold capitalize text-[#F5478E]">
-              {courseData.duration}
+              {result?.duration}
             </span>
           </p>
           <p className="text-base md:text-lg xl:text-xl">
             Training Mode:
             <span className=" font-semibold  capitalize text-[#F5478E]">
-              {courseData.trainingMode}
+              {result?.mode}
             </span>
           </p>
         </div>
         <div className="rounded-custom bg-gradient-custom from-custom via-custom backdrop-blur-custom mx-1 mt-4 max-w-5xl p-6 md:p-8 lg:mt-8 lg:p-12">
-          <p className="text-base md:text-lg">{courseData.description}</p>
+          <p className="text-base md:text-lg">{result?.about}</p>
         </div>
         <div className="mt-6 flex flex-col gap-6 md:mb-8 md:flex-row lg:mt-10 lg:gap-8">
           <Link href="/">
@@ -257,28 +280,25 @@ const CoursePage = () => {
           </Link>
         </div>
       </div>
-      <div className="flex w-full flex-col items-center justify-center gap-4 bg-light-white px-4 py-12 text-center md:gap-6 md:py-16  lg:gap-12">
-        <h1 className="text-3xl  font-bold capitalize sm:text-4xl  md:text-5xl lg:text-6xl ">
-          Curriculum Strategy
-        </h1>
-        <div className="grid gap-2 md:grid-cols-2 md:gap-6 lg:gap-8 xl:gap-8">
-          {courseData.strategy.map((curriculum) => (
-            <CuriculumCard
-              imageUrl={curriculum.imageUrl}
-              title={curriculum.title}
-              description={curriculum.description}
-              key={curriculum._id}
-            />
-          ))}
+      {result?.strategy && (
+        <div className="flex w-full flex-col items-center justify-center gap-4 bg-light-white px-4 py-12 text-center md:gap-6 md:py-16  lg:gap-12">
+          <h1 className="text-3xl  font-bold capitalize sm:text-4xl  md:text-5xl lg:text-6xl ">
+            Curriculum Strategy
+          </h1>
+          <div className="grid gap-2 md:grid-cols-2 md:gap-6 lg:gap-8 xl:gap-8">
+            {result?.strategy.map((curriculum) => (
+              <CurriculumStrategyCard {...curriculum} key={curriculum?._id} />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
       <div className="flex w-full flex-col items-center justify-center gap-4 bg-light-white px-4">
         <h1 className="mt-8  text-3xl font-bold capitalize  sm:text-4xl md:text-5xl lg:text-6xl ">
           Program Curriculum
         </h1>
         <div className="my-8 flex w-full flex-col items-center justify-center gap-4 px-2 lg:mt-10 lg:gap-6">
           {courseData.curriculum.map((curriculumData) => (
-            <ProgramCard
+            <ProgramStrategyCard
               key={curriculumData._id}
               title={curriculumData.title}
               topics={curriculumData.topics}
@@ -286,13 +306,21 @@ const CoursePage = () => {
           ))}
         </div>
       </div>
-      <MeetMentor />
-      <PayMentDetail
-        courseTitle={courseData.paymentDetails.title}
-        courseDesc={courseData.paymentDetails.courseDesc}
-        price={courseData.paymentDetails.price}
-        installments={courseData.paymentDetails.installments}
-      />
+      {/* Mentors  */}
+      {result?.mentors && (
+        <section
+          className="flex w-full flex-col items-center justify-center bg-light-white bg-cover px-8 py-4 pb-14 pt-16 text-center xl:pb-20 "
+          style={{
+            backgroundImage: 'url("assets/vector/mentor-bg-svg.svg")',
+          }}
+        >
+          <h1 className="max-w-xs text-6xl font-semibold sm:max-w-4xl md:text-7xl xl:text-8xl ">
+            Meet Your Mentor
+          </h1>
+          <MentorDetails mentors={result?.mentors} />
+        </section>
+      )}
+      <PaymentDetails title={result?.title} {...result?.paymentDetail} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const CuriculumCard = ({ imageUrl, title, description }) => {
+const CurriculumStrategyCard = ({ imageUrl, title, description }) => {
   return (
     <div className="mt-8 px-6 sm:px-0">
       <div className="flex w-full gap-6 lg:gap-10">
@@ -17,4 +17,4 @@ const CuriculumCard = ({ imageUrl, title, description }) => {
   );
 };
 
-export default CuriculumCard;
+export default CurriculumStrategyCard;

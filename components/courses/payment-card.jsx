@@ -1,6 +1,6 @@
 import React from "react";
 
-const PaymentCard = ({ title, price, desc }) => {
+export const PaymentCard = ({ title, price, desc }) => {
   return (
     <div
       className="flex w-[330px] cursor-pointer flex-col gap-2 rounded-[15px] border   border-[#F5478E] p-6"
@@ -78,5 +78,3 @@ const PaymentCard = ({ title, price, desc }) => {
     </div>
   );
 };
-
-export default PaymentCard;
