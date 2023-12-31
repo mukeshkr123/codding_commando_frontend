@@ -2,6 +2,7 @@ import React from "react";
 import { ContactForm } from "@/components/shared/form/contact-form";
 
 const ContactPage = () => {
+  console.log("Hello");
   const backgroundStyles = {
     backgroundImage: "url(/assets/images/background/making-png.png)",
     backgroundPosition: "bottom",

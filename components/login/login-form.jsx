@@ -1,25 +1,25 @@
 "use client";
 
-import Link from "next/link";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { MdLockOutline } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
-import LoginInput from "./LoginInput/LoginInput";
-import { useDispatch, useSelector } from "react-redux";
-import { loginUserAction } from "../../../../../GlobalRedux/slices/userSlice";
+import { loginUserAction } from "GlobalRedux/slices/userSlice";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { CgProfile } from "react-icons/cg";
+import { MdLockOutline } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import * as z from "zod";
+import { LoginInput } from "./login-input";
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Enter a Valid Email!" }),
   password: z.string().min(6, { message: "Enter a Valid Password" }),
 });
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const router = useRouter();
-
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -35,7 +35,6 @@ const LoginForm = () => {
   };
 
   const { userAuth } = useSelector((state) => state?.user);
-
   if (userAuth) {
     router.push("/");
   }
@@ -67,6 +66,7 @@ const LoginForm = () => {
               <p className="text-sm text-red-500">{errors.email.message}</p>
             )}
           </div>
+
           <div className="flex flex-col">
             <div className="flex items-center border-b">
               <MdLockOutline />
@@ -89,8 +89,9 @@ const LoginForm = () => {
                 Forgot Password
               </p>
             </Link>
+
             <button
-              className="rounded-3xl bg-bg_pink px-10 py-2  font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
+              className="rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
               type="submit"
               style={{ boxShadow: "1.5px 1.5px white" }}
             >
@@ -108,5 +109,3 @@ const LoginForm = () => {
     </div>
   );
 };
-
-export default LoginForm;

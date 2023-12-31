@@ -1,6 +1,6 @@
-import React from "react";
+"use client";
 
-export const FormTextarea = ({ label, placeholder, register, error }) => (
+export const FormTextarea = ({ placeholder, register, error }) => (
   <div className="mb-4">
     <textarea
       {...register}

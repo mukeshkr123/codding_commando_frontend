@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import SignUpInput from "./SignInput";
-import { useDispatch, useSelector } from "react-redux";
-import { registerAction } from "../../../../../GlobalRedux/slices/userSlice";
-import VerificationBox from "../../../../../components/shared/box/verification-box";
+import { registerAction } from "GlobalRedux/slices/userSlice";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import * as yup from "yup";
+import { SignUpInput } from "./sign-up-input";
+import VerificationBox from "./verification-box";
 
 const signUpSchema = yup.object({
   FirstName: yup.string().min(2, "First Name is required!"),
@@ -34,7 +34,7 @@ const fieldNames = [
   "ConfirmPassword",
 ];
 
-const SignUpForm = () => {
+export const SignUpForm = () => {
   const dispatch = useDispatch();
   const {
     register,
@@ -61,7 +61,6 @@ const SignUpForm = () => {
     dispatch(registerAction(data));
   };
 
-  // get the store
   const { registered } = useSelector((state) => state?.user);
 
   useEffect(() => {
@@ -137,5 +136,3 @@ const SignUpForm = () => {
     );
   }
 };
-
-export default SignUpForm;

@@ -1,4 +1,10 @@
-const SignUpInput = ({ type, placeholder, register, error, onFocus }) => (
+export const SignUpInput = ({
+  type,
+  placeholder,
+  register,
+  error,
+  onFocus,
+}) => (
   <div className="mb-4">
     <input
       {...register}
@@ -11,5 +17,3 @@ const SignUpInput = ({ type, placeholder, register, error, onFocus }) => (
     />
   </div>
 );
-
-export default SignUpInput;

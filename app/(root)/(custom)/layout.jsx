@@ -5,12 +5,8 @@ import React from "react";
 export default function Rootlayout({ children }) {
   return (
     <>
-      {/* navbar  */}
       <Navbar />
-
-      {children}
-
-      {/* Footer  */}
+      <main>{children}</main>
       <Footer />
     </>
   );

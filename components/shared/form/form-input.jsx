@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 
 export const FormInput = ({ label, type, placeholder, register, error }) => {
   const inputProps =

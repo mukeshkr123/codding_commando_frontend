@@ -1,6 +1,4 @@
-import React from "react";
-
-const LoginInput = ({ type, placeholder, register, error }) => (
+export const LoginInput = ({ type, placeholder, register, error }) => (
   <div className="mb-4">
     <input
       {...register}
@@ -12,5 +10,3 @@ const LoginInput = ({ type, placeholder, register, error }) => (
     />
   </div>
 );
-
-export default LoginInput;

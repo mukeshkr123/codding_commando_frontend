@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Button } from "../../ui/button";
 import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { Button } from "../ui/button";
 import {
   activateAccountAction,
   registerAction,
-} from "../../../GlobalRedux/slices/userSlice";
-import toast from "react-hot-toast";
+} from "GlobalRedux/slices/userSlice";
 
 const VerificationBox = ({ email }) => {
   const dispatch = useDispatch();
