@@ -6,10 +6,11 @@ import * as z from "zod";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import Form from "./Form";
-import Wahooo from "../../Wahooo";
 import apiClient from "../../../lib/api-client";
 import toast from "react-hot-toast";
+import { FormInput } from "./form-input";
+import { FormTextarea } from "./TextArea";
+import { Wahooo } from "@/components/Wahooo";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First Name is required" }),
@@ -19,7 +20,7 @@ const formSchema = z.object({
   message: z.string(),
 });
 
-const DemoForm = () => {
+export const DemoForm = () => {
   const [success, setSuccess] = useState(false);
 
   const {
@@ -76,17 +77,66 @@ const DemoForm = () => {
               backdropFilter: "blur(8.550000190734863px)",
             }}
           >
-            <Form
+            <form
               onSubmit={handleSubmit(onSubmit)}
-              register={register}
-              errors={errors}
-              title="Reserver Your Seat"
-            />
+              className="w-full rounded px-8 pb-8 pt-6 shadow-md xl:p-10"
+            >
+              <h1 className="mb-4 py-2 text-2xl font-bold text-white xl:text-4xl">
+                Reserver Your Seat{" "}
+              </h1>
+              <div className="flex w-full flex-col lg:flex-row lg:gap-12">
+                <div className="w-full lg:w-1/2">
+                  <FormInput
+                    label="First Name"
+                    type="text"
+                    placeholder="First Name"
+                    register={register("firstName")}
+                    error={errors.firstName}
+                  />
+                  <FormInput
+                    label="Last Name"
+                    type="text"
+                    placeholder="Last Name"
+                    register={register("lastName")}
+                    error={errors.lastName}
+                  />
+                  <FormInput
+                    type="email"
+                    label="Email"
+                    placeholder="Email"
+                    register={register("email")}
+                    error={errors.email}
+                  />
+                </div>
+                <div className="w-full lg:w-1/2">
+                  <FormInput
+                    label="Phone No"
+                    type="tel"
+                    placeholder="Phone No"
+                    register={register("phone")}
+                    error={errors.phone}
+                  />
+                  <FormTextarea
+                    label="Message"
+                    placeholder="Message"
+                    register={register("message")}
+                    error={errors.message}
+                  />
+                  <div className="flex justify-end">
+                    <button
+                      className="rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
+                      type="submit"
+                      style={{ boxShadow: "1.5px 1.5px white" }}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       )}
     </>
   );
 };
-
-export default DemoForm;

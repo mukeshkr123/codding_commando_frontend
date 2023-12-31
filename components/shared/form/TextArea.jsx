@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormTextarea = ({ label, placeholder, register, error }) => (
+export const FormTextarea = ({ label, placeholder, register, error }) => (
   <div className="mb-4">
     <textarea
       {...register}
@@ -12,5 +12,3 @@ const FormTextarea = ({ label, placeholder, register, error }) => (
     {error && <p className="text-sm text-red-500">{error.message}</p>}
   </div>
 );
-
-export default FormTextarea;

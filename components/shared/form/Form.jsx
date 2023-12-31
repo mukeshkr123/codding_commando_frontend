@@ -1,5 +1,5 @@
 import React from "react";
-import FormInput from "./FormInput";
+import FormInput from "./form-input";
 import FormTextarea from "./TextArea";
 
 const Form = ({ onSubmit, register, errors, title }) => (
