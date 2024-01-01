@@ -21,7 +21,6 @@ import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 function AssignMentorForm({ initialData, courseId }) {
-  console.log(initialData);
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const [mentors, setMentors] = React.useState([]);
@@ -38,7 +37,6 @@ function AssignMentorForm({ initialData, courseId }) {
         },
       };
       const { data } = await apiClient.get("/mentors", config);
-      console.log(data.mentors);
       setMentors(data.mentors);
     } catch (error) {
       toast.error("Something went wrong");
@@ -99,6 +97,32 @@ function AssignMentorForm({ initialData, courseId }) {
     }
   };
 
+  const handleUnAssignMentor = async (value) => {
+    console.log(value);
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
+      const dataToSend = {
+        mentorId: value,
+      };
+      await apiClient.post(
+        `/courses/${courseId}/unassign-mentor`,
+        dataToSend,
+        config
+      );
+      toast.success("Mentor Unassigned successfully!");
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Something went wrong";
+      toast.error(errorMessage);
+    }
+  };
+
   return (
     <div className="mt-6 w-full rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between px-2 font-medium">
@@ -109,12 +133,36 @@ function AssignMentorForm({ initialData, courseId }) {
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit Mentor
+              Assign Mentor
             </>
           )}
         </Button>
       </div>
-      {!isEditing && <p>{}</p>}
+      {!isEditing && (
+        <>
+          {initialData && initialData?.mentors?.length > 0 ? (
+            <div className="flex flex-col gap-1">
+              {initialData?.mentors?.map((mentor) => (
+                <div
+                  key={mentor._id}
+                  className="flex items-center justify-between rounded-lg border border-slate-300 px-5 shadow-sm "
+                >
+                  <p className="text-sm text-slate-700">{mentor.name}</p>
+                  <Button
+                    className="m-1.5 h-8 w-20 rounded-md text-xs"
+                    variant="destructive"
+                    onClick={() => handleUnAssignMentor(mentor._id)}
+                  >
+                    UnAssign
+                  </Button>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No mentor assign yet....</p>
+          )}
+        </>
+      )}
       {isEditing && (
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>

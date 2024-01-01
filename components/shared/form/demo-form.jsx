@@ -34,7 +34,10 @@ export const DemoForm = () => {
 
   const onSubmit = async (demoData) => {
     try {
-      const { data } = await apiClient.post("/send/book-demo", demoData);
+      const { data } = await apiClient.post("/send/message", {
+        ...demoData,
+        type: "Demo",
+      });
       setSuccess(true);
       toast.success(data.message);
       reset();

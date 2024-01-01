@@ -1,10 +1,13 @@
 import React from "react";
 import Navbar from "./_components/navbar";
 import Sidebar from "./_components/sidebar";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 const DashboardLayout = ({ children }) => {
   return (
-    <div className="h-full">
+    <div className={(`h-full`, inter.className)}>
       <div className="fixed inset-y-0 z-50 h-[80px] w-full md:pl-56">
         <Navbar />
       </div>

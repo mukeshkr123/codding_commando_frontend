@@ -33,7 +33,10 @@ export const ContactForm = () => {
 
   const onSubmit = async (contactData) => {
     try {
-      const { data } = await apiClient.post("/send/message", contactData);
+      const { data } = await apiClient.post("/send/message", {
+        ...contactData,
+        type: "Contact",
+      });
       setSuccess(true);
       toast.success(data.message);
       reset();

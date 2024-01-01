@@ -5,6 +5,7 @@ import {
   Compass,
   Layout,
   List,
+  PhoneCall,
   UserCheck,
   Users,
 } from "lucide-react";
@@ -45,6 +46,11 @@ const teacherRoutes = [
     icon: BarChart,
     label: "Analytics",
     href: "/teacher/analytics",
+  },
+  {
+    icon: PhoneCall,
+    label: "To Contact",
+    href: "/teacher/contacts",
   },
 ];
 
