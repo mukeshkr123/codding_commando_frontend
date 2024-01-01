@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-const ProgramStrategyCard = ({ title, topics }) => {
+export const ProgramCurricullumCard = ({ title, description }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -39,17 +39,17 @@ const ProgramStrategyCard = ({ title, topics }) => {
       </div>
       {open && (
         <div className="px-16 pb-6">
-          <ol>
-            {topics.map((topic, index) => (
-              <li key={index}>
-                <span>{String.fromCharCode(97 + index)}.</span> {topic.title}
-              </li>
-            ))}
-          </ol>
+          {description && description.length > 0 && (
+            <ol>
+              {description?.map((item, index) => (
+                <li key={item.map}>
+                  <span>{String.fromCharCode(97 + index)}. </span> {item.title}
+                </li>
+              ))}
+            </ol>
+          )}
         </div>
       )}
     </div>
   );
 };
-
-export default ProgramStrategyCard;

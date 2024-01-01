@@ -3,7 +3,7 @@
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Pencil } from "lucide-react";
+import { Pencil, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -18,7 +18,6 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
-import { cn } from "lib/utils";
 
 const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -36,7 +35,7 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      description: initialData?.description || "",
+      description: "",
     },
   });
 
@@ -50,7 +49,7 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
         },
       };
 
-      toast.promise(
+      await toast.promise(
         apiClient.patch(
           `/courses/${courseId}/program/${programId}/update`,
           values,
@@ -65,6 +64,32 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
 
       toggleEdit();
     } catch (error) {
+      toast.error("Something went wrong");
+    }
+  };
+
+  const handleDelete = async (descriptionId) => {
+    console.log("delete");
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
+
+      await toast.promise(
+        apiClient.delete(
+          `/courses/${courseId}/program/${programId}/${descriptionId}`,
+          config
+        ),
+        {
+          loading: "Description deleting...",
+          success: "Description deleted",
+          error: "Something went wrong",
+        }
+      );
+    } catch (error) {
+      console.error(error);
       toast.error("Something went wrong");
     }
   };
@@ -85,21 +110,32 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit description
+              Add description
             </>
           )}
         </Button>
       </div>
-      {!isEditing && (
-        <p
-          className={cn(
-            "text-sm mt-2",
-            !initialData.description && "text-slate-500 italic"
-          )}
-        >
-          {initialData.description || "No description"}
-        </p>
-      )}
+
+      {!isEditing &&
+        (initialData?.description?.length > 0 ? (
+          <div className="flex flex-col gap-1 ">
+            {initialData?.description.map((program) => (
+              <div
+                key={program?._id}
+                className="flex items-center justify-between rounded-md border-2 border-slate-200 px-4 py-2 text-slate-700 "
+              >
+                <p className="text-sm">{program?.title}</p>
+                <Trash
+                  className="h-5 w-5 cursor-pointer hover:bg-sky-100 hover:text-sky-700"
+                  onClick={() => handleDelete(program?._id)}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          "No description"
+        ))}
+
       {isEditing && (
         <Form {...form}>
           <form
@@ -124,7 +160,7 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
             />
             <div className="flex items-center gap-x-2">
               <Button disabled={!isValid || isSubmitting} type="submit">
-                Save
+                Add description
               </Button>
             </div>
           </form>
