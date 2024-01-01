@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import UserProfile from "./user-profile";
 import { useSelector } from "react-redux";
-import { Button } from "../../../../components/ui/button";
+import { Button } from "../../ui/button";
 
-const NavbarRoutes = () => {
+export const NavbarRoutes = () => {
   const userId = true;
   const pathname = usePathname();
   const { userAuth } = useSelector((state) => state?.user);

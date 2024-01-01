@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React from "react";
-import SidebarItem from "./sidebar-item";
+import { SidebarItem } from "./sidebar-item";
 
 const guestRoutes = [
   {
@@ -54,7 +54,7 @@ const teacherRoutes = [
   },
 ];
 
-const SidebarRoutes = () => {
+export const SidebarRoutes = () => {
   const pathname = usePathname();
 
   const isTeacherPage = pathname?.includes("/teacher");
@@ -73,5 +73,3 @@ const SidebarRoutes = () => {
     </div>
   );
 };
-
-export default SidebarRoutes;

@@ -1,7 +1,7 @@
 import React from "react";
-import SidebarRoutes from "./sidebar-routes";
+import { SidebarRoutes } from "./sidebar-routes";
 
-const Sidebar = () => {
+export const Sidebar = () => {
   return (
     <div className="flex h-full flex-col overflow-y-auto border-r bg-white shadow-sm">
       <div className="p-6">
@@ -13,5 +13,3 @@ const Sidebar = () => {
     </div>
   );
 };
-
-export default Sidebar;

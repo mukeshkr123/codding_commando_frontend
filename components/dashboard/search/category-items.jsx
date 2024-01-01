@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { cn } from "lib/utils";
 
-const CategoryItem = ({ label, value, icon: Icon }) => {
+export const CategoryItem = ({ label, value, icon: Icon }) => {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -44,5 +44,3 @@ const CategoryItem = ({ label, value, icon: Icon }) => {
     </button>
   );
 };
-
-export default CategoryItem;

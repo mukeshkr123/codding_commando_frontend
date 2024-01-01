@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 import React from "react";
 
-const SidebarItem = ({ icon: Icon, label, href }) => {
+export const SidebarItem = ({ icon: Icon, label, href }) => {
   const pathname = usePathname();
 
   const router = useRouter();
@@ -44,5 +44,3 @@ const SidebarItem = ({ icon: Icon, label, href }) => {
     </button>
   );
 };
-
-export default SidebarItem;

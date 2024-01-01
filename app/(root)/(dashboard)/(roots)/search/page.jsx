@@ -1,5 +1,5 @@
 import React from "react";
-import Categories from "./_components/categories";
+import { Categories } from "@/components/dashboard/search/categories";
 
 const categories = [
   { id: "1c5339ea-b7ef-4521-90e6-39441eadeafc", name: "Accounting" },

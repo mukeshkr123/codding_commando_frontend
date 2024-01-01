@@ -11,7 +11,7 @@ import {
   FcSalesPerformance,
   FcSportsMode,
 } from "react-icons/fc";
-import CategoryItem from "./category-items";
+import { CategoryItem } from "./category-items";
 
 const iconMap = {
   Music: FcMusic,
@@ -23,7 +23,7 @@ const iconMap = {
   Engineering: FcEngineering,
 };
 
-const Categories = ({ items }) => {
+export const Categories = ({ items }) => {
   return (
     <div className="flex items-center gap-x-2 overflow-x-auto pb-2">
       {items.map((item) => (
@@ -37,5 +37,3 @@ const Categories = ({ items }) => {
     </div>
   );
 };
-
-export default Categories;

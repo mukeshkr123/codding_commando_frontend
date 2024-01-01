@@ -1,7 +1,7 @@
 import { IconBadge } from "@/components/icon-bagde";
 import React from "react";
 
-const InfoCard = ({ variant, icon: Icon, numberofItems, label }) => {
+export const InfoCard = ({ variant, icon: Icon, numberofItems, label }) => {
   return (
     <div className="flex items-center gap-x-2 rounded-md border p-3">
       <IconBadge variant={variant} icon={Icon} />
@@ -14,5 +14,3 @@ const InfoCard = ({ variant, icon: Icon, numberofItems, label }) => {
     </div>
   );
 };
-
-export default InfoCard;
