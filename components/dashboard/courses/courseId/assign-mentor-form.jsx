@@ -19,7 +19,7 @@ import {
 import apiClient from "lib/api-client";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export function AssignMentorForm({ initialData, courseId }) {
   const [open, setOpen] = React.useState(false);
