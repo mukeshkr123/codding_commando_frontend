@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatPrice } from "lib/format";
 import React from "react";
 
-const DataCard = ({ value, label, shouldFormat }) => {
+export const DataCard = ({ value, label, shouldFormat }) => {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -16,5 +16,3 @@ const DataCard = ({ value, label, shouldFormat }) => {
     </Card>
   );
 };
-
-export default DataCard;

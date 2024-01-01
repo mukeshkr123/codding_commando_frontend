@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import PaymentCourseImage from "./couse-payment-imageForm";
 import { PaymentDescriptionForm } from "./payment-description-form";
 
-const PaymentDetails = ({ initialData, courseId }) => {
+export const PaymentDetails = ({ initialData, courseId }) => {
   const [paymentData, setPaymentData] = useState([]);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -47,5 +47,3 @@ const PaymentDetails = ({ initialData, courseId }) => {
     </div>
   );
 };
-
-export default PaymentDetails;

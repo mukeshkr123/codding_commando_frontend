@@ -19,8 +19,9 @@ import {
 import apiClient from "lib/api-client";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
-function AssignMentorForm({ initialData, courseId }) {
+export function AssignMentorForm({ initialData, courseId }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const [mentors, setMentors] = React.useState([]);
@@ -28,6 +29,7 @@ function AssignMentorForm({ initialData, courseId }) {
   const { userAuth } = useSelector((state) => state?.user);
 
   const toggleEdit = () => setIsEditing((current) => !current);
+  const router = useRouter();
 
   const fetchMentors = async () => {
     try {
@@ -87,7 +89,8 @@ function AssignMentorForm({ initialData, courseId }) {
         dataToSend,
         config
       );
-      toast.success("Mentor assigned successfully!");
+      toast.success("Mentor assigned ");
+      router.refresh();
     } catch (error) {
       const errorMessage =
         error.response?.data?.message ||
@@ -195,5 +198,3 @@ function AssignMentorForm({ initialData, courseId }) {
     </div>
   );
 }
-
-export default AssignMentorForm;

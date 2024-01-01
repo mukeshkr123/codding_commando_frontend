@@ -1,5 +1,5 @@
+import { CreateCourseForm } from "@/components/dashboard/courses/create-course-form";
 import React from "react";
-import CreateCourseForm from "./_components/create-course-form";
 
 const CreatePage = () => {
   return (

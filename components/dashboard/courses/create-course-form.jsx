@@ -25,7 +25,7 @@ const formSchema = z.object({
   }),
 });
 
-const CreateCourseForm = () => {
+export const CreateCourseForm = () => {
   const router = useRouter();
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -95,5 +95,3 @@ const CreateCourseForm = () => {
     </Form>
   );
 };
-
-export default CreateCourseForm;

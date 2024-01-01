@@ -4,51 +4,48 @@ import { Banner } from "@/components/banner";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { LayoutDashboard, ListChecks, ListStart, Loader2 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import AboutForm from "./_components/basicdata/about-form";
-import { Actions } from "./_components/actions";
-import CourseImage from "./_components/basicdata/course-image-form";
-import { DescriptionForm } from "./_components/basicdata/description-form";
-import DurationForm from "./_components/basicdata/duration-form";
-import ModeForm from "./_components/basicdata/mode-form";
-import PaymentDetails from "./_components/payments/payment-details";
-import TitleForm from "./_components/basicdata/title-form";
-import ProgramsForm from "./_components/programs/ProgramsForm";
-import StrategyForm from "./_components/strategy/StrategyForm";
-import AssignMentorForm from "./_components/assign-mentor-form";
+import { AboutForm } from "@/components/dashboard/courses/courseId/basicdata/about-form";
+import { Actions } from "@/components/dashboard/courses/actions";
+import { CourseImage } from "@/components/dashboard/courses/courseId/basicdata/course-image-form";
+import { DescriptionForm } from "@/components/dashboard/courses/courseId/basicdata/description-form";
+import { DurationForm } from "@/components/dashboard/courses/courseId/basicdata/duration-form";
+import { ModeForm } from "@/components/dashboard/courses/courseId/basicdata/mode-form";
+import { PaymentDetails } from "@/components/dashboard/courses/courseId/payments/payment-details";
+import { TitleForm } from "@/components/dashboard/courses/courseId/basicdata/title-form";
+import { ProgramsForm } from "@/components/dashboard/courses/courseId/programs/ProgramsForm";
+import { StrategyForm } from "@/components/dashboard/courses/courseId/strategy/StrategyForm";
+import { AssignMentorForm } from "@/components/dashboard/courses/courseId/assign-mentor-form";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);
   const [loading, setLoading] = useState(true);
   const { userAuth } = useSelector((state) => state?.user);
 
-  const fetchCourseData = useMemo(
-    () => async () => {
-      try {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${userAuth?.accessToken}`,
-          },
-        };
-        const { data } = await apiClient.get(
-          `/courses/${params.courseId}`,
-          config
-        );
-        setCourseData(data?.course);
-      } catch (error) {
-        toast.error("Something went wrong");
-      } finally {
-        setLoading(false);
-      }
-    },
-    [params.courseId, userAuth?.accessToken]
-  );
+  const fetchCourseData = async () => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
+      const { data } = await apiClient.get(
+        `/courses/${params.courseId}`,
+        config
+      );
+      setCourseData(data?.course);
+    } catch (error) {
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     fetchCourseData();
-  }, [fetchCourseData]);
+  }, []);
 
   const requiredFields = [
     courseData?.title,

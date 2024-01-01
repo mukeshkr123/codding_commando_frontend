@@ -4,7 +4,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
@@ -22,12 +22,12 @@ import { useSelector } from "react-redux";
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-  mode: z.string().min(1, {
-    message: "mode is required",
+  duration: z.string().min(1, {
+    message: "duration is required",
   }),
 });
 
-const ModeForm = ({ initialData, courseId }) => {
+export const DurationForm = ({ initialData, courseId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -38,7 +38,7 @@ const ModeForm = ({ initialData, courseId }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      mode: initialData?.mode || "",
+      duration: initialData?.duration || "",
     },
   });
 
@@ -62,28 +62,23 @@ const ModeForm = ({ initialData, courseId }) => {
       );
 
       toggleEdit();
+      router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
     }
   };
 
-  useEffect(() => {
-    if (isEditing) {
-      router.refresh();
-    }
-  }, [isEditing, router]);
-
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Course mode
+        Course duration
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit mode
+              Edit duration
             </>
           )}
         </Button>
@@ -92,10 +87,10 @@ const ModeForm = ({ initialData, courseId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.mode && "text-slate-500 italic"
+            !initialData.duration && "text-slate-500 italic"
           )}
         >
-          {initialData.mode || "Nothing in mode"}
+          {initialData.duration || "Nothing in duration"}
         </p>
       )}
       {isEditing && (
@@ -106,13 +101,13 @@ const ModeForm = ({ initialData, courseId }) => {
           >
             <FormField
               control={form.control}
-              name="mode"
+              name="duration"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="e.g. 'This course is mode...'"
+                      placeholder="e.g. '2 Months..'"
                       {...field}
                     />
                   </FormControl>
@@ -131,5 +126,3 @@ const ModeForm = ({ initialData, courseId }) => {
     </div>
   );
 };
-
-export default ModeForm;

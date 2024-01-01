@@ -10,13 +10,7 @@ import { FileUpload } from "@/components/file-upload";
 import { useSelector } from "react-redux";
 import apiClient from "lib/api-client";
 
-// const formSchema = z.object({
-//   imageUrl: z.string().min(1, {
-//     message: "Image is required",
-//   }),
-// });
-
-const CourseImage = ({ initialData, courseId }) => {
+export const CourseImage = ({ initialData, courseId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 

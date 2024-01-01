@@ -1,7 +1,5 @@
-import React from "react";
-import DataCard from "./_components/data-card";
-import { Chart } from "./_components/chart";
-
+import { Chart } from "@/components/dashboard/analytics/chart";
+import { DataCard } from "@/components/dashboard/analytics/data-card";
 const AnalyticsPage = () => {
   return (
     <div className="p-6">

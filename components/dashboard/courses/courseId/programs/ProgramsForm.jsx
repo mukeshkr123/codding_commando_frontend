@@ -26,7 +26,7 @@ const formSchema = z.object({
   title: z.string().min(1),
 });
 
-const ProgramsForm = ({ initialData, courseId }) => {
+export const ProgramsForm = ({ initialData, courseId }) => {
   const [isCreating, setIsCreating] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
@@ -151,12 +151,10 @@ const ProgramsForm = ({ initialData, courseId }) => {
         </div>
       )}
       {!isCreating && (
-        <p className="text-muted-foreground mt-4 text-xs">
+        <p className="mt-4 text-xs text-muted-foreground">
           Drag and drop to reorder the chapters
         </p>
       )}
     </div>
   );
 };
-
-export default ProgramsForm;

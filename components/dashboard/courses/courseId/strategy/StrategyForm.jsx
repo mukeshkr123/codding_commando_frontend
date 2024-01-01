@@ -26,7 +26,7 @@ const formSchema = z.object({
   title: z.string().min(1),
 });
 
-const StrategyForm = ({ initialData, courseId }) => {
+export const StrategyForm = ({ initialData, courseId }) => {
   const [isCreating, setIsCreating] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
@@ -158,5 +158,3 @@ const StrategyForm = ({ initialData, courseId }) => {
     </div>
   );
 };
-
-export default StrategyForm;

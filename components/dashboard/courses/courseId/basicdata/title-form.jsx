@@ -1,11 +1,12 @@
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+"use client";
+
 import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-
+import { useSelector } from "react-redux";
+import apiClient from "lib/api-client";
 import {
   Form,
   FormControl,
@@ -15,22 +16,21 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useSelector } from "react-redux";
-import apiClient from "lib/api-client";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-const formSchema = z.object({
-  title: z.string().min(1, {
-    message: "Title is required",
-  }),
-});
-
-const TitleForm = ({ initialData, courseId }) => {
+export const TitleForm = ({ initialData, courseId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
+  const router = useRouter();
 
   const toggleEdit = () => setIsEditing((current) => !current);
 
-  const router = useRouter();
+  const formSchema = z.object({
+    title: z.string().min(1, {
+      message: "Title is required",
+    }),
+  });
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -47,26 +47,14 @@ const TitleForm = ({ initialData, courseId }) => {
         },
       };
 
-      toast.promise(
-        apiClient.patch(`/courses/update/${courseId}`, values, config),
-        {
-          loading: "Updating course...",
-          success: "Course updated",
-          error: "Something went wrong",
-        }
-      );
-
+      await apiClient.patch(`/courses/update/${courseId}`, values, config);
+      toast.success("Course updated");
       toggleEdit();
+      router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
     }
   };
-
-  useEffect(() => {
-    if (isEditing) {
-      router.refresh();
-    }
-  }, [isEditing, router]);
 
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
@@ -117,5 +105,3 @@ const TitleForm = ({ initialData, courseId }) => {
     </div>
   );
 };
-
-export default TitleForm;

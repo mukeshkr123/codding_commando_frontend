@@ -4,7 +4,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
@@ -22,12 +22,12 @@ import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
 
 const formSchema = z.object({
-  about: z.string().min(1, {
-    message: "About is required",
+  description: z.string().min(1, {
+    message: "Description is required",
   }),
 });
 
-const AboutForm = ({ initialData, courseId }) => {
+export const DescriptionForm = ({ initialData, courseId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -38,7 +38,7 @@ const AboutForm = ({ initialData, courseId }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      about: initialData?.about || "",
+      description: initialData?.description || "",
     },
   });
 
@@ -62,28 +62,24 @@ const AboutForm = ({ initialData, courseId }) => {
       );
 
       toggleEdit();
+
+      router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
     }
   };
 
-  useEffect(() => {
-    if (isEditing) {
-      router.refresh();
-    }
-  }, [isEditing, router]);
-
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        About course
+        Course description
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit About
+              Edit description
             </>
           )}
         </Button>
@@ -92,10 +88,10 @@ const AboutForm = ({ initialData, courseId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.about && "text-slate-500 italic"
+            !initialData.description && "text-slate-500 italic"
           )}
         >
-          {initialData.about || "Nothing about course"}
+          {initialData.description || "No description"}
         </p>
       )}
       {isEditing && (
@@ -106,7 +102,7 @@ const AboutForm = ({ initialData, courseId }) => {
           >
             <FormField
               control={form.control}
-              name="about"
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -131,5 +127,3 @@ const AboutForm = ({ initialData, courseId }) => {
     </div>
   );
 };
-
-export default AboutForm;

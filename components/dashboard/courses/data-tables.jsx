@@ -23,7 +23,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-function DataTable({ columns, data }) {
+export function DataTable({ columns, data }) {
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);
 
@@ -131,5 +131,3 @@ function DataTable({ columns, data }) {
     </div>
   );
 }
-
-export default DataTable;

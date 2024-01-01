@@ -7,7 +7,7 @@ import { LayoutDashboard, Loader2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { Actions } from "../../courses/[courseId]/_components/actions";
+import { Actions } from "../../../../../../../components/dashboard/courses/actions";
 import MentorNameForm from "./_components/mentor-name-form";
 import { MentorDescriptionForm } from "./_components/description-form";
 import MentorImageForm from "./_components/mentor-image";
