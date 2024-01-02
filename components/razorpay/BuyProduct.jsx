@@ -19,7 +19,7 @@ export const BuyProduct = ({ children, courseId }) => {
       return;
     }
 
-    const key = "rzp_test_SsZQw7VSzw5bCq"; // Replace with your actual Razorpay key
+    const key = "rzp_test_SsZQw7VSzw5bCq";
     const config = {
       headers: {
         Authorization: `Bearer ${userAuth?.accessToken}`,
@@ -65,7 +65,7 @@ export const BuyProduct = ({ children, courseId }) => {
 
           if (data.success === true) {
             router.push(
-              "/paymentsuccess?paymentid=" + response.razorpay_payment_id
+              `/paymentsuccess?paymentid=${response.razorpay_payment_id}&orderid=${response.razorpay_order_id}`
             );
           }
         },
