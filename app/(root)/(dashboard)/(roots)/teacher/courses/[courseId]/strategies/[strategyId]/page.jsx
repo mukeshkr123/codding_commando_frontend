@@ -7,7 +7,7 @@ import { StrategyImageForm } from "@/components/dashboard/courses/courseId/strat
 import { StrategyTitleForm } from "@/components/dashboard/courses/courseId/strategy/strategy-title-form";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
-import { ArrowLeft, LayoutDashboard } from "lucide-react";
+import { ArrowLeft, LayoutDashboard, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -58,7 +58,11 @@ const StrategyIdPage = ({ params }) => {
   const isComplete = requiredFields.every(Boolean);
 
   if (loading) {
-    return <p>Loading....</p>;
+    return (
+      <div className="absolute right-0 top-0 flex h-full w-full items-center justify-center rounded-md">
+        <Loader2 className="h-16 w-16 animate-spin text-sky-700" />
+      </div>
+    );
   }
 
   return (

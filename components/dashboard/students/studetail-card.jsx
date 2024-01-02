@@ -22,7 +22,7 @@ export const StudentDetailCard = ({ studentData }) => {
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-1">
-            <h1 className="text-2xl font-semibold">
+            <h1 className="text-2xl font-semibold text-slate-700">
               {studentData?.firstName} {studentData?.lastName}
             </h1>
             <h2 className="text-sm text-slate-700">{studentData?.email}</h2>
