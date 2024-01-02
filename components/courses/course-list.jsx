@@ -1,5 +1,5 @@
 import React from "react";
-import CourseCard from "./course-card";
+import { CourseCard } from "./course-card";
 import apiClient from "lib/api-client";
 
 async function getAllCourses() {
@@ -13,7 +13,7 @@ async function getAllCourses() {
   }
 }
 
-const CourseList = async () => {
+export const CourseList = async () => {
   const courses = await getAllCourses();
 
   if (!courses || courses.length === 0) {
@@ -34,5 +34,3 @@ const CourseList = async () => {
     </div>
   );
 };
-
-export default CourseList;

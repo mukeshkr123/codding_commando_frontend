@@ -1,7 +1,6 @@
-import { redirect } from "next/navigation";
-import React from "react";
-import { CheckCircle, Clock } from "lucide-react";
 import { InfoCard } from "@/components/dashboard/infoCard";
+import { CheckCircle, Clock } from "lucide-react";
+import { redirect } from "next/navigation";
 
 const DashboardPage = () => {
   const userId = 12344;

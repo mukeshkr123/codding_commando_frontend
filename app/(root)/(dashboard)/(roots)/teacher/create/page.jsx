@@ -1,5 +1,4 @@
 import { CreateCourseForm } from "@/components/dashboard/courses/create-course-form";
-import React from "react";
 
 const CreatePage = () => {
   return (

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import MentorCard from "./card/mentor-card";
+import { MentorCard } from "./card/mentor-card";
 
 const mentorData = [
   {
@@ -30,7 +30,7 @@ const mentorData = [
   },
 ];
 
-const MeetMentor = () => {
+export const MeetMentor = () => {
   return (
     <section
       className="flex w-full flex-col items-center justify-center bg-light-white bg-cover px-8 py-4 pb-14 pt-16 text-center xl:pb-20 "
@@ -62,5 +62,3 @@ const MeetMentor = () => {
     </section>
   );
 };
-
-export default MeetMentor;

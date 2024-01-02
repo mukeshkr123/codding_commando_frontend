@@ -5,7 +5,7 @@ import apiClient from "lib/api-client";
 import { formatCreatedAtDate } from "lib/format";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const ContactPage = ({ params }) => {
@@ -22,8 +22,6 @@ const ContactPage = ({ params }) => {
   useEffect(() => {
     fetchContactData();
   }, []);
-
-  console.log(data);
 
   return (
     <div className="flex flex-col p-6">

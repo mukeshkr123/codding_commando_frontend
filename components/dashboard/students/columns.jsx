@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const columns = [
+export const columns = [
   {
     accessorKey: "firstName",
     header: ({ column }) => {
@@ -94,5 +94,3 @@ const columns = [
     },
   },
 ];
-
-export default columns;

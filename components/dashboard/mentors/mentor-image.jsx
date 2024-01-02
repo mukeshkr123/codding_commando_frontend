@@ -10,7 +10,7 @@ import { FileUpload } from "@/components/file-upload";
 import { useSelector } from "react-redux";
 import apiClient from "lib/api-client";
 
-const StrategyImageForm = ({ initialData, courseId, strategyId }) => {
+export const MentorImageForm = ({ initialData, mentorId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -25,12 +25,8 @@ const StrategyImageForm = ({ initialData, courseId, strategyId }) => {
           Authorization: `Bearer ${userAuth?.accessToken}`,
         },
       };
-      await apiClient.patch(
-        `/courses/${courseId}/strategy/${strategyId}/update`,
-        values,
-        config
-      );
-      toast.success("Course updated");
+      await apiClient.patch(`/mentors/${mentorId}`, values, config);
+      toast.success("Mentor updated");
       toggleEdit();
       router.refresh();
     } catch {
@@ -41,7 +37,7 @@ const StrategyImageForm = ({ initialData, courseId, strategyId }) => {
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Course image
+        Mentor image
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing && <>Cancel</>}
           {!isEditing && !initialData.imageUrl && (
@@ -76,7 +72,7 @@ const StrategyImageForm = ({ initialData, courseId, strategyId }) => {
       {isEditing && (
         <div>
           <FileUpload
-            endpoint="StrategyImageForm"
+            endpoint="mentorImage"
             onChange={(url) => {
               if (url) {
                 onSubmit({ imageUrl: url });
@@ -91,5 +87,3 @@ const StrategyImageForm = ({ initialData, courseId, strategyId }) => {
     </div>
   );
 };
-
-export default StrategyImageForm;

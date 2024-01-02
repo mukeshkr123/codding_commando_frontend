@@ -19,12 +19,12 @@ import { useSelector } from "react-redux";
 import apiClient from "lib/api-client";
 
 const formSchema = z.object({
-  name: z.string().min(1, {
-    message: "name is required",
+  title: z.string().min(1, {
+    message: "Title is required",
   }),
 });
 
-const MentorNameForm = ({ initialData, mentorId }) => {
+export const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -47,11 +47,18 @@ const MentorNameForm = ({ initialData, mentorId }) => {
         },
       };
 
-      toast.promise(apiClient.patch(`/mentors/${mentorId}`, values, config), {
-        loading: "Updating course...",
-        success: "Course updated",
-        error: "Something went wrong",
-      });
+      toast.promise(
+        apiClient.patch(
+          `/courses/${courseId}/strategy/${strategyId}/update`,
+          values,
+          config
+        ),
+        {
+          loading: "Updating course...",
+          success: "Course updated",
+          error: "Something went wrong",
+        }
+      );
 
       toggleEdit();
     } catch (error) {
@@ -68,19 +75,19 @@ const MentorNameForm = ({ initialData, mentorId }) => {
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Mentor Name
+        Program title
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit name
+              Edit title
             </>
           )}
         </Button>
       </div>
-      {!isEditing && <p className="mt-2 text-sm">{initialData?.name}</p>}
+      {!isEditing && <p className="mt-2 text-sm">{initialData?.title}</p>}
       {isEditing && (
         <Form {...form}>
           <form
@@ -89,7 +96,7 @@ const MentorNameForm = ({ initialData, mentorId }) => {
           >
             <FormField
               control={form.control}
-              name="name"
+              name="title"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -114,5 +121,3 @@ const MentorNameForm = ({ initialData, mentorId }) => {
     </div>
   );
 };
-
-export default MentorNameForm;

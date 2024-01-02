@@ -1,11 +1,12 @@
+"use client";
+
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-
 import {
   Form,
   FormControl,
@@ -13,28 +14,34 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useSelector } from "react-redux";
+import { Textarea } from "@/components/ui/textarea";
 import apiClient from "lib/api-client";
+import { useSelector } from "react-redux";
+import { cn } from "lib/utils";
 
-const formSchema = z.object({
-  title: z.string().min(1, {
-    message: "Title is required",
-  }),
-});
-
-const TitleForm = ({ initialData, courseId, programId }) => {
+export const StrategyDescriptionForm = ({
+  initialData,
+  courseId,
+  strategyId,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
+  const router = useRouter();
 
   const toggleEdit = () => setIsEditing((current) => !current);
 
-  const router = useRouter();
+  const formSchema = z.object({
+    description: z.string().min(1, {
+      message: "Description is required",
+    }),
+  });
 
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData,
+    defaultValues: {
+      description: initialData?.description || "",
+    },
   });
 
   const { isSubmitting, isValid } = form.formState;
@@ -49,7 +56,7 @@ const TitleForm = ({ initialData, courseId, programId }) => {
 
       toast.promise(
         apiClient.patch(
-          `/courses/${courseId}/program/${programId}/update`,
+          `/courses/${courseId}/strategy/${strategyId}/update`,
           values,
           config
         ),
@@ -75,19 +82,28 @@ const TitleForm = ({ initialData, courseId, programId }) => {
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Program title
+        Course description
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit title
+              Edit description
             </>
           )}
         </Button>
       </div>
-      {!isEditing && <p className="mt-2 text-sm">{initialData?.title}</p>}
+      {!isEditing && (
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.description && "text-slate-500 italic"
+          )}
+        >
+          {initialData.description || "No description"}
+        </p>
+      )}
       {isEditing && (
         <Form {...form}>
           <form
@@ -96,13 +112,13 @@ const TitleForm = ({ initialData, courseId, programId }) => {
           >
             <FormField
               control={form.control}
-              name="title"
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
+                    <Textarea
                       disabled={isSubmitting}
-                      placeholder="e.g. 'Advanced web development'"
+                      placeholder="e.g. 'This course is about...'"
                       {...field}
                     />
                   </FormControl>
@@ -121,5 +137,3 @@ const TitleForm = ({ initialData, courseId, programId }) => {
     </div>
   );
 };
-
-export default TitleForm;

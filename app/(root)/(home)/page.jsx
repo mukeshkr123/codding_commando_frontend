@@ -1,5 +1,5 @@
 import Image from "next/image";
-import MeetMentor from "@/components/shared/meet-mentor";
+import { MeetMentor } from "@/components/shared/meet-mentor";
 import { chooseusData, trainingData } from "lib/data";
 import CourseSlider from "@/components/course-slider";
 

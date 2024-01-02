@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Button } from "../ui/button";
 
-const Buy = ({ makePayment }) => {
+export const Buy = ({ makePayment }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
@@ -24,5 +24,3 @@ const Buy = ({ makePayment }) => {
     </div>
   );
 };
-
-export default Buy;

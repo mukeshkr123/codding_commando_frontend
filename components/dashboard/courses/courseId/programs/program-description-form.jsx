@@ -1,11 +1,12 @@
+"use client";
+
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Pencil } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Pencil, Trash } from "lucide-react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-
 import {
   Form,
   FormControl,
@@ -13,28 +14,33 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useSelector } from "react-redux";
+import { Textarea } from "@/components/ui/textarea";
 import apiClient from "lib/api-client";
+import { useSelector } from "react-redux";
 
-const formSchema = z.object({
-  title: z.string().min(1, {
-    message: "Title is required",
-  }),
-});
-
-const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
+export const ProgramDescriptionForm = ({
+  initialData,
+  courseId,
+  programId,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
+  const router = useRouter();
 
   const toggleEdit = () => setIsEditing((current) => !current);
 
-  const router = useRouter();
+  const formSchema = z.object({
+    description: z.string().min(1, {
+      message: "Description is required",
+    }),
+  });
 
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData,
+    defaultValues: {
+      description: "",
+    },
   });
 
   const { isSubmitting, isValid } = form.formState;
@@ -47,9 +53,9 @@ const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
         },
       };
 
-      toast.promise(
+      await toast.promise(
         apiClient.patch(
-          `/courses/${courseId}/strategy/${strategyId}/update`,
+          `/courses/${courseId}/program/${programId}/update`,
           values,
           config
         ),
@@ -66,6 +72,32 @@ const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
     }
   };
 
+  const handleDelete = async (descriptionId) => {
+    console.log("delete");
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
+
+      await toast.promise(
+        apiClient.delete(
+          `/courses/${courseId}/program/${programId}/${descriptionId}`,
+          config
+        ),
+        {
+          loading: "Description deleting...",
+          success: "Description deleted",
+          error: "Something went wrong",
+        }
+      );
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+    }
+  };
+
   useEffect(() => {
     if (isEditing) {
       router.refresh();
@@ -75,19 +107,39 @@ const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Program title
+        Course description
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit title
+              Add description
             </>
           )}
         </Button>
       </div>
-      {!isEditing && <p className="mt-2 text-sm">{initialData?.title}</p>}
+
+      {!isEditing &&
+        (initialData?.description?.length > 0 ? (
+          <div className="flex flex-col gap-1 ">
+            {initialData?.description.map((program) => (
+              <div
+                key={program?._id}
+                className="flex items-center justify-between rounded-md border-2 border-slate-200 px-4 py-2 text-slate-700 "
+              >
+                <p className="text-sm">{program?.title}</p>
+                <Trash
+                  className="h-5 w-5 cursor-pointer hover:bg-sky-100 hover:text-sky-700"
+                  onClick={() => handleDelete(program?._id)}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          "No description"
+        ))}
+
       {isEditing && (
         <Form {...form}>
           <form
@@ -96,13 +148,13 @@ const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
           >
             <FormField
               control={form.control}
-              name="title"
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
+                    <Textarea
                       disabled={isSubmitting}
-                      placeholder="e.g. 'Advanced web development'"
+                      placeholder="e.g. 'This course is about...'"
                       {...field}
                     />
                   </FormControl>
@@ -112,7 +164,7 @@ const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
             />
             <div className="flex items-center gap-x-2">
               <Button disabled={!isValid || isSubmitting} type="submit">
-                Save
+                Add description
               </Button>
             </div>
           </form>
@@ -121,5 +173,3 @@ const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
     </div>
   );
 };
-
-export default StrategyTitleForm;

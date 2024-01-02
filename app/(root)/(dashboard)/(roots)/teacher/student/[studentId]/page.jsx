@@ -1,17 +1,14 @@
-// StudentProfile.js
-
 "use client";
 
+import { CoursePaymentDetail } from "@/components/dashboard/students/course-payement-detail";
+import { StudentCourseCard } from "@/components/dashboard/students/student-course-card";
+import { StudentDetailCard } from "@/components/dashboard/students/studetail-card";
+import apiClient from "lib/api-client";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import StudentDetailCard from "./_components/studetail-card";
-import apiClient from "lib/api-client";
-import StudentCourseCard from "./_components/student-course-card";
-import CoursePaymentDetail from "./_components/course-payement-detail";
-
 const StudentProfile = ({ params }) => {
   const [studentData, setStudentData] = useState();
   const { userAuth } = useSelector((state) => state?.user);
@@ -27,7 +24,6 @@ const StudentProfile = ({ params }) => {
         `/users/students/${params.studentId}`,
         config
       );
-      console.log(data);
 
       setStudentData(data.student);
     } catch (error) {
@@ -38,8 +34,6 @@ const StudentProfile = ({ params }) => {
   useEffect(() => {
     fetchStudentData();
   }, [params?.studentId]);
-
-  console.log(studentData?.email);
 
   return (
     <div className="w-full p-6">

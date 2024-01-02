@@ -1,16 +1,16 @@
 "use client";
 
 import { Banner } from "@/components/banner";
+import { Actions } from "@/components/dashboard/courses/actions";
+import { MentorDescriptionForm } from "@/components/dashboard/mentors/description-form";
+import { MentorImageForm } from "@/components/dashboard/mentors/mentor-image";
+import { MentorNameForm } from "@/components/dashboard/mentors/mentor-name-form";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { LayoutDashboard, Loader2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { Actions } from "../../../../../../../components/dashboard/courses/actions";
-import MentorNameForm from "./_components/mentor-name-form";
-import { MentorDescriptionForm } from "./_components/description-form";
-import MentorImageForm from "./_components/mentor-image";
 
 const MentorIdPage = ({ params }) => {
   const [mentorData, setMentorData] = useState(null);

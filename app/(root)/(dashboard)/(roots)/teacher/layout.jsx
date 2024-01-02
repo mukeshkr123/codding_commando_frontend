@@ -1,5 +1,4 @@
 import { redirect } from "next/navigation";
-import React from "react";
 
 const TeacherLayout = ({ children }) => {
   const user = { name: "mukesh" };

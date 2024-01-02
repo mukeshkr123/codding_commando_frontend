@@ -1,12 +1,12 @@
 "use client";
 
-import apiClient from "lib/api-client";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import toast from "react-hot-toast";
 import { columns } from "@/components/dashboard/courses/columns";
 import { DataTable } from "@/components/dashboard/courses/data-tables";
+import apiClient from "lib/api-client";
 import { Loader2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const CoursesPage = () => {
   const [data, setData] = useState([]);

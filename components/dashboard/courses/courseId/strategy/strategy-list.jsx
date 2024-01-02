@@ -4,7 +4,7 @@ import { Grip, Pencil } from "lucide-react";
 import { cn } from "lib/utils";
 import { Badge } from "@/components/ui/badge";
 
-const StrategiesList = ({ items, onReorder, onEdit }) => {
+export const StrategiesList = ({ items, onReorder, onEdit }) => {
   const [programs, setPrograms] = useState(items);
 
   useEffect(() => {
@@ -85,5 +85,3 @@ const StrategiesList = ({ items, onReorder, onEdit }) => {
     </DragDropContext>
   );
 };
-
-export default StrategiesList;

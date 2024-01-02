@@ -9,28 +9,41 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
-const ProgramActions = ({ disabled, courseId, programId, isPublished }) => {
+export const StrategyActions = ({
+  disabled,
+  courseId,
+  strategyId,
+  isPublished,
+}) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${userAuth?.accessToken}`,
+    },
+  };
 
   const onClick = async () => {
     try {
       setIsLoading(true);
 
-      const config = {
-        headers: {
-          Authorization: `Bearer ${userAuth?.accessToken}`,
-        },
-      };
-
-      const endpoint = isPublished
-        ? `/courses/${courseId}/program/${programId}/unpublish`
-        : `/courses/${courseId}/program/${programId}/publish`;
-
-      await apiClient.patch(endpoint, {}, config);
-
-      toast.success(`Program ${isPublished ? "un" : ""}published`);
+      if (isPublished) {
+        await apiClient.patch(
+          `/courses/${courseId}/strategy/${strategyId}/unpublish`,
+          {},
+          config
+        );
+        toast.success("Strategy unpublished");
+      } else {
+        await apiClient.patch(
+          `/courses/${courseId}/strategy/${strategyId}/publish`,
+          {},
+          config
+        );
+        toast.success("Strategy published");
+      }
       router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
@@ -43,18 +56,12 @@ const ProgramActions = ({ disabled, courseId, programId, isPublished }) => {
     try {
       setIsLoading(true);
 
-      const config = {
-        headers: {
-          Authorization: `Bearer ${userAuth?.accessToken}`,
-        },
-      };
-
       await apiClient.delete(
-        `/courses/${courseId}/program/${programId}`,
+        `/courses/${courseId}/strategy/${strategyId}`,
         config
       );
 
-      toast.success("Program deleted");
+      toast.success("Strategy deleted");
       router.refresh();
       router.push(`/teacher/courses/${courseId}`);
     } catch (error) {
@@ -63,7 +70,6 @@ const ProgramActions = ({ disabled, courseId, programId, isPublished }) => {
       setIsLoading(false);
     }
   };
-
   return (
     <div className="flex items-center gap-x-2">
       <Button
@@ -82,5 +88,3 @@ const ProgramActions = ({ disabled, courseId, programId, isPublished }) => {
     </div>
   );
 };
-
-export default ProgramActions;

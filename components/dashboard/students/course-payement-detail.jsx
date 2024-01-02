@@ -1,8 +1,7 @@
 import { Card } from "@/components/ui/card";
 import React from "react";
 
-const CoursePaymentDetail = ({ studentData }) => {
-  console.log(studentData);
+export const CoursePaymentDetail = ({ studentData }) => {
   return (
     <Card className="max-w-sm p-4 lg:max-w-md xl:max-w-lg">
       <h1 className="text-2xl font-semibold">Payment history</h1>
@@ -16,5 +15,3 @@ const CoursePaymentDetail = ({ studentData }) => {
     </Card>
   );
 };
-
-export default CoursePaymentDetail;

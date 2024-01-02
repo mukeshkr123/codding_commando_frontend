@@ -24,7 +24,6 @@ export const ContactDetails = () => {
   }, []);
 
   const unSeenItems = data?.filter((item) => !item.seen);
-  console.log(unSeenItems?.length);
 
   return (
     <section>

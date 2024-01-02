@@ -3,7 +3,13 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const MentorCard = ({ src, alt, name, description, additionalDetails }) => {
+export const MentorCard = ({
+  src,
+  alt,
+  name,
+  description,
+  additionalDetails,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div className="relative max-w-[350px]">
@@ -39,5 +45,3 @@ const MentorCard = ({ src, alt, name, description, additionalDetails }) => {
     </div>
   );
 };
-
-export default MentorCard;

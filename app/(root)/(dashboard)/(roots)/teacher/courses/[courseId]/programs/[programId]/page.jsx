@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { ArrowLeft, LayoutDashboard } from "lucide-react";
-import { useSelector } from "react-redux";
-import Link from "next/link";
-import toast from "react-hot-toast";
-import apiClient from "lib/api-client";
 import { Banner } from "@/components/banner";
+import { ProgramActions } from "@/components/dashboard/courses/courseId/programs/program-actions";
+import { ProgramDescriptionForm } from "@/components/dashboard/courses/courseId/programs/program-description-form";
+import { ProgramTitleForm } from "@/components/dashboard/courses/courseId/programs/program-title-form";
 import { IconBadge } from "@/components/icon-bagde";
-import ProgramActions from "./_components/program-actions";
-import ProgramTitleForm from "./_components/program-title-form";
-import ProgramDescriptionForm from "./_components/program-description-form";
+import apiClient from "lib/api-client";
+import { ArrowLeft, LayoutDashboard } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const ProgramId = ({ params }) => {
   const [programData, setProgramData] = useState({});

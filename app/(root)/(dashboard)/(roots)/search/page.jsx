@@ -1,4 +1,3 @@
-import React from "react";
 import { Categories } from "@/components/dashboard/search/categories";
 
 const categories = [

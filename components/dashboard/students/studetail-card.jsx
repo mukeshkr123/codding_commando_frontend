@@ -3,8 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { formatCreatedAtDate } from "lib/format";
 import React from "react";
 
-const StudentDetailCard = ({ studentData }) => {
-  console.log(studentData);
+export const StudentDetailCard = ({ studentData }) => {
   return (
     <Card className="max-w-sm lg:max-w-md lg:p-4 xl:max-w-lg">
       {studentData && (
@@ -38,5 +37,3 @@ const StudentDetailCard = ({ studentData }) => {
     </Card>
   );
 };
-
-export default StudentDetailCard;

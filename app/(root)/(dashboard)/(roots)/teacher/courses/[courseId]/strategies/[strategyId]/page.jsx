@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { ArrowLeft, LayoutDashboard } from "lucide-react";
-import { useSelector } from "react-redux";
-import Link from "next/link";
-import toast from "react-hot-toast";
-import apiClient from "lib/api-client";
 import { Banner } from "@/components/banner";
+import { StrategyActions } from "@/components/dashboard/courses/courseId/strategy/strategy-actions";
+import { StrategyDescriptionForm } from "@/components/dashboard/courses/courseId/strategy/strategy-description-form";
+import { StrategyImageForm } from "@/components/dashboard/courses/courseId/strategy/strategy-image-form";
+import { StrategyTitleForm } from "@/components/dashboard/courses/courseId/strategy/strategy-title-form";
 import { IconBadge } from "@/components/icon-bagde";
-import StrategyTitleForm from "./_components/strategy-title-form";
-import StrategyDescriptionForm from "./_components/strategy-description-form";
-import StrategyActions from "./_components/strategy-actions";
-import StrategyImageForm from "./_components/strategy-image-form";
+import apiClient from "lib/api-client";
+import { ArrowLeft, LayoutDashboard } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const StrategyIdPage = ({ params }) => {
   const [strategy, setStrategy] = useState({});

@@ -25,7 +25,7 @@ const formSchema = z.object({
   }),
 });
 
-const CreateMentorForm = () => {
+export const CreateMentorForm = () => {
   const router = useRouter();
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -95,5 +95,3 @@ const CreateMentorForm = () => {
     </Form>
   );
 };
-
-export default CreateMentorForm;

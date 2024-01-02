@@ -46,7 +46,7 @@ const TeamData = [
   },
 ];
 
-const TeamList = () => {
+export const TeamList = () => {
   return (
     <div className="grid grid-cols-2 justify-center gap-4 py-6 sm:gap-16 md:grid-cols-3 md:gap-8 xl:grid-cols-4 xl:gap-24">
       {TeamData.map(({ _id, name, description, imageUrl }) => (
@@ -65,5 +65,3 @@ const TeamList = () => {
     </div>
   );
 };
-
-export default TeamList;

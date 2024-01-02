@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const CourseCard = ({
+export const CourseCard = ({
   title,
   description,
   duration,
@@ -46,5 +46,3 @@ const CourseCard = ({
     </div>
   );
 };
-
-export default CourseCard;

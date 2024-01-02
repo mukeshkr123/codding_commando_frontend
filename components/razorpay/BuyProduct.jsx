@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import Buy from "./Buy";
+import { Buy } from "./Buy";
 import { useRouter } from "next/navigation";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
 
-const BuyProduct = () => {
+export const BuyProduct = () => {
   const router = useRouter();
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -86,5 +86,3 @@ const BuyProduct = () => {
     </>
   );
 };
-
-export default BuyProduct;

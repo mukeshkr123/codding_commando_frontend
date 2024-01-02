@@ -1,4 +1,4 @@
-import BuyProduct from "@/components/razorpay/BuyProduct";
+import { BuyProduct } from "@/components/razorpay/BuyProduct";
 import React from "react";
 
 const page = () => {

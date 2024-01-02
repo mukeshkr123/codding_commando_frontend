@@ -1,23 +1,23 @@
 "use client";
 
 import { Banner } from "@/components/banner";
+import { Actions } from "@/components/dashboard/courses/actions";
+import { AssignMentorForm } from "@/components/dashboard/courses/courseId/assign-mentor-form";
+import { AboutForm } from "@/components/dashboard/courses/courseId/basicdata/about-form";
+import { CourseImage } from "@/components/dashboard/courses/courseId/basicdata/course-image-form";
+import { DescriptionForm } from "@/components/dashboard/courses/courseId/basicdata/description-form";
+import { DurationForm } from "@/components/dashboard/courses/courseId/basicdata/duration-form";
+import { ModeForm } from "@/components/dashboard/courses/courseId/basicdata/mode-form";
+import { TitleForm } from "@/components/dashboard/courses/courseId/basicdata/title-form";
+import { PaymentDetails } from "@/components/dashboard/courses/courseId/payments/payment-details";
+import { ProgramsForm } from "@/components/dashboard/courses/courseId/programs/ProgramsForm";
+import { StrategyForm } from "@/components/dashboard/courses/courseId/strategy/strategy-form";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { LayoutDashboard, ListChecks, ListStart, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { AboutForm } from "@/components/dashboard/courses/courseId/basicdata/about-form";
-import { Actions } from "@/components/dashboard/courses/actions";
-import { CourseImage } from "@/components/dashboard/courses/courseId/basicdata/course-image-form";
-import { DescriptionForm } from "@/components/dashboard/courses/courseId/basicdata/description-form";
-import { DurationForm } from "@/components/dashboard/courses/courseId/basicdata/duration-form";
-import { ModeForm } from "@/components/dashboard/courses/courseId/basicdata/mode-form";
-import { PaymentDetails } from "@/components/dashboard/courses/courseId/payments/payment-details";
-import { TitleForm } from "@/components/dashboard/courses/courseId/basicdata/title-form";
-import { ProgramsForm } from "@/components/dashboard/courses/courseId/programs/ProgramsForm";
-import { StrategyForm } from "@/components/dashboard/courses/courseId/strategy/StrategyForm";
-import { AssignMentorForm } from "@/components/dashboard/courses/courseId/assign-mentor-form";
 
 const CourseIdPage = ({ params }) => {
   const [courseData, setCourseData] = useState(null);

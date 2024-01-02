@@ -11,9 +11,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "lib/utils";
-import { Badge } from "../../../../../../../components/ui/badge";
+import { Badge } from "../../ui/badge";
 
-const columns = [
+export const columns = [
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -78,5 +78,3 @@ const columns = [
     },
   },
 ];
-
-export default columns;

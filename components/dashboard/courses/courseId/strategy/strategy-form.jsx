@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "lib/utils";
 import * as z from "zod";
-import StrategiesList from "./StrategiesLists";
+import { StrategiesList } from "./strategy-list";
 
 const formSchema = z.object({
   title: z.string().min(1),

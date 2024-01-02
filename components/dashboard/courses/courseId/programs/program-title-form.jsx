@@ -1,12 +1,11 @@
-"use client";
-
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Pencil, Trash } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Pencil } from "lucide-react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+
 import {
   Form,
   FormControl,
@@ -14,29 +13,28 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
+import apiClient from "lib/api-client";
 
-const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
+const formSchema = z.object({
+  title: z.string().min(1, {
+    message: "Title is required",
+  }),
+});
+
+export const ProgramTitleForm = ({ initialData, courseId, programId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
-  const router = useRouter();
 
   const toggleEdit = () => setIsEditing((current) => !current);
 
-  const formSchema = z.object({
-    description: z.string().min(1, {
-      message: "Description is required",
-    }),
-  });
+  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      description: "",
-    },
+    defaultValues: initialData,
   });
 
   const { isSubmitting, isValid } = form.formState;
@@ -49,7 +47,7 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
         },
       };
 
-      await toast.promise(
+      toast.promise(
         apiClient.patch(
           `/courses/${courseId}/program/${programId}/update`,
           values,
@@ -68,32 +66,6 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
     }
   };
 
-  const handleDelete = async (descriptionId) => {
-    console.log("delete");
-    try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${userAuth?.accessToken}`,
-        },
-      };
-
-      await toast.promise(
-        apiClient.delete(
-          `/courses/${courseId}/program/${programId}/${descriptionId}`,
-          config
-        ),
-        {
-          loading: "Description deleting...",
-          success: "Description deleted",
-          error: "Something went wrong",
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong");
-    }
-  };
-
   useEffect(() => {
     if (isEditing) {
       router.refresh();
@@ -103,39 +75,19 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Course description
+        Program title
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Add description
+              Edit title
             </>
           )}
         </Button>
       </div>
-
-      {!isEditing &&
-        (initialData?.description?.length > 0 ? (
-          <div className="flex flex-col gap-1 ">
-            {initialData?.description.map((program) => (
-              <div
-                key={program?._id}
-                className="flex items-center justify-between rounded-md border-2 border-slate-200 px-4 py-2 text-slate-700 "
-              >
-                <p className="text-sm">{program?.title}</p>
-                <Trash
-                  className="h-5 w-5 cursor-pointer hover:bg-sky-100 hover:text-sky-700"
-                  onClick={() => handleDelete(program?._id)}
-                />
-              </div>
-            ))}
-          </div>
-        ) : (
-          "No description"
-        ))}
-
+      {!isEditing && <p className="mt-2 text-sm">{initialData?.title}</p>}
       {isEditing && (
         <Form {...form}>
           <form
@@ -144,13 +96,13 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
           >
             <FormField
               control={form.control}
-              name="description"
+              name="title"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Textarea
+                    <Input
                       disabled={isSubmitting}
-                      placeholder="e.g. 'This course is about...'"
+                      placeholder="e.g. 'Advanced web development'"
                       {...field}
                     />
                   </FormControl>
@@ -160,7 +112,7 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
             />
             <div className="flex items-center gap-x-2">
               <Button disabled={!isValid || isSubmitting} type="submit">
-                Add description
+                Save
               </Button>
             </div>
           </form>
@@ -169,5 +121,3 @@ const ProgramDescriptionForm = ({ initialData, courseId, programId }) => {
     </div>
   );
 };
-
-export default ProgramDescriptionForm;

@@ -1,5 +1,4 @@
-import React from "react";
-import CreateMentorForm from "./_components/create-mentor-form";
+import { CreateMentorForm } from "@/components/dashboard/mentors/create-mentor-form";
 
 const createMentorPage = () => {
   return (

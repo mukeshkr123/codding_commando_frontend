@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 import apiClient from "lib/api-client";
-import CurriculumStrategyCard from "@/components/shared/card/curriculum-strategy-card";
+import { CurriculumStrategyCard } from "@/components/shared/card/curriculum-strategy-card";
 import { redirect } from "next/navigation";
 import { PaymentDetails } from "@/components/courses/payment-detail";
 import { MentorDetails } from "@/components/courses/mentor-details";

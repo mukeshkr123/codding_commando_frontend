@@ -1,11 +1,11 @@
 "use client";
 
+import { columns } from "@/components/dashboard/students/columns";
+import { DataTable } from "@/components/dashboard/students/data-tables";
 import apiClient from "lib/api-client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import DataTable from "./_components/data-tables";
-import columns from "./_components/columns";
 
 const MentorPage = () => {
   const [data, setData] = useState([]);

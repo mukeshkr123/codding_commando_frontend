@@ -1,10 +1,7 @@
 import { Card } from "@/components/ui/card";
 import React from "react";
 
-const StudentCourseCard = ({ studentData }) => {
-  console.log(studentData);
-
-  console.log(studentData?.enrollments?.length);
+export const StudentCourseCard = ({ studentData }) => {
   return (
     <Card className="max-w-sm p-4 lg:max-w-md xl:max-w-lg">
       <h1 className="text-2xl font-semibold">Enrolled Courses</h1>
@@ -20,5 +17,3 @@ const StudentCourseCard = ({ studentData }) => {
     </Card>
   );
 };
-
-export default StudentCourseCard;

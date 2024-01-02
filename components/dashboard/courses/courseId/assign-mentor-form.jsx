@@ -101,7 +101,6 @@ export function AssignMentorForm({ initialData, courseId }) {
   };
 
   const handleUnAssignMentor = async (value) => {
-    console.log(value);
     try {
       const config = {
         headers: {

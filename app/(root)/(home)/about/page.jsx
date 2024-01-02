@@ -1,6 +1,5 @@
-import React from "react";
-import TeamList from "@/components/team";
-import MeetMentor from "@/components/shared/meet-mentor";
+import { MeetMentor } from "@/components/shared/meet-mentor";
+import { TeamList } from "@/components/team";
 import Image from "next/image";
 
 export default function AboutPage() {
