@@ -73,7 +73,6 @@ export const ProgramDescriptionForm = ({
   };
 
   const handleDelete = async (descriptionId) => {
-    console.log("delete");
     try {
       const config = {
         headers: {

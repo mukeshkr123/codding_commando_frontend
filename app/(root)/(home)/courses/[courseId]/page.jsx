@@ -80,8 +80,8 @@ const CoursePage = async ({ params }) => {
         <div className="rounded-custom bg-gradient-custom from-custom via-custom backdrop-blur-custom mx-1 mt-4 max-w-5xl p-6 md:p-8 lg:mt-8 lg:p-12">
           <p className="text-base md:text-lg">{result?.about}</p>
         </div>
-        <div className="mt-6 flex flex-col gap-6 md:mb-8 md:flex-row lg:mt-10 lg:gap-8">
-          <Link href="/">
+        <div className="z-10 mt-6 flex flex-col gap-6 md:mb-8 md:flex-row lg:mt-10 lg:gap-8">
+          <Link href="#enroll">
             <button className="button-white-shadow cursor-pointer rounded-3xl bg-pink-500 px-8 py-2 text-base font-semibold capitalize transition-transform hover:scale-105 sm:text-lg">
               Enroll Now!
             </button>
@@ -121,7 +121,11 @@ const CoursePage = async ({ params }) => {
           <MentorDetails mentors={result?.mentors} />
         </section>
       )}
-      <PaymentDetails title={result?.title} {...result?.paymentDetail} />
+      <PaymentDetails
+        title={result?.title}
+        {...result?.paymentDetail}
+        courseId={result?._id}
+      />
     </div>
   );
 };

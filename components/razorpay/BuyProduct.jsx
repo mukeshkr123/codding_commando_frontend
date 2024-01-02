@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import { Buy } from "./Buy";
 import { useRouter } from "next/navigation";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
-export const BuyProduct = () => {
+export const BuyProduct = ({ children, courseId }) => {
   const router = useRouter();
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -13,8 +13,13 @@ export const BuyProduct = () => {
   const email = userAuth?.email || " ";
   const phone = userAuth?.phone || " ";
 
-  const makePayment = async ({ courseId }) => {
-    const key = "rzp_test_KJ2wNm2bh6OBwD";
+  const makePayment = async () => {
+    if (!userAuth) {
+      router.push("/login");
+      return;
+    }
+
+    const key = "rzp_test_SsZQw7VSzw5bCq"; // Replace with your actual Razorpay key
     const config = {
       headers: {
         Authorization: `Bearer ${userAuth?.accessToken}`,
@@ -22,11 +27,12 @@ export const BuyProduct = () => {
     };
 
     try {
-      // make api call to server
+      // Make an API call to create the order on the server
       const {
         data: { order },
-      } = await apiClient.get(
+      } = await apiClient.post(
         `/courses/${courseId}/payment/create-order`,
+        {},
         config
       );
 
@@ -44,17 +50,15 @@ export const BuyProduct = () => {
           contact: phone,
         },
         handler: async function (response) {
-          console.log(response);
-
           const responseData = {
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_order_id: response.razorpay_order_id,
             razorpay_signature: response.razorpay_signature,
           };
 
-          // Note: Use the correct endpoint for verification
+          // Verify the payment on the server
           const { data } = await apiClient.post(
-            "/courses/123/payment/verify",
+            `/courses/${courseId}/payment/verify`,
             responseData,
             config
           );
@@ -67,22 +71,19 @@ export const BuyProduct = () => {
         },
       };
 
+      // Create a payment object and open the payment modal
       const paymentObject = new window.Razorpay(options);
       paymentObject.open();
 
+      // Handle payment failure
       paymentObject.on("payment.failed", function (response) {
-        // Correct event name
         alert("Payment failed. Please try again. Contact support for help");
       });
     } catch (error) {
       console.error("Error making payment:", error);
+      toast.error("Something went wrong");
     }
   };
 
-  return (
-    <>
-      {/* Use the router inside a component or page */}
-      <Buy makePayment={makePayment} />
-    </>
-  );
+  return <div onClick={makePayment}>{children}</div>;
 };
