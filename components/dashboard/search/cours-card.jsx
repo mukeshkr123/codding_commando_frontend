@@ -9,6 +9,7 @@ export const CourseCard = ({
   duration,
   imageUrl,
   courseId,
+  enrolled,
 }) => {
   return (
     <div className="relative m-1 max-w-xs overflow-hidden rounded-[25px] border-2 border-[#000000] bg-gradient-to-br from-[#10001c] to-[#0D0024] text-white">
@@ -27,11 +28,17 @@ export const CourseCard = ({
         <div className="absolute bottom-0 right-0 bg-gradient-to-t from-[#10001c] to-transparent p-4">
           <div className="flex flex-col items-center gap-2">
             <p className="text-sm font-medium text-[#F5478E]">{duration}</p>
-            <BuyProduct courseId={courseId}>
+            {enrolled ? (
               <Button className="rounded-full bg-gradient-to-r from-[#F5478E] to-[#FF7E5F] text-sm text-white shadow-md transition-all duration-300 hover:from-[#FF7E5F] hover:to-[#F5478E]">
-                Buy now
+                Continue
               </Button>
-            </BuyProduct>
+            ) : (
+              <BuyProduct courseId={courseId}>
+                <Button className="rounded-full bg-gradient-to-r from-[#F5478E] to-[#FF7E5F] text-sm text-white shadow-md transition-all duration-300 hover:from-[#FF7E5F] hover:to-[#F5478E]">
+                  Buy now
+                </Button>
+              </BuyProduct>
+            )}
           </div>
         </div>
       </div>
