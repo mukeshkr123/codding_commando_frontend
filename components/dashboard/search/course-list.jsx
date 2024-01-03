@@ -16,8 +16,8 @@ async function getAllCourses() {
 export const CourseList = async () => {
   const courses = await getAllCourses();
   return (
-    <div>
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ">
+    <div className="mt-4">
+      <div className="grid gap-4  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ">
         {courses?.map((course) => (
           <CourseCard
             courseId={course?._id}
