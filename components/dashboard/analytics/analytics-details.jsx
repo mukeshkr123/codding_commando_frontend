@@ -34,8 +34,6 @@ const AnalyticsDetails = () => {
     fetchAnalyticsData();
   }, []);
 
-  console.log(data);
-
   if (loading) {
     return (
       <div className="absolute right-0 top-0 flex h-full w-full items-center justify-center rounded-md">
@@ -43,8 +41,6 @@ const AnalyticsDetails = () => {
       </div>
     );
   }
-
-  console.log(data);
 
   return (
     <div className="p-6">

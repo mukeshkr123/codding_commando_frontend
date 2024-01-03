@@ -6,14 +6,21 @@ import React, { useEffect, useState } from "react";
 import { ContactDataTable } from "./contact-data-tables";
 import ContactColumns from "./contact-columns";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 export const ContactDetails = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { userAuth } = useSelector((state) => state?.user);
 
   const fetchContactData = async () => {
     try {
-      const { data } = await apiClient.get("/send/get-all");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
+      const { data } = await apiClient.get("/send/get-all", config);
       setData(data?.contacts);
     } catch (error) {
       toast.error("Something went wrong");

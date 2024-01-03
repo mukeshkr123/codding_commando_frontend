@@ -1,7 +1,6 @@
 "use client";
 
 import { Banner } from "@/components/banner";
-import { Actions } from "@/components/dashboard/courses/actions";
 import { AssignMentorForm } from "@/components/dashboard/courses/courseId/assign-mentor-form";
 import { AboutForm } from "@/components/dashboard/courses/courseId/basicdata/about-form";
 import { CourseImage } from "@/components/dashboard/courses/courseId/basicdata/course-image-form";
@@ -9,6 +8,7 @@ import { DescriptionForm } from "@/components/dashboard/courses/courseId/basicda
 import { DurationForm } from "@/components/dashboard/courses/courseId/basicdata/duration-form";
 import { ModeForm } from "@/components/dashboard/courses/courseId/basicdata/mode-form";
 import { TitleForm } from "@/components/dashboard/courses/courseId/basicdata/title-form";
+import { CourseActions } from "@/components/dashboard/courses/courseId/course-actions";
 import { PaymentDetails } from "@/components/dashboard/courses/courseId/payments/payment-details";
 import { ProgramsForm } from "@/components/dashboard/courses/courseId/programs/ProgramsForm";
 import { StrategyForm } from "@/components/dashboard/courses/courseId/strategy/strategy-form";
@@ -88,7 +88,7 @@ const CourseIdPage = ({ params }) => {
               Complete all fields {completionText}
             </span>
           </div>
-          <Actions
+          <CourseActions
             disabled={!isComplete}
             courseId={params.courseId}
             isPublished={courseData?.isPublished}

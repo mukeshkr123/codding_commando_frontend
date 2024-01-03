@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import { Wahooo } from "@/components/Wahooo";
 import { FormInput } from "./form-input";
 import { FormTextarea } from "./TextArea";
+import { ErrorToast } from "@/components/error-toast";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First Name is required" }),
@@ -33,19 +34,15 @@ export const ContactForm = () => {
 
   const onSubmit = async (contactData) => {
     try {
-      const { data } = await apiClient.post("/send/message", {
+      await apiClient.post("/send/message", {
         ...contactData,
         type: "Contact",
       });
       setSuccess(true);
-      toast.success(data.message);
+      toast.success("Message sent");
       reset();
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message ||
-        error.message ||
-        "Internal Server Error";
-      toast.error(errorMessage);
+      ErrorToast(error);
     }
   };
 

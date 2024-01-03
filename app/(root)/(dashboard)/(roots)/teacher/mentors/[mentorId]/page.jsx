@@ -17,8 +17,6 @@ const MentorIdPage = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const { userAuth } = useSelector((state) => state?.user);
 
-  console.log(mentorData);
-
   const fetchmentorData = useMemo(
     () => async () => {
       try {

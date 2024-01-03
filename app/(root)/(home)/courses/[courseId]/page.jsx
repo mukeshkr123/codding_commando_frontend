@@ -26,7 +26,7 @@ const CoursePage = async ({ params }) => {
   const result = await getCourseById();
 
   if (!result) {
-    redirect(`/not-found`);
+    redirect(`/courses`);
   }
 
   return (

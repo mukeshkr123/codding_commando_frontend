@@ -4,10 +4,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { Button } from "../ui/button";
-import {
-  activateAccountAction,
-  registerAction,
-} from "GlobalRedux/slices/userSlice";
+import { registerAction } from "GlobalRedux/slices/userSlice";
+import apiClient from "lib/api-client";
+import { ErrorToast } from "../error-toast";
+import { useRouter } from "next/navigation";
 
 const VerificationBox = ({ email }) => {
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ const VerificationBox = ({ email }) => {
   const [isResendClicked, setResendClicked] = useState(false);
   const [timer, setTimer] = useState(60);
   const inputRefs = [useRef(), useRef(), useRef(), useRef()];
+  const router = useRouter();
 
   const { registered } = useSelector((state) => state?.user);
 
@@ -32,18 +33,24 @@ const VerificationBox = ({ email }) => {
     }
   };
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
     const code = verificationCode.join("");
     if (code.length !== 4 || !/^\d+$/.test(code)) {
       setError(true);
       return;
     }
-    const data = {
+    const registerData = {
       activationCode: code,
       activationToken: registered?.token,
     };
 
-    dispatch(activateAccountAction(data));
+    try {
+      await apiClient.post("/users/activate", registerData);
+      toast.success("Registered successfully");
+      router.push("/login");
+    } catch (error) {
+      ErrorToast(error);
+    }
     setError(false);
   };
 

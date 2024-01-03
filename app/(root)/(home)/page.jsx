@@ -119,7 +119,7 @@ export default function HomePage() {
             alt="Choose Us"
             height={200}
             width={300}
-            className="w-[80%] md:w-[55%] md:py-4"
+            className="mb-4 w-[80%] md:mb-0 md:w-[55%] md:py-4"
           />
           <div className="mt-8  flex flex-col space-y-6 sm:flex-row sm:space-x-6 sm:space-y-0 lg:space-x-12 ">
             {chooseusData &&
@@ -155,7 +155,7 @@ export default function HomePage() {
               alt="Our Training Process"
               width={200}
               height={200}
-              className="w-[85%] sm:w-[70%] xl:py-8"
+              className="mb-6 w-[85%] sm:w-[70%] md:mb-0 xl:py-8"
             />
             <div className="flex flex-col-reverse space-y-8 lg:flex-row lg:space-x-8 lg:space-y-0 lg:px-4 lg:pt-10">
               <div className="flex flex-col space-y-6 sm:w-full lg:w-[70%] lg:space-y-10 lg:pr-10">

@@ -16,7 +16,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-const NavMenu = () => {
+export const NavMenu = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -48,5 +48,3 @@ const NavMenu = () => {
     </DropdownMenu>
   );
 };
-
-export default NavMenu;

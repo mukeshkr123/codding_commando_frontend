@@ -1,13 +1,7 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { NavLink } from "./navLink";
 import Image from "next/image";
-import MobileNav from "./MobileNav";
 import Link from "next/link";
-import NavMenu from "../navbar/nav-menu";
-import { Button } from "../../ui/button";
-import { useSelector } from "react-redux";
+import { NavLink } from "./navLink";
+import UserAvatar from "./user-avatar";
 
 const navLinks = [
   {
@@ -29,17 +23,6 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [isMounted, setMounted] = useState(false);
-  const storeData = useSelector((state) => state?.user);
-  const { userAuth } = storeData;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
   return (
     <nav className="lg::px-16 min-h-[10vh] w-full  bg-dark-purple px-10 py-8 text-white md:px-16 xl:px-20">
       <div className="flex items-center justify-between px-2">
@@ -69,25 +52,14 @@ export default function Navbar() {
           </div>
         </div>
 
-        {userAuth ? (
-          <div className="hidden md:flex">
-            <NavMenu user={userAuth} />
-          </div>
-        ) : (
-          <Link href="/login">
-            <Button
-              className="hidden border border-black bg-[#F5478E]  px-4  transition duration-300 hover:bg-[#d43977] md:flex"
-              style={{ boxShadow: "3px 2px 0 0 white" }}
-            >
-              <span className="text-lg font-semibold">Login</span>
-            </Button>
-          </Link>
-        )}
+        <div>
+          <UserAvatar />
+        </div>
 
         {/* Mobile Nav */}
-        <div className=" md:hidden ">
+        {/* <div className=" md:hidden ">
           <MobileNav navLinks={navLinks} user={userAuth} />
-        </div>
+        </div> */}
       </div>
     </nav>
   );
