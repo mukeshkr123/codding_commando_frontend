@@ -7,6 +7,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Button } from "../../ui/button";
 import { UserAvatar } from "./nav-menu-avatar";
+import { SearchInput } from "../search/search-input";
 
 const defaultAvatar = "default-avatar-url";
 
@@ -29,7 +30,11 @@ const NavbarRoutes = () => {
 
   return (
     <>
-      {isSearchPage && <div>SearchInput</div>}
+      {isSearchPage && (
+        <div className="hidden md:block">
+          <SearchInput />
+        </div>
+      )}
 
       <div className="ml-auto flex gap-x-2">
         {isTeacherPage || isCoursePage
