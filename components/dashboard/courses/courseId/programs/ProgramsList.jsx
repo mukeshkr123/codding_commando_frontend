@@ -20,12 +20,12 @@ const ProgramsList = ({ items, onReorder, onEdit }) => {
 
     setPrograms(updatedPrograms);
 
-    const bulkUpdateData = updatedPrograms.map((program) => ({
-      id: program._id,
-      position: updatedPrograms.findIndex((item) => item.id === program._id),
-    }));
+    // const bulkUpdateData = updatedPrograms.map((program) => ({
+    //   id: program._id,
+    //   position: updatedPrograms.findIndex((item) => item.id === program._id),
+    // }));
 
-    onReorder(bulkUpdateData);
+    // onReorder(bulkUpdateData);
   };
 
   return (

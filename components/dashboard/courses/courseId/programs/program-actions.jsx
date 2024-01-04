@@ -37,6 +37,7 @@ export const ProgramActions = ({
 
       toast.success(`Program ${isPublished ? "un" : ""}published`);
       router.refresh();
+      router.push(`/teacher/courses/${courseId}`);
     } catch (error) {
       toast.error("Something went wrong");
     } finally {

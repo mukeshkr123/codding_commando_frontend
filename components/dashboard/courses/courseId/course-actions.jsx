@@ -28,10 +28,12 @@ export const CourseActions = ({ disabled, courseId, isPublished }) => {
 
       if (isPublished) {
         await apiClient.patch(`/courses/${courseId}/unpublish`, {}, config);
-        toast.success("Mentor unpublished");
+        toast.success("Course Unpublished");
+        router.push(`/teacher/courses`);
       } else {
         await apiClient.patch(`/courses/${courseId}/publish`, {}, config);
-        toast.success("Mentor published");
+        toast.success("Course Published");
+        router.push(`/teacher/courses`);
         confetti.onOpen();
       }
       router.refresh();

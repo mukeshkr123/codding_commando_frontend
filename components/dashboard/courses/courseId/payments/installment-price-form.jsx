@@ -52,7 +52,7 @@ const InstallMentPriceForm = ({ initialData, courseId }) => {
       };
 
       toast.promise(
-        apiClient.patch(`/courses/update/${courseId}`, value, config),
+        apiClient.patch(`/courses/${courseId}/payment-details`, value, config),
         {
           loading: "Updating course...",
           success: "Course updated",

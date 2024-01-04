@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Loader2, PlusCircle } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
@@ -28,7 +27,7 @@ const formSchema = z.object({
 
 export const ProgramsForm = ({ initialData, courseId }) => {
   const [isCreating, setIsCreating] = useState(false);
-  const [isUpdating, setIsUpdating] = useState(false);
+  // const [isUpdating, setIsUpdating] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
   const router = useRouter();
@@ -67,21 +66,21 @@ export const ProgramsForm = ({ initialData, courseId }) => {
     }
   };
 
-  const onReorder = async (updateData) => {
-    try {
-      setIsUpdating(true);
+  // const onReorder = async (updateData) => {
+  //   try {
+  //     setIsUpdating(true);
 
-      await axios.put(`/api/courses/${courseId}/chapters/reorder`, {
-        list: updateData,
-      });
-      toast.success("Chapters reordered");
-      router.refresh();
-    } catch {
-      toast.error("Something went wrong");
-    } finally {
-      setIsUpdating(false);
-    }
-  };
+  //     await axios.put(`/api/courses/${courseId}/chapters/reorder`, {
+  //       list: updateData,
+  //     });
+  //     toast.success("Chapters reordered");
+  //     router.refresh();
+  //   } catch {
+  //     toast.error("Something went wrong");
+  //   } finally {
+  //     setIsUpdating(false);
+  //   }
+  // };
 
   const onEdit = (id) => {
     router.push(`/teacher/courses/${courseId}/programs/${id}`);
@@ -89,11 +88,11 @@ export const ProgramsForm = ({ initialData, courseId }) => {
 
   return (
     <div className="relative mt-6 rounded-md border bg-slate-100 p-4">
-      {isUpdating && (
+      {/* {isUpdating && (
         <div className="absolute right-0 top-0 flex h-full w-full items-center justify-center rounded-md bg-slate-500/20">
           <Loader2 className="h-6 w-6 animate-spin text-sky-700" />
         </div>
-      )}
+      )} */}
       <div className="flex items-center justify-between font-medium">
         Course programs
         <Button onClick={toggleCreating} variant="ghost">
@@ -145,7 +144,7 @@ export const ProgramsForm = ({ initialData, courseId }) => {
           {!initialData.program_curriculum.length && "No Programs"}
           <ProgramsList
             onEdit={onEdit}
-            onReorder={onReorder}
+            // onReorder={onReorder}
             items={initialData.program_curriculum || []}
           />
         </div>

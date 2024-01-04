@@ -82,7 +82,7 @@ export const CreateCourseForm = () => {
         />
 
         <div className="flex items-center gap-x-2">
-          <Link href="/dashboard">
+          <Link href="/teacher/courses">
             <Button type="button" variant="ghost">
               Cancel
             </Button>
