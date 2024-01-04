@@ -3,7 +3,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
-import toast from "react-hot-toast";
+import { ErrorToast } from "../error-toast";
 
 export const BuyProduct = ({ children, courseId }) => {
   const router = useRouter();
@@ -11,7 +11,7 @@ export const BuyProduct = ({ children, courseId }) => {
 
   const name = userAuth?.firstName + " " + userAuth?.lastName || " ";
   const email = userAuth?.email || " ";
-  const phone = userAuth?.phone || " ";
+  const phone = userAuth?.phone || " "; // TODO :
 
   const makePayment = async () => {
     if (!userAuth) {
@@ -81,8 +81,7 @@ export const BuyProduct = ({ children, courseId }) => {
         alert("Payment failed. Please try again. Contact support for help");
       });
     } catch (error) {
-      console.error("Error making payment:", error);
-      toast.error("Something went wrong");
+      ErrorToast(error);
     }
   };
 

@@ -14,7 +14,6 @@ import { useDispatch } from "react-redux";
 import { logoutAction } from "../../../GlobalRedux/slices/userSlice";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 export const NavMenu = () => {
   const dispatch = useDispatch();
@@ -33,11 +32,13 @@ export const NavMenu = () => {
       <DropdownMenuContent className="px-2">
         <DropdownMenuSeparator />
         <DropdownMenuItem className="cursor-pointer text-base  font-medium">
-          <Link href={`/dashboard`}>My Courses</Link>
+          <a href="/dashboard" target="_blank" rel="noopener noreferrer">
+            My Courses
+          </a>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer text-base  font-medium">
+        {/* <DropdownMenuItem className="cursor-pointer text-base  font-medium">
           My Profile
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         <DropdownMenuItem
           className="cursor-pointer text-base font-medium"
           onClick={() => handleLogOut()}

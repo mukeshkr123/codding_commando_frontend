@@ -3,6 +3,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import apiClient from "../../lib/api-client";
 import toast from "react-hot-toast";
+import { ErrorToast } from "@/components/error-toast";
 
 // register Action
 export const registerAction = createAsyncThunk(
@@ -58,6 +59,20 @@ export const logoutAction = createAsyncThunk(
   }
 );
 
+// create user session
+export const userSessionAction = createAsyncThunk(
+  "users/session",
+  async (config) => {
+    try {
+      const { data } = await apiClient.get("/users/session", config);
+      console.log(data);
+      return data?.user;
+    } catch (error) {
+      ErrorToast("Login Again");
+    }
+  }
+);
+
 // get user from localStorage and place into store,
 const userLoggedIn =
   typeof localStorage !== "undefined"
@@ -69,6 +84,7 @@ const usersSlice = createSlice({
   name: "users",
   initialState: {
     userAuth: userLoggedIn,
+    user: {},
   },
   extraReducers: (builder) => {
     builder
@@ -104,6 +120,9 @@ const usersSlice = createSlice({
         state.serverErr = action?.error?.message;
         state.loading = false;
       });
+    builder.addCase(userSessionAction.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
     // logOut
     builder
       .addCase(logoutAction.pending, (state) => {

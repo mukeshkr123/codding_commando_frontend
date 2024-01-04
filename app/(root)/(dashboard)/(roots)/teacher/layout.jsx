@@ -1,3 +1,4 @@
+import ProtectedTeacher from "@/components/protected-teacher";
 import { redirect } from "next/navigation";
 
 const TeacherLayout = ({ children }) => {
@@ -7,7 +8,11 @@ const TeacherLayout = ({ children }) => {
     return redirect("/dashboard");
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <ProtectedTeacher>{children}</ProtectedTeacher>
+    </>
+  );
 };
 
 export default TeacherLayout;

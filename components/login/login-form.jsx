@@ -84,11 +84,11 @@ export const LoginForm = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center gap-4">
-            <Link href="/signup">
+            {/* <Link href="/signup">
               <p className="text-base font-normal text-red-500">
                 Forgot Password
               </p>
-            </Link>
+            </Link> */}
 
             <button
               className="rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"

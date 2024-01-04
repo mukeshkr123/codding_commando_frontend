@@ -9,14 +9,12 @@ import { Button } from "../../ui/button";
 import { UserAvatar } from "./nav-menu-avatar";
 import { SearchInput } from "../search/search-input";
 
-const defaultAvatar = "default-avatar-url";
-
 const NavbarRoutes = () => {
-  const userId = true;
   const pathname = usePathname();
-  const { userAuth } = useSelector((state) => state?.user);
+  const { user } = useSelector((state) => state?.user);
+  const isAdmin = user && user?.role === "admin";
 
-  const isTeacherPage = userId && pathname.startsWith("/teacher");
+  const isTeacherPage = isAdmin && pathname.startsWith("/teacher");
   const isCoursePage = pathname?.includes("/courses");
   const isSearchPage = pathname === "/search";
 
@@ -45,14 +43,11 @@ const NavbarRoutes = () => {
                 Exit
               </>
             )
-          : userId
+          : isAdmin
             ? linkButton("/teacher/courses", "Teacher Mode")
             : null}
 
-        <UserAvatar
-          imageUrl={userAuth?.avatar ?? defaultAvatar}
-          name={userAuth?.firstName ?? "Guest"}
-        />
+        <UserAvatar imageUrl={user?.avatar} name={user?.name ?? "P"} />
       </div>
     </>
   );

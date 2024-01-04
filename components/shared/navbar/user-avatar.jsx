@@ -5,8 +5,9 @@ import { useSelector } from "react-redux";
 import { NavMenu } from "./nav-menu";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import MobileNav from "./MobileNav";
 
-const UserAvatar = () => {
+const UserAvatar = ({ navLinks }) => {
   const [isMounted, setIsMounted] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -34,6 +35,11 @@ const UserAvatar = () => {
           </Button>
         </Link>
       )}
+
+      {/* Mobile Nav */}
+      <div className=" md:hidden ">
+        <MobileNav navLinks={navLinks} user={userAuth} />
+      </div>
     </>
   );
 };

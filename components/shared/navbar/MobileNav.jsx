@@ -15,12 +15,18 @@ import {
 } from "../../ui/sheet";
 import { logoutAction } from "../../../GlobalRedux/slices/userSlice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 const MobileNav = ({ navLinks, user }) => {
   const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logoutAction());
+    toast.success("Logout Success");
+  };
+
   return (
     <Sheet>
-      <SheetTrigger>
+      <SheetTrigger asChild>
         <FiMenu size={28} />
       </SheetTrigger>
       <SheetContent className="bg-dark-purple text-white  transition-all duration-300 ease-in-out">
@@ -49,7 +55,7 @@ const MobileNav = ({ navLinks, user }) => {
             {user ? (
               <div className="flex w-full flex-col ">
                 <SheetClose asChild>
-                  <Link href={`/users/${user?._id}`}>
+                  <Link href={`/dashboard`}>
                     <p className="text-lg font-semibold transition duration-300 hover:text-[#F5478E]">
                       My Courses
                     </p>
@@ -59,7 +65,7 @@ const MobileNav = ({ navLinks, user }) => {
                   <div>
                     <Button
                       className="mt-4 w-[40%] rounded-[45px] bg-[#F5478E] py-4 transition duration-300 hover:bg-[#be3169]"
-                      onClick={() => dispatch(logoutAction())}
+                      onClick={() => handleLogout()}
                     >
                       <span className="text-xl font-semibold text-white">
                         Log Out
@@ -81,7 +87,7 @@ const MobileNav = ({ navLinks, user }) => {
                 </SheetClose>
 
                 <SheetClose asChild>
-                  <Link href="/login">
+                  <Link href="/signup">
                     <Button className="w-[60%] rounded-[45px] bg-[#F5478E] py-4 transition duration-300 hover:bg-[#be3169]">
                       <span className="text-xl font-semibold text-white ">
                         Sign Up
