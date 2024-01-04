@@ -1,10 +1,10 @@
 "use client";
 // import { redirect } from "next/navigation";
 // import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const ProtectedTeacher = ({ children }) => {
-  const { user } = useSelector((state) => state?.user);
+  // const { user } = useSelector((state) => state?.user);
 
   return <>{children}</>;
 };
