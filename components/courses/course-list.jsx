@@ -1,20 +1,25 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { CourseCard } from "./course-card";
 import apiClient from "lib/api-client";
+import { ErrorToast } from "../error-toast";
 
-async function getAllCourses() {
-  try {
-    const { data } = await apiClient.get("/get-all/courses");
-    return data?.courses;
-  } catch (error) {
-    const errorMessage =
-      error.response?.data?.message || error.message || "Something went wrong";
-    console.log(errorMessage);
-  }
-}
+export const CourseList = () => {
+  const [courses, setCourse] = useState([]);
 
-export const CourseList = async () => {
-  const courses = await getAllCourses();
+  const fetchCourses = async () => {
+    try {
+      const { data } = await apiClient.get("/get-all/courses");
+      setCourse(data?.courses);
+    } catch (error) {
+      ErrorToast(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
   if (!courses || courses.length === 0) {
     return (
