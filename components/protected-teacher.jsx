@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 const ProtectedTeacher = ({ children }) => {
   const { user } = useSelector((state) => state?.user);
 
-  console.log(user);
-
   return <>{children}</>;
 };
 

@@ -65,7 +65,6 @@ export const userSessionAction = createAsyncThunk(
   async (config) => {
     try {
       const { data } = await apiClient.get("/users/session", config);
-      console.log(data);
       return data?.user;
     } catch (error) {
       ErrorToast("Login Again");
