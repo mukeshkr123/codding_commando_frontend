@@ -1,20 +1,34 @@
+"use client";
+
 import apiClient from "lib/api-client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CourseCard } from "./cours-card";
+import { ErrorToast } from "@/components/error-toast";
+import LoadingAnimation from "@/components/shared/loading-animation";
 
-async function getAllCourses() {
-  try {
-    const { data } = await apiClient.get("/get-all/courses");
-    return data?.courses;
-  } catch (error) {
-    const errorMessage =
-      error.response?.data?.message || error.message || "Something went wrong";
-    console.log(errorMessage);
+export const CourseList = () => {
+  const [courses, setCourses] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchCourses = async () => {
+    try {
+      const { data } = await apiClient.get("/get-all/courses");
+      setCourses(data?.courses);
+    } catch (error) {
+      ErrorToast(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  if (isLoading) {
+    return <LoadingAnimation />;
   }
-}
 
-export const CourseList = async () => {
-  const courses = await getAllCourses();
   return (
     <div className="mt-4">
       <div className="grid gap-4  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ">
